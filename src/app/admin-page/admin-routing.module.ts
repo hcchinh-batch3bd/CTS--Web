@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import{ Routes, RouterModule} from '@angular/router';
-import { AdminComponent } from './admin.component';
-import { MenuComponent } from './menu/menu.component';
+import { MissionPageComponent } from './contain/mission-page/mission-page.component';
+import { AdminPageComponent } from './admin-page.component';
 
 const routes: Routes =[
-  {path: '', component: AdminComponent}
+  {path: '', redirectTo:'mission', pathMatch:'full'},
+     {path:'mission', component:AdminPageComponent}
 ]
 
 @NgModule({
