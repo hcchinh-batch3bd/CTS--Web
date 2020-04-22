@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+.container-login {
+    background-image: url("../../resource/img/background.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.container-login form{
+    padding: 50px;
+    line-height: 50px;
+    max-width: 100%;
+    width: 400px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px 10px #000000;
+    opacity: 0.95;
+    min-height: 451px;
+}
+
+h1{
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color:rgb(15, 15, 15);
+}
+
+p{
+    font-size: 17px;
+    letter-spacing: 0.5px;
+    font-weight: 100;
+}
+
+input[type=text], input[type=password]{
+    width: 100%;
+    font-size: 17Ppx;
+    padding:0 15px;
+    margin: 8px 0;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgba(15, 15, 15, 0.4);;
+    background-color: transparent;
+}
+.a{
+    margin: 8px 0;
+    width: 100%;
+    margin-left: 5px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+input[type=checkbox]{
+    display: none;
+}
+
+input[type=checkbox] + label::before{
+    content: "\2714";   
+    border: 0.08em solid black;
+    border-radius: 0.2em;
+    margin-right: 0.3em;
+    color: transparent;
+    transition: 0.2s;
+    font-size: 11px;
+    display: inline;
+}
+input[type=checkbox] + label:active:before{
+    transform: scale(0);
+}
+
+input[type=checkbox]:checked + label::before{
+    background-color: rgb(77,128,228);
+    border-color: rgb(77,128,228);
+    color: white;
+}
+.mail{
+    width: 100%;
+}
+.mail .textmail{
+    width: 260px;
+    font-size: 17Ppx;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgba(15, 15, 15, 0.4);
+    background-color: transparent;
+}
+
+.mail .textmail:focus{
+    border-bottom: 1.4px solid rgba(15, 15, 15, 0.8);
+    /*box-shadow: 0px 2px 10px rgba(15, 15, 15, 0.4);
+    border-radius: 3px; */
+}
+
+.mail a{
+    margin-left: 5px;
+    font-size: 30px;
+    color:  rgb(77,128,228);
+    outline: none;
+    padding-top: 3px;
+}
+
+.mail a:hover{
+    color:  #46b3e6;
+}
+.mail a:active{
+    transform: scale(0.98);
+    color:rgb(77,128,228);
+}
+.send{
+    margin-top: 15px;
+}
+button{
+    padding: 0 50px;
+    border-radius: 20px;
+    border: 1px solid rgb(77,128,228);
+    background-color:rgb(77,128,228);
+    outline: none;
+    font-weight:bold;
+    letter-spacing: 1px;
+    color: white;
+    display: block;
+    margin: 0 auto;
+}
+
+button:hover{
+    background-color: #46b3e6;
+    
+}
+
+button:active{
+    transform: scale(0.98);
+    background-color:rgb(77,128,228);
+}
+
+a{
+    text-decoration: none;
+    color: rgb(154, 167, 172);
+    margin: 8px 0;
+}
+
+input:focus{
+    border-bottom: 1.4px solid rgba(15, 15, 15, 0.8);
+}
+.error{
+    float: left;
+    font-size: 14px;
+    color: red;
+    width: 100%;
+    text-align: left;
+    margin-top: 0;
+}
+.error span{
+    padding: 0;
+}
