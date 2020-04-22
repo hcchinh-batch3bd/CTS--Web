@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  {path: '', redirectTo:'login-page', pathMatch:'full'},
-  {path:'login-page', loadChildren:'../login-page/login.module#LoginModule'},
+  {path: '', redirectTo:'Login', pathMatch:'full'},
+  {path:'Login', loadChildren:'../login-page/login.module#LoginModule'},
   // {path: '', redirectTo:'admin-page', pathMatch:'full'},
   // {path:'admin-page', loadChildren:'./admin-page/admin.module#AdminModule'}
   // {path: '', redirectTo: 'home', pathMatch:'full'},
@@ -14,7 +14,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],
+  imports: [RouterModule.forRoot(routes, {useHash: false})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

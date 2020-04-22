@@ -2,11 +2,11 @@
     <form action="#">
         <h1>Xin chào!</h1>
         <p>Chào mừng bạn đã quay lại!</p>
-        <input type="text" maxlength="30" placeholder="ID" required ngModel #id="ngModel" [ngModelOptions]="{standalone: true}">
+        <input type="text" maxlength="30" placeholder="ID" required ngModel #id="ngModel" [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
         <div *ngIf="id.touched && id.invalid" class="error">
             <span *ngIf="id.errors.required">Vui lòng nhập ID!</span>
         </div>
-        <input type="password" maxlength="30" placeholder="Mật khẩu" required ngModel #pass="ngModel" [ngModelOptions]="{standalone: true}">
+        <input type="password" maxlength="30" placeholder="Mật khẩu" required ngModel #pass="ngModel" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
         <div *ngIf="pass.touched && pass.invalid" class="error">
             <span *ngIf="pass.errors.required">Vui lòng nhập mật khẩu!</span>
         </div>
@@ -15,8 +15,7 @@
             <label for="chk">Ghi nhớ mật khẩu</label>
         </div>
         <button [disabled]="id.invalid || 
-                pass.invalid"
-                [routerLink]="['../admin']">
+                pass.invalid" (click)="callAPILogin()">
                 Đăng nhập</button>
         <a routerLink="forgotpassword">Quên mật khẩu?</a>
     </form>
