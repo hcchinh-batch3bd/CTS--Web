@@ -11,6 +11,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
     position: relative;
 }
 
@@ -28,6 +29,7 @@
     border-radius: 20px;
     opacity: 0.90;
     min-height: 451px;
+    box-shadow: 0 5px 10px #000000;
 }
 
 h1{
@@ -165,4 +167,22 @@ input:focus{
 }
 .error span{
     padding: 0;
+}
+
+@media (max-width: 450px){
+    
+    .container-login form{
+        width: 300px;
+        font-size: 12px;
+        padding: 30px 50px;
+    }
+    h1{
+        font-size: 26px;
+        margin: 0;
+    }
+
+    p{
+        margin: 0;
+        font-size: 13px;
+    }
 }

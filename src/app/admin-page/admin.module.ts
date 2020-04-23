@@ -28,7 +28,7 @@ import { AdminPageComponent } from './admin-page.component';
     AdminRoutingModule
   ],
   exports:[
-    MissionPageComponent
+    AdminPageComponent
   ]
 })
 export class AdminModule { }
