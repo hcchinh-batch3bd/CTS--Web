@@ -10,7 +10,7 @@ import { SessionModule } from 'src/app/models/session/session.module';
 })
 export class LoginComponent implements OnInit {
   session: SessionModule;
-  username: number = 11;
+  username: number;
   password: string ='';
   constructor(private apiService : ApiService) { }
   ngOnInit(): void {
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   callAPILogin() : void
   {
     this.apiService.checkLogin(this.username, this.password).subscribe((data)=>{
-      console.log(data.toString);
+      console.log(data);
     });  
   }
   
