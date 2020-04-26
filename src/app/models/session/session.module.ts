@@ -10,10 +10,12 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class SessionModule {
+  id_employee: number;
   name_employee: string;
   point : number;
   level_employee: boolean;
+  apiKey: string;
   constructor(){
     
   }
- }
+}

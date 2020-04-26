@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { SessionModule } from './models/session/session.module';
 import { from } from 'rxjs';
 
 @Injectable({

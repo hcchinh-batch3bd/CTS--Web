@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../app/api.service';
-import { from } from 'rxjs';
 import { SessionModule } from 'src/app/models/session/session.module';
+import { CookieService } from 'ngx-cookie-service';
+import * as CryptoJS from 'crypto-js';  
+
 
 @Component({
   selector: 'app-login',
@@ -12,17 +14,36 @@ export class LoginComponent implements OnInit {
   session: SessionModule;
   username: number;
   password: string ='';
-  constructor(private apiService : ApiService) { }
+  message: string;  
+  encPassword: string ="CTS-Security";  
+  conversionEncryptOutput: string;    
+  constructor(private apiService : ApiService, private cookieService : CookieService) { }
   ngOnInit(): void {
   }
   callAPILogin() : void
   {
-    this.apiService.checkLogin(this.username, this.password).subscribe((data)=>{
-      console.log(data);
-    });  
+    const error = "Kết nối máy chủ không thành công !!!";
+    this.apiService.checkLogin(this.username, this.password).subscribe(
+      data => {
+        this.session = data['results'][0];
+        if(data['status']===true)
+        {
+          
+          console.log(data['results'][0]);
+          this.convertText("encrypt");
+          this.cookieService.set('cookieLogin', this.conversionEncryptOutput);
+          window.location.href = '/admin-page';
+        }
+        console.log(data['message']);
+      },
+      err => {
+        console.log(err);
+      }
+    )
   }
-  
-}
-class A {
-  constructor(public result: Array<SessionModule>, public status: boolean, public message : string) {}
+  private convertText(conversion:string) {  
+    if (conversion=="encrypt") {  
+      this.conversionEncryptOutput = CryptoJS.AES.encrypt(this.session.apiKey, this.encPassword.trim()).toString();  
+    }
+  } 
 }
