@@ -19,16 +19,17 @@ export class LoginComponent implements OnInit {
   conversionEncryptOutput: string;    
   constructor(private apiService : ApiService, private cookieService : CookieService) { }
   ngOnInit(): void {
+    this.apiService.checkLogin
   }
   callAPILogin() : void
   {
+    //document.getElementById("myDIV").style.opacity = "1";
     const error = "Kết nối máy chủ không thành công !!!";
     this.apiService.checkLogin(this.username, this.password).subscribe(
       data => {
         this.session = data['results'][0];
         if(data['status']===true)
         {
-          
           console.log(data['results'][0]);
           this.convertText("encrypt");
           this.cookieService.set('cookieLogin', this.conversionEncryptOutput);

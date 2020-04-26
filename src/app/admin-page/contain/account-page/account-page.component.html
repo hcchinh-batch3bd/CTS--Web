@@ -41,9 +41,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td scope="row">1</td>
-                                    <td>Peter Parker</td>
+                                <tr *ngFor="let p of listaccount">
+                                    <td scope="row">{{p.id_employee}}</td>
+                                    <td>{{p.name_employee}}</td>
                                     <td>10</td>
                                     <td>Lorem@gmail.com</td>
                                     <td>10</td>
@@ -51,19 +51,6 @@
                                     <td>Nghỉ việc</td>
                                     <td>
                                         <a href="#" style="color: red;">
-                                            <i class="far fa-trash-alt"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">2</td>
-                                    <td>Tony Stark</td>
-                                    <td>20</td>
-                                    <td>Lorem@gmail.com</td>
-                                    <td>10</td>
-                                    <td>Quản lý</td>
-                                    <td>Nghỉ việc</td>
-                                    <td><a href="#" style="color: red;">
                                             <i class="far fa-trash-alt"></i>
                                         </a>
                                     </td>

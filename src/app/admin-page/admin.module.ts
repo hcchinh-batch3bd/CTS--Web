@@ -10,6 +10,7 @@ import { StatisticalPageComponent } from './contain/statistical-page/statistical
 import { FooterComponent } from './footer/footer.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminPageComponent } from './admin-page.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -25,7 +26,8 @@ import { AdminPageComponent } from './admin-page.component';
     FooterComponent, AdminPageComponent],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule
   ],
   exports:[
     AdminPageComponent
