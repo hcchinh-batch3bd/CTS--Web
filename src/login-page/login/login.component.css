@@ -15,7 +15,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
     position: relative;
 }
 
@@ -195,13 +194,15 @@ input:focus{
 /*-----------------LOADING-------------------*/
 /*---------------------------------------*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
-.container-loading {
+#container-loading {
+  opacity: 0;
+  display: none;
   background-color: #f1c40f;
   overflow: hidden;
   height: 100vh;
 }
 
-.container-loading h1 {
+#container-loading h1 {
   position: absolute;
   font-family: 'Open Sans';
   font-weight: 600;
@@ -447,4 +448,28 @@ input:focus{
     left: -100%;
     opacity: 0;
   }
+}
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-right: 16px solid green;
+  border-bottom: 16px solid red;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

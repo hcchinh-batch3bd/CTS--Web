@@ -24,7 +24,9 @@ export class LoginComponent implements OnInit {
   }
   callAPILogin() : void
   {
-    //document.getElementById("myDIV").style.opacity = "1";
+    this.click = true;
+    document.getElementById("container-loading").style.opacity = "1";
+    document.getElementById("container-loading").style.display = "block";
     const error = "Kết nối máy chủ không thành công !!!";
     this.apiService.checkLogin(this.username, this.password).subscribe(
       data => {
@@ -45,7 +47,7 @@ export class LoginComponent implements OnInit {
   }
   private convertText(conversion:string) {  
     if (conversion=="encrypt") {  
-      this.click = true;
+      
       this.conversionEncryptOutput = CryptoJS.AES.encrypt(this.session.apiKey, this.encPassword.trim()).toString();  
     }
   } 

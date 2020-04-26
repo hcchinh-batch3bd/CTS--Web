@@ -7,7 +7,7 @@ import { TypemissionModule } from './models/typemission/typemission.module';
   providedIn: 'root'
 })
 export class ApiService {
-  apiURL: string ='https://api.hotrogame.online'
+  apiURL: string ='http://hotrogame-001-site1.itempurl.com'
   constructor(private httpClient: HttpClient) { }
   public checkLogin(id: number, password: string){
     return this.httpClient.get(`${this.apiURL}/Account/CheckLogin?id=`+id+`&pw=`+password);
