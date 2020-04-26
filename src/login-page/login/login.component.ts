@@ -11,6 +11,7 @@ import * as CryptoJS from 'crypto-js';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  click = false;
   session: SessionModule;
   username: number;
   password: string ='';
@@ -44,6 +45,7 @@ export class LoginComponent implements OnInit {
   }
   private convertText(conversion:string) {  
     if (conversion=="encrypt") {  
+      this.click = true;
       this.conversionEncryptOutput = CryptoJS.AES.encrypt(this.session.apiKey, this.encPassword.trim()).toString();  
     }
   } 
