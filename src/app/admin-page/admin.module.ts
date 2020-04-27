@@ -11,6 +11,8 @@ import { FooterComponent } from './footer/footer.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminPageComponent } from './admin-page.component';
 import { FormsModule } from '@angular/forms';
+import { AddMissionComponent } from './contain/add-mission/add-mission.component';
+import { AddAccountComponent } from './contain/add-account/add-account.component';
 
 
 
@@ -23,7 +25,7 @@ import { FormsModule } from '@angular/forms';
     TypemissionPageComponent, 
     AccountPageComponent, 
     StatisticalPageComponent, 
-    FooterComponent, AdminPageComponent],
+    FooterComponent, AdminPageComponent, AddMissionComponent, AddAccountComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

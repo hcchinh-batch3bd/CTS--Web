@@ -26,8 +26,6 @@ export class LoginComponent implements OnInit {
   callAPILogin() : void
   {
     this.click = true;
-    document.getElementById("container-loading").style.opacity = "1";
-    document.getElementById("container-loading").style.display = "block";
     const error = "Kết nối máy chủ không thành công !!!";
     this.apiService.checkLogin(this.username, this.password).subscribe(
       data => {

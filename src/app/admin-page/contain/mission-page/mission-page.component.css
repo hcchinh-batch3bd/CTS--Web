@@ -1,0 +1,6 @@
+.btn{
+    float: right;
+}
+.btn:hover, .btn:active{
+    transform: scale(0.9);
+}
