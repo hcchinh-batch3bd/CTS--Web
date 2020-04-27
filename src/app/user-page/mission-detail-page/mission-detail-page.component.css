@@ -1,3 +1,7 @@
+section {
+    background-color: rgb(245, 238, 255);
+    padding-bottom: 1%;
+}
 section .container h1{
     background-color: #4D0D97;
     color: #fff;
@@ -46,6 +50,5 @@ section .container h5 span{
 }
 
 .mission-list{
-    margin-top: 2%;
-    background-color: rgb(240, 228, 255);
+    background-color: rgb(255, 255, 255);
 }

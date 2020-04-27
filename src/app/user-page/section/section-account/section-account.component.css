@@ -10,13 +10,12 @@
 }
 .change-pass{
     background-color: rgba(255, 239, 253, 0.973);
-    
 }
 .change-pass .container{
     font-family: sans-serif;
     letter-spacing: 1px;
+    padding-bottom: 1%;
 }
-
 .change-pass .container h1{
     background-color: #4D0D97;
     color: #fff;
@@ -37,3 +36,25 @@
     left: 49px;
 }
 
+.col form input[type="text"]{
+    display: block;
+    padding: 4px 10px;
+    max-width: 100%;
+    margin-bottom: 10px;
+    width: 300px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #eeeeee;
+    border-bottom: 1px solid #4D0D97;
+}
+
+.col form button{
+    padding: 5px 15px;
+    background-color: #9B0188;
+    color:#fff;
+    border: 1px solid #9B0188;
+    border-radius: 5px;
+}
+.col form button:focus, .col form input[type="text"]{
+    outline: none;
+}

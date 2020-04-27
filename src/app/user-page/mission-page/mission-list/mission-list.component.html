@@ -11,7 +11,6 @@
                             <th scope="col">Tên nhiệm vụ</th>
                             <th scope="col">Mô tả</th>
                             <th scope="col">Ngày bắt đầu</th>
-                            <th scope="col">Ngày kết thúc</th>
                             <th scope="col">Số lượng</th>
                             <th scope="col">Loại nhiện vụ</th>
                             <th scope="col">Điểm</th>
@@ -19,30 +18,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Tìm nhẫn</td>
-                            <td>Lorem, ipsumv ikfgswasvv . . .</td>
-                            <td>1/5/2020</td>
-                            <td>10/5/2020</td>
-                            <td>10</td>
-                            <td>Sự kiện</td>
-                            <td>100</td>
-                            <td><a routerLink="../detail">Xem chi tiết</a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Tìm kem</td>
-                            <td>Lorem, ipsumv ikfgswasvv . . .</td>
-                            <td>1/5/2020</td>
-                            <td>10/5/2020</td>
-                            <td>10</td>
-                            <td>Sự kiện</td>
-                            <td>100</td>
+                         <tr *ngFor="let mission of listMission | 
+                        paginate: {id:'list-pagination', itemsPerPage: 5, currentPage: page, totalItems: totalRecords}">
+                            <th scope="row">{{mission.id_mission}}</th>
+                            <td>{{mission.name_mission}}</td>
+                            <td>{{mission.describe}}</td>
+                            <td>{{mission.Stardate}}</td>
+                            <td>{{mission.exprie}}</td>
+                            <td>{{mission.id_type}}</td>
+                            <td>{{mission.point}}</td>
                             <td><a routerLink="../detail">Xem chi tiết</a></td>
                         </tr>
                     </tbody>
                 </table>
+                <div>
+                    <pagination-controls id="list-pagination" (pageChange)="page = $event" previousLabel="Trước"
+                    nextLabel="Sau"></pagination-controls>
+                </div>
             </div>
         </div>
     </div>

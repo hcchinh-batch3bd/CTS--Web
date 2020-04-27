@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   constructor(private apiService : ApiService, private cookieService : CookieService) { }
   ngOnInit(): void {
     this.apiService.checkLogin
+    
   }
   callAPILogin() : void
   {

@@ -16,6 +16,10 @@ export class ApiService {
   {
     return this.httpClient.get(`${this.apiURL}/Account/ListEmployee?apiKey=`+apiKey);
   }
+  public GetListMission(apiKey: string)
+  {
+    return this.httpClient.get(`${this.apiURL}/Mission/ListMission?apiKey=`+apiKey);
+  }
   public createTypeMission(apiKey: string, typeMission: TypemissionModule){
     return this.httpClient.post(`${this.apiURL}/Type_Mission/Create?apiKey=`+apiKey,typeMission);
 }

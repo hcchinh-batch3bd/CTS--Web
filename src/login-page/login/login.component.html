@@ -1,5 +1,5 @@
-<div class="container-login {{click ? 'show' : ''}}">
-    <form action="#">
+<div class="container-login ">
+    <form action="#" class="{{click ? 'show' : ''}}">
         <h1>Xin chào!</h1>
         <p>Chào mừng bạn đã quay lại!</p>
         <input type="text" maxlength="30" placeholder="ID" required ngModel #id="ngModel" [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
@@ -19,5 +19,6 @@
                 Đăng nhập</button>
         <a routerLink="forgotpassword">Quên mật khẩu?</a>
     </form>
+    <div class="loader {{click ? 'load' : ''}}"></div>
 </div>
-<div class="loader"></div>
+

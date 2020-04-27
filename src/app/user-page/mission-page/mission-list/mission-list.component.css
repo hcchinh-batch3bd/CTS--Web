@@ -42,3 +42,10 @@
     background-color: #4D0D97;
     color: #ffffff;
 }
+#list-pagination{
+    text-align: center;
+}
+#list-pagination /deep/ .ngx-pagination .current {
+    border-radius: 50%;
+    background-color: #4D0D97;
+  }
