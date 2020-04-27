@@ -1,0 +1,49 @@
+
+
+/*----------------------------------------------------------*/
+/*---------------------------LIST TYPE MISSION ------------------------*/
+/*----------------------------------------------------------*/
+
+.mission-doing-list{
+    background-color: rgb(255, 244, 254);
+    
+}
+
+.mission-doing-list .container h1{
+    background-color: #4D0D97;
+    color: #ffffff;
+    width: 280px;
+    font-size: 24px;
+    padding: 5px;
+    height: 40px;
+    display: inline-block;
+    margin-top: 3%;
+}
+
+.mission-doing-list .container h1::after{
+    content: '';
+    border-top: 40px solid #4D0D97;
+    border-right: 40px solid transparent;
+    position: relative;
+    top: 37px;
+    left: 29.6px;
+}
+
+.table-responsive{
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 3%;
+    border: 1px solid #4D0D97;
+}
+
+.table{
+    color: #4D0D97;
+    border-collapse:collapse;
+  border-spacing:0;
+  
+}
+
+.table thead tr{
+    background-color: #4D0D97;
+    color: #ffffff;
+}

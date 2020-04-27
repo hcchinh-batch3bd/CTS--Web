@@ -1,0 +1,39 @@
+
+/*----------------------------------------------------------*/
+/*---------------------------CHANGE PASS ------------------------*/
+/*----------------------------------------------------------*/
+.show-all{
+    float: right;
+    margin-top: 4%;
+    margin-right: 1%;
+    color: #4D0D97;
+}
+.change-pass{
+    background-color: rgba(255, 239, 253, 0.973);
+    
+}
+.change-pass .container{
+    font-family: sans-serif;
+    letter-spacing: 1px;
+}
+
+.change-pass .container h1{
+    background-color: #4D0D97;
+    color: #fff;
+    width: 200px;
+    font-size: 24px;
+    padding: 5px;
+    height: 40px;
+    display: inline-block;
+    margin-top: 3%;
+}
+
+.change-pass .container h1::after{
+    content: '';
+    border-top: 40px solid #4D0D97;
+    border-right: 40px solid transparent;
+    position: relative;
+    top: 35px;
+    left: 49px;
+}
+

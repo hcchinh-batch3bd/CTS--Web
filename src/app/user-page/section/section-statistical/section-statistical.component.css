@@ -1,0 +1,66 @@
+
+
+/*----------------------------------------------------------*/
+/*---------------------------LIST TYPE MISSION ------------------------*/
+/*----------------------------------------------------------*/
+.show-all{
+    float: right;
+    margin-top: 4%;
+    margin-right: 1%;
+    color: #4D0D97;
+}
+.mission-doing-list{
+    background-image:linear-gradient(rgba(255, 241, 241, 0.1) 100%,rgba(0,0,0,0)), url("../../../../assets/img/section.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    
+}
+
+.mission-doing-list .show-all{
+    float: right;
+    margin-top: 4%;
+    margin-right: 1%;
+    color: #fff;
+}
+
+.mission-doing-list .container h1{
+    background-color: rgb(122, 98, 150);
+    color: #fff;
+    width: 200px;
+    font-size: 24px;
+    padding: 5px;
+    height: 40px;
+    display: inline-block;
+    margin-top: 3%;
+}
+
+.mission-doing-list .container h1::after{
+    content: '';
+    border-top: 40px solid rgb(122, 98, 150);
+    border-right: 40px solid transparent;
+    position: relative;
+    top: 37px;
+    left: 63px;
+}
+
+.table-responsive{
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 3%;
+    border: 1px solid #fff;
+}
+
+.table{
+    color: #fff;
+    border-collapse:collapse;
+  border-spacing:0;
+  
+}
+
+.table thead tr{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.table tbody tr:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+}

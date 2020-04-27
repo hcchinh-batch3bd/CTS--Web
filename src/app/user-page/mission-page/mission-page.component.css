@@ -1,0 +1,32 @@
+
+.search{
+    width: 100%;
+    margin-top: 3%;
+    display: flex;
+    position: relative;
+}
+
+.search input[type="text"]{
+    border: 1px solid #eeeeee;
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 3px;
+    color: #000000;
+    border-bottom: 1px solid #4D0D97;
+    color: #4D0D97;
+}
+.search input[type="text"]:focus, .search input[type="text"]:hover {
+    border: 1px solid #4D0D97;
+}
+.search a{
+    color: rgb(203, 158, 255);
+    font-size: 20px;
+    position: absolute;
+    top: 7px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.search:hover a{
+    color:#4D0D97
+}
