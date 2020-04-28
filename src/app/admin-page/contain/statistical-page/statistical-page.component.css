@@ -1,0 +1,15 @@
+
+.btn-excel{
+    background-color: seagreen;
+    padding: 5px 10px;
+    border: 1px solid seagreen;
+    color: #ffffff;
+    border-radius: 5px;
+    outline: none;
+    float: right;
+}
+
+.btn-excel:hover, .btn-excel:active{
+    background-color: #28A745;
+    transform: scale(0.9);
+}

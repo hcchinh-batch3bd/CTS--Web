@@ -25,6 +25,7 @@
 
             <div class="card mb-3" style="width: 100%; height:100%">
                 <div class="card-header">
+<<<<<<< HEAD
                     <i class="fas fa-table"></i>
                     Danh sách loại nhiệm vụ
                     <div class="card-add">
@@ -36,8 +37,24 @@
                             <i class="far fa-plus-square"></i>
                             Thêm loại nhiệm vụ
                         </button>
+=======
+                    <div class="row">
+                        <div class="col">
+                            <i class="fas fa-table"></i>
+                            Danh sách loại nhiệm vụ
+                        </div>
+                        <div class="col"></div>
+                        <div class="col">
+                            <input class="form-control" placeholder="Tên loại nhiệm vụ" type="text" [(ngModel)]="name"
+                                [ngModelOptions]="{standalone: true}">
+                        
+                            <button class="btn btn-primary" (click)="createTypeMission()">
+                                <i class="far fa-plus-square"></i>
+                                Thêm loại nhiệm vụ
+                            </button>
+                        </div>
+>>>>>>> cf0616d3a129d76b094bd60afa15b27793b98427
                     </div>
-
                 </div>
 
                 <div class="card-body">
