@@ -17,7 +17,7 @@ export class MissionListComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.apiService.GetListMission("hello").subscribe(
+    this.apiService.GetListMission().subscribe(
       (data: MissionModule[])=>{
         this.listMission = data['results'];
         this.totalRecords = data['results'].length;

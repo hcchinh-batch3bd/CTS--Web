@@ -16,11 +16,20 @@ export class ApiService {
   {
     return this.httpClient.get(`${this.apiURL}/Account/ListEmployee?apiKey=`+apiKey);
   }
-  public GetListMission(apiKey: string)
+  public GetListMission()
   {
-    return this.httpClient.get(`${this.apiURL}/Mission/ListMission?apiKey=`+apiKey);
+    return this.httpClient.get(`${this.apiURL}/Mission/ListMission?apiKey=`);
+  }
+  public GetlistTypeMission(){
+    return this.httpClient.get(`${this.apiURL}/Type_Mission/GetAll`);
   }
   public createTypeMission(apiKey: string, typeMission: TypemissionModule){
     return this.httpClient.post(`${this.apiURL}/Type_Mission/Create?apiKey=`+apiKey,typeMission);
-}
+  }
+  public editTypeMission(apiKey: string, typeMission: TypemissionModule){
+    return this.httpClient.put(`${this.apiURL}/Type_Mission/Edit?apiKey=`+apiKey,typeMission);
+  }
+  public deleteTypeMission( id:number, apiKey: string, typeMission: TypemissionModule){
+    return this.httpClient.put(`${this.apiURL}/Type_Mission/`+id+`/Remove?apiKey=`+apiKey,typeMission);
+  }
 }
