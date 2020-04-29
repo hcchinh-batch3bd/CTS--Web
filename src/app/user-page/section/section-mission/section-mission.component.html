@@ -9,8 +9,10 @@
             </ol> -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="row" >
+                        <div class="col-md-3 col-sm-6 col-xs-12" 
+                        *ngFor="let mission of listMission|
+                        paginate: {id:'list-pagination', itemsPerPage: 4, currentPage: page, totalItems: totalRecords}">
                             <div class="product-top">
                                 <div class="text-mission">
                                     <div class="text-title">
@@ -18,16 +20,14 @@
                                     </div>
                                     <div class="new">New</div>
                                     <div class="clearfix"></div>
-                                    <h5>Tên nhiệm vụ:</h5>
-                                    <p>Tìm nhẫn</p>
+                                    <h5 >Tên nhiệm vụ:</h5>
+                                    <p class="name">{{mission.name_mission}}</p>
                                     <h5>Loại nhiệm vụ:</h5>
-                                    <p>Sự kiện</p>
+                                    <p>{{mission.name_type_mission}}</p>
                                     <h5>Số lượng:</h5>
-                                    <p>10</p>
+                                    <p>{{mission.exprie}}</p>
                                     <h5>Mô tả:</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Voluptate quis quas nihil tempore sequi
-                                        voluptatum consequatur nemo maxime distinctio reiciendis!</p>
+                                    <p class="content">{{mission.describe}}</p>
                                 </div>
                                 <div class="overlay">
                                     <button type="button" class="btn btn-secondary" routerLink="detail" title="Xem chi tiết">
@@ -39,94 +39,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="product-top">
-                                <div class="text-mission">
-                                    <div class="text-title">
-                                        Nhiệm vụ
-                                    </div>
-                                    <div class="new">New</div>
-                                    <div class="clearfix"></div>
-                                    <h5>Tên nhiệm vụ:</h5>
-                                    <p>Tìm nhẫn</p>
-                                    <h5>Loại nhiệm vụ:</h5>
-                                    <p>Sự kiện</p>
-                                    <h5>Số lượng:</h5>
-                                    <p>10</p>
-                                    <h5>Mô tả:</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Voluptate quis quas nihil tempore sequi
-                                        voluptatum consequatur nemo maxime distinctio reiciendis!</p>
-                                </div>
-                                <div class="overlay">
-                                    <button type="button" class="btn btn-secondary" title="Xem chi tiết">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-secondary" title="Nhận nhiệm vụ">
-                                        <i class="far fa-plus-square"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="product-top">
-                                <div class="text-mission">
-                                    <div class="text-title">
-                                        Nhiệm vụ
-                                    </div>
-                                    <div class="new">New</div>
-                                    <div class="clearfix"></div>
-                                    <h5>Tên nhiệm vụ:</h5>
-                                    <p>Tìm nhẫn</p>
-                                    <h5>Loại nhiệm vụ:</h5>
-                                    <p>Sự kiện</p>
-                                    <h5>Số lượng:</h5>
-                                    <p>10</p>
-                                    <h5>Mô tả:</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Voluptate quis quas nihil tempore sequi
-                                        voluptatum consequatur nemo maxime distinctio reiciendis!</p>
-                                </div>
-                                <div class="overlay">
-                                    <button type="button" class="btn btn-secondary" title="Xem chi tiết">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-secondary" title="Nhận nhiệm vụ">
-                                        <i class="far fa-plus-square"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="product-top">
-                                <div class="text-mission">
-                                    <div class="text-title">
-                                        Nhiệm vụ
-                                    </div>
-                                    <div class="new">New</div>
-                                    <div class="clearfix"></div>
-                                    <h5>Tên nhiệm vụ:</h5>
-                                    <p>Tìm nhẫn</p>
-                                    <h5>Loại nhiệm vụ:</h5>
-                                    <p>Sự kiện</p>
-                                    <h5>Số lượng:</h5>
-                                    <p>10</p>
-                                    <h5>Mô tả:</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Voluptate quis quas nihil tempore sequi
-                                        voluptatum consequatur nemo maxime distinctio reiciendis!</p>
-                                </div>
-                                <div class="overlay">
-                                    <button type="button" class="btn btn-secondary" title="Xem chi tiết">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-secondary" title="Nhận nhiệm vụ">
-                                        <i class="far fa-plus-square"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-            
                     </div>
                 </div>
                 <div class="carousel-item">

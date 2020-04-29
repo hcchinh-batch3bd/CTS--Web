@@ -35,7 +35,13 @@ export class LoginComponent implements OnInit {
           console.log(data['results'][0]);
           this.convertText("encrypt");
           this.cookieService.set('cookieLogin', this.conversionEncryptOutput);
-          window.location.href = '/admin';
+          
+          if(this.session.level_employee){
+            window.location.href = '/admin';
+          }
+          else{
+            window.location.href = '/home';
+          }
         }
         console.log(data['message']);
       },
@@ -46,7 +52,6 @@ export class LoginComponent implements OnInit {
   }
   private convertText(conversion:string) {  
     if (conversion=="encrypt") {  
-      
       this.conversionEncryptOutput = CryptoJS.AES.encrypt(this.session.apiKey, this.encPassword.trim()).toString();  
     }
   } 

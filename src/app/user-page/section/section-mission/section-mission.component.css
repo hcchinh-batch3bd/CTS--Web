@@ -38,12 +38,19 @@ section .container h1::after{
     padding: 20px;
     border-radius: 10px;
     width: 100%;
-    min-height: 480px;
+    min-height: 450px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 1);
     margin-bottom: 20%;
     outline: none;
 }
-
+.name{
+    height: 40px;
+}
+.content{
+    height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .text-mission h5{
     color: #fff;

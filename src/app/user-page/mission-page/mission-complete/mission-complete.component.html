@@ -14,19 +14,12 @@
                             <th scope="col">Trạng thái</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody *ngFor="let mission of listComplete">
                         <tr>
-                            <td>Tìm nhẫn</td>
-                            <td>5/5/2020</td>
-                            <td>Sự kiện</td>
-                            <td>100</td>
-                            <td>Đã hoàn thành</td>
-                        </tr>
-                        <tr>
-                            <td>Tìm kem</td>
-                            <td>5/5/2020</td>
-                            <td>Sự kiện</td>
-                            <td>100</td>
+                            <td>{{mission.name_mission}}</td>
+                            <td>{{mission.date}}</td>
+                            <td>{{mission.name_type_mission}}</td>
+                            <td>{{mission.point}}</td>
                             <td>Đã hoàn thành</td>
                         </tr>
                     </tbody>
