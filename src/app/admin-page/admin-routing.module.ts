@@ -5,13 +5,17 @@ import { AdminPageComponent } from './admin-page.component';
 import { StatisticalPageComponent } from './contain/statistical-page/statistical-page.component';
 import { TypemissionPageComponent } from './contain/typemission-page/typemission-page.component';
 import { AccountPageComponent } from './contain/account-page/account-page.component';
+import { AddMissionComponent } from './contain/add-mission/add-mission.component';
+import { AddAccountComponent } from './contain/add-account/add-account.component';
 
 const routes: Routes = [
   {
     path: '', component: AdminPageComponent, children: [
       { path: '', component: StatisticalPageComponent },
       { path: 'statistical', component: StatisticalPageComponent },
-      { path: 'mission', component: MissionPageComponent },
+      { path: 'mission', component: MissionPageComponent},
+      { path: 'add-mission', component:AddMissionComponent},
+      { path: 'add-account', component:AddAccountComponent},
       { path: 'typemission', component: TypemissionPageComponent },
       { path: 'account', component: AccountPageComponent }
     ]

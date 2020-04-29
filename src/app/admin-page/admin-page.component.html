@@ -1,12 +1,58 @@
-  
-<div class="wrapper">
+<div class="sidebar-mini layout-fixed {{slide ? 'sidebar-collapse ' : ''}} sidebar-{{display ? 'open' : 'close'}}">
+<div class="wrapper" >
+
     <!-- Navbar -->
-    <app-navbar></app-navbar>
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <app-sidebar></app-sidebar>
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" (click)="menu()" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a routerLink="../admin" class="nav-link">Trang chủ</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a routerLink="mission" class="nav-link">Nhiệm vụ</a>
+        </li>
+      </ul>
+
+      <!-- SEARCH FORM -->
+      <form class="form-inline ml-3">
+        <div class="input-group input-group-sm">
+          <input class="form-control form-control-navbar" type="search" placeholder="Tìm kiếm" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-navbar" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto" (click)="wrapper()">
+        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item dropdown">
+            <app-navbar></app-navbar>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" (click)="wrapper()">
+      <!-- Brand Logo -->
+      <app-sidebar></app-sidebar>
+      <!-- /.sidebar -->
     </aside>
-    <div class="content-wrapper">
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper"  (click)="wrapper()">
         <router-outlet></router-outlet>
     </div>
+    <!-- /.content-wrapper -->
     <app-footer></app-footer>
+    <!-- /.control-sidebar -->
+  </div>
+  
+    
 </div>

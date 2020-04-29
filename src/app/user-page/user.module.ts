@@ -16,7 +16,8 @@ import { MissionListComponent } from './mission-page/mission-list/mission-list.c
 import { MissionDongingComponent } from './mission-page/mission-donging/mission-donging.component';
 import { MissionCompleteComponent } from './mission-page/mission-complete/mission-complete.component';
 import { MissionDetailPageComponent } from './mission-detail-page/mission-detail-page.component';
-
+import{NgxPaginationModule} from 'ngx-pagination';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import { MissionDetailPageComponent } from './mission-detail-page/mission-detail
   MissionDetailPageComponent,
 ],
   imports: [
+    CommonModule,
     UserRoutingModule,
+    NgxPaginationModule,
     FormsModule
   ],
   exports:[

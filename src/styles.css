@@ -4,3 +4,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+#list-pagination{
+    text-align: center;
+}
+#list-pagination /deep/ .ngx-pagination .current {
+    border-radius: 50%;
+    background-color: #4D0D97;
+  }

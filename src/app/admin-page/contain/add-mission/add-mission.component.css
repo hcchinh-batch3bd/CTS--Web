@@ -1,0 +1,42 @@
+.card-body .container{
+    width: 300px;
+}
+.card-body .container form{
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body .container form input,
+.card-body .container form textarea,
+.form-control{
+    padding: 5px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #b9b9b9;
+    background-color: #fff;
+}
+
+.card-body .container form input:focus,
+.card-body .container form textarea:focus,
+.form-control:focus{
+    outline: none;
+}
+textarea{
+    max-height: 200px;
+}
+.form-control{
+    padding: 5px 15px;
+}
+
+.btn{
+    border-radius: 5px;
+    max-width: 100%;
+    width: 130px;
+    margin-top: 5px;
+    margin: 0 5px;
+}
+
+.btn:hover, .btn:active{
+    transform: scale(0.9);
+    outline: none;
+}

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MissionModule } from 'src/app/models/mission/mission.module';
+import { ApiService } from 'src/app/api.service';
+
 
 @Component({
   selector: 'app-mission-list',
@@ -6,10 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mission-list.component.css']
 })
 export class MissionListComponent implements OnInit {
-
-  constructor() { }
+  listMission: MissionModule[];
+  apiKey: string;
+  totalRecords: string;
+  page: number=1;
+  decPassword:string = "CTS-Security";
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.apiService.GetListMission().subscribe(
+      (data: MissionModule[])=>{
+        this.listMission = data['results'];
+        this.totalRecords = data['results'].length;
+        console.log(data['results'].length);
+      }
+    );
   }
+
+  
 
 }
