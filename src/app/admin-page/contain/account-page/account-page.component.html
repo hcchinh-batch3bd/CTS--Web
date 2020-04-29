@@ -27,8 +27,8 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" style="border-radius: 5px">
-                            <thead>
+                        <table class="table table-bordered" style="border-radius: 5px" >
+                            <thead >
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Họ và tên</th>
@@ -42,16 +42,18 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let p of listaccount">
-                                    <td scope="row">{{p.id_employee}}</td>
+                                    <td>{{p.id_employee}}</td>
                                     <td>{{p.name_employee}}</td>
-                                    <td>10</td>
-                                    <td>Lorem@gmail.com</td>
-                                    <td>10</td>
-                                    <td>Quản lý</td>
-                                    <td>Nghỉ việc</td>
-                                    <td>
+                                    <td>{{gettime(p.date)}}</td>
+                                    <td>{{p.email}}</td>
+                                    <td>{{p.point}}</td>
+                                    <td>{{p.level}}</td>
+                                    <td>{{p.status}}</td>
+                                    <td><a (click)="removeAccount(p.id_employee)" style="color: red;">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
                                         <a href="#" style="color: red;">
-                                            <i class="far fa-trash-alt"></i>
+                                            <i class="fas fa-tools"></i>
                                         </a>
                                     </td>
                                 </tr>
