@@ -47,14 +47,12 @@
                             <tbody>
                                 <tr *ngFor="let p of listaccount">
                                     <td scope="row">{{p.id_employee}}</td>
-                                    <td>
-                                        {{p.status ? "duong" : "sdf"}}
-                                    </td>
+                                    <td>{{p.name_employee}}</td>
                                     <td>{{getAge(p.date)}}</td>
-                                    <td>Lorem@gmail.com</td>
-                                    <td>10</td>
-                                    <td>Quản lý</td>
-                                    <td>Nghỉ việc</td>
+                                    <td>{{p.email}}</td>
+                                    <td>{{p.point}}</td>
+                                    <td>{{p.level}}</td>
+                                    <td>{{p.status}}</td>
                                     <td>
                                         <a href="#" style="color: red;">
                                             <i class="far fa-trash-alt"></i>

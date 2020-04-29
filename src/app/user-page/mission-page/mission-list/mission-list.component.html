@@ -17,9 +17,9 @@
                             <th scope="col">Tác vụ</th>
                         </tr>
                     </thead>
-                    <tbody>
-                         <tr *ngFor="let mission of listMission | 
-                        paginate: {id:'list-pagination', itemsPerPage: 5, currentPage: page, totalItems: totalRecords}">
+                    <tbody *ngFor="let mission of listMission| 
+                    paginate: {id:'list-pagination', itemsPerPage: 5, currentPage: page, totalItems: totalRecords}">
+                         <tr>
                             <th scope="row">{{mission.id_mission}}</th>
                             <td>{{mission.name_mission}}</td>
                             <td>{{mission.describe}}</td>

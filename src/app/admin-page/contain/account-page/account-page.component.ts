@@ -21,7 +21,7 @@ export class AccountPageComponent implements OnInit {
      this.apiService.GetListAccount(this.apiKey).subscribe(data=>
       {
         this.listaccount = data['results'];
-        console.log(this.listaccount);
+        console.log(this.apiKey);
       },
       err => {
         console.log(err);

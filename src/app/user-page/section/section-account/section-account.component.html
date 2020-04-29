@@ -3,13 +3,12 @@
         <h1><i class="fas fa-user-alt"></i>  Tài khoản</h1>
         <a class="show-all" routerLink="account">Xem tất cả <i class="fas fa-arrow-right"></i></a>
         <div class="row">
-            <div class="col">
-                <h5>ID: <span>189201</span></h5>
-                <h5>Họ và tên: <span>Huynh Công Chính</span></h5>
-                <h5>Tuổi: <span>22</span></h5>
-                <h5>Số nhiệm vụ hoàn thành: <span>2</span></h5>
-                <h5>Số nhiệm vụ đang làm: <span>2</span></h5>
-                <h5>Điểm: <span>1000</span></h5>
+            <div class="col"  *ngIf="info!=null">
+                <h5>ID: <span>{{info.id_employee}}</span></h5>
+                <h5>Họ và tên: <span>{{info.name_employee}}</span></h5>
+                <h5>Số nhiệm vụ hoàn thành: <span>{{info.totalComplete}}</span></h5>
+                <h5>Số nhiệm vụ đang làm: <span>{{info.totalProcess}}</span></h5>
+                <h5>Điểm: <span>{{info.point}}</span></h5>
               </div>
               <div class="col">
                 <form>
