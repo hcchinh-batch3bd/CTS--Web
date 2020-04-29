@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class AccountModule {
-  id_employee: number;s
+  id_employee: number;
   name_employee: string;
   password:string;
   email: string;
@@ -18,4 +18,5 @@ export class AccountModule {
   point: number;
   level: boolean;
   status: string;
+  
  }
