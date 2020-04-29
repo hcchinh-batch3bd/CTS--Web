@@ -18,7 +18,7 @@ export class AccountPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.Decrypt(this.cookieSerive.get('cookieLogin'));
-     this.apiService.GetListAccount(this.apiKey).subscribe(data=>
+     this.apiService.GetListAccount('hello').subscribe(data=>
       {
         this.listaccount = data['results'];
         console.log(this.listaccount);
@@ -29,9 +29,10 @@ export class AccountPageComponent implements OnInit {
       )
   }
 
-  getAge(date: Date):number{
-    let dateNow = new Date(date);  
-    return new Date().getFullYear() - dateNow.getFullYear();
+  getAge(a: Date):number{
+    let b = new Date(a); 
+    let c = new Date().getFullYear() -b.getFullYear(); 
+    return c;
   }
   private Decrypt (encryptText : string) {  
     this.apiKey = CryptoJS.AES.decrypt(encryptText, this.decPassword.trim()).toString(CryptoJS.enc.Utf8);  
