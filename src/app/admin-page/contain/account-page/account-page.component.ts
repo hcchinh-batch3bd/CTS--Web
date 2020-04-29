@@ -27,6 +27,16 @@ export class AccountPageComponent implements OnInit {
         console.log(err);
       }
       )
+      
+  }
+  deleteAC(id:number):void
+  {
+    this.apiService.DeleteAccount(id,'admin',this.listaccount).subscribe(data=>
+      {
+        console.log(data['message']);
+        this.ngOnInit();
+      }
+      )
   }
 
   getAge(a: Date):number{

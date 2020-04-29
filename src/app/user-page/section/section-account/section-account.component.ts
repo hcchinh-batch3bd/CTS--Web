@@ -17,7 +17,7 @@ export class SectionAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.Decrypt(this.cookie.get("cookieLogin"));
-    this.apiService.GetAccount(this.apiKey).subscribe((data: InfoModule)=>{
+    this.apiService.GetListAccount(this.apiKey).subscribe((data: InfoModule)=>{
       this.info = data;
     });
   }

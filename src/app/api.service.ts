@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { TypemissionModule } from './models/typemission/typemission.module';
+import { AccountModule } from './models/account/account.module';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,13 @@ export class ApiService {
   public checkLogin(id: number, password: string){
     return this.httpClient.get(`${this.apiURL}/Account/CheckLogin?id=`+id+`&pw=`+password);
   }
-
-  public GetAccount(apiKey: string){
-    return this.httpClient.get(`${this.apiURL}/Account?apiKey=`+apiKey);
-  }
   public GetListAccount(apiKey: string)
   {
     return this.httpClient.get(`${this.apiURL}/Account/ListEmployee?apiKey=`+apiKey);
+  }
+  public DeleteAccount(id: number, apiKey: string, DeleteAccount: AccountModule[])
+  {
+    return this.httpClient.put(`${this.apiURL}/Account/`+id+`/DeleteEmployee?apiKey=`+apiKey, DeleteAccount)
   }
   public GetListMission(apiKey: string)
   {

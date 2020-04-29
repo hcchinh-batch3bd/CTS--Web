@@ -53,10 +53,10 @@
                                     <td>{{p.point}}</td>
                                     <td>{{p.level}}</td>
                                     <td>{{p.status}}</td>
-                                    <td>
-                                        <a href="#" style="color: red;">
-                                            <i class="far fa-trash-alt"></i>
-                                        </a>
+                                    <td><button><a (click)="deleteAC(p.id_employee)" style="color: red;">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a></button>
+                                        
                                     </td>
                                 </tr>
                             </tbody>
