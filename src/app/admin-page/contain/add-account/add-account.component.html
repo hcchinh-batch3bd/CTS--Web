@@ -38,7 +38,11 @@
           <div class="card-body">
             <div class="container">
                     <form>
-                      <input type="text" placeholder="Tên nhân viên">
+                      <input class = "form-control"type="text" placeholder="Tên nhân viên" required ngModel
+                      #cc="ngModel"[(ngModel)]="name"[ngModelOptions]="{standalone: true}">
+                      <div *ngIf="cc.touched && cc.invalid" class="error">
+                        <span *ngIf="cc.errors.required">Vui lòng ten!</span>
+                    </div>
                       <input type="password" placeholder="Mật khẩu">
                       <input type="date" placeholder="Ngày sinh">
                       <select id="input" class="form-control" style="width: 100%;" required="required">
@@ -46,7 +50,9 @@
                       </select>
                       <input type="email" placeholder="Địa chỉ email">
                       <div>
-                        <button type="button" class="btn btn-primary">Thêm mới</button>
+                        <button class="btn btn-primary" (click)=" CreateAC()">
+                          <i class="far fa-plus-square"></i>
+                          Thêm mới</button>
                         <button routerLink="../account" type="button" class="btn btn-primary">Quay lại</button>
                       </div>
                     </form>

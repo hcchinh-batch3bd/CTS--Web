@@ -21,6 +21,10 @@ export class ApiService {
   {
     return this.httpClient.put(`${this.apiURL}/Account/`+id+`/DeleteEmployee?apiKey=`+apiKey, DeleteAccount)
   }
+  public CreateAccount( apiKey: string,CreateAccount:AccountModule[],)
+  {
+    return this.httpClient.post(`${this.apiURL}/Employee/Create?apiKey=`+apiKey, CreateAccount);
+  }
   public GetListMission(apiKey: string)
   {
     return this.httpClient.get(`${this.apiURL}/Mission/ListMission?apiKey=`+apiKey);
