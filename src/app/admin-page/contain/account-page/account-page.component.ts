@@ -11,6 +11,7 @@ import * as CryptoJS from 'crypto-js';
 })
 export class AccountPageComponent implements OnInit {
   listaccount: AccountModule[];
+  name="p.name_employee";
   decPassword:string = "CTS-Security";
   apiKey: string;
   constructor(private apiService : ApiService, private cookieSerive: CookieService) { }
@@ -26,6 +27,11 @@ export class AccountPageComponent implements OnInit {
         console.log(err);
       }
       )
+  }
+
+  getAge(date: Date):number{
+    let dateNow = new Date(date);  
+    return new Date().getFullYear() - dateNow.getFullYear();
   }
   private Decrypt (encryptText : string) {  
     this.apiKey = CryptoJS.AES.decrypt(encryptText, this.decPassword.trim()).toString(CryptoJS.enc.Utf8);  

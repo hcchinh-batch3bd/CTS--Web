@@ -47,8 +47,10 @@
                             <tbody>
                                 <tr *ngFor="let p of listaccount">
                                     <td scope="row">{{p.id_employee}}</td>
-                                    <td>{{p.name_employee}}</td>
-                                    <td>10</td>
+                                    <td>
+                                        {{p.status ? "duong" : "sdf"}}
+                                    </td>
+                                    <td>{{getAge(p.date)}}</td>
                                     <td>Lorem@gmail.com</td>
                                     <td>10</td>
                                     <td>Quản lý</td>

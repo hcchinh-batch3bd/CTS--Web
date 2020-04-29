@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
           console.log(data['results'][0]);
           this.convertText("encrypt");
           this.cookieService.set('cookieLogin', this.conversionEncryptOutput);
-          window.location.href = '/admin-page';
+          window.location.href = '/admin';
         }
         console.log(data['message']);
       },
