@@ -14,6 +14,7 @@ export class AddAccountComponent implements OnInit {
   name:string ="";
   decPassword:string = "CTS-Security";
   apiKey: string;
+  account: AccountModule;
   constructor(private apiService : ApiService, private cookieSerive: CookieService) { }
 
   ngOnInit(): void { this.Decrypt(this.cookieSerive.get('cookieLogin'));
@@ -28,7 +29,7 @@ export class AddAccountComponent implements OnInit {
    )
   }
   CreateAC(){
-    this.apiService.CreateAccount(this.apiKey, this.listaccount).subscribe(data => {
+    this.apiService.CreateAccount(this.apiKey, this.account).subscribe(data => {
       console.log(data['message']);
       this.ngOnInit();
     },

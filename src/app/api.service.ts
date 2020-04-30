@@ -17,11 +17,11 @@ export class ApiService {
   {
     return this.httpClient.get(`${this.apiURL}/Account/ListEmployee?apiKey=`+apiKey);
   }
-  public DeleteAccount(id: number, apiKey: string, DeleteAccount: AccountModule[])
+  public DeleteAccount(id: number, apiKey: string, DeleteAccount: AccountModule)
   {
     return this.httpClient.put(`${this.apiURL}/Account/`+id+`/DeleteEmployee?apiKey=`+apiKey, DeleteAccount)
   }
-  public CreateAccount( apiKey: string,CreateAccount:AccountModule[],)
+  public CreateAccount( apiKey: string, CreateAccount:AccountModule)
   {
     return this.httpClient.post(`${this.apiURL}/Employee/Create?apiKey=`+apiKey, CreateAccount);
   }
