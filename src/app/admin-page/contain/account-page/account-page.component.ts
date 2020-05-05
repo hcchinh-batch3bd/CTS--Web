@@ -10,23 +10,26 @@ import * as CryptoJS from 'crypto-js';
   styleUrls: ['./account-page.component.css']
 })
 export class AccountPageComponent implements OnInit {
+
   listaccount: AccountModule[];
   name="p.name_employee";
   decPassword:string = "CTS-Security";
   apiKey: string;
-  constructor(private apiService : ApiService, private cookieSerive: CookieService) { }
+  constructor(private apiService : ApiService, private cookieSerive: CookieService) { 
+  }
 
   ngOnInit(): void {
     this.Decrypt(this.cookieSerive.get('cookieLogin'));
      this.apiService.GetListAccount(this.apiKey).subscribe(data=>
-      {
+      { 
         this.listaccount = data['results'];
-        console.log(this.apiKey);
       },
       err => {
         console.log(err);
       }
       )
+     
+     
   }
 
   getAge(date: Date):number{
@@ -35,6 +38,20 @@ export class AccountPageComponent implements OnInit {
   }
   private Decrypt (encryptText : string) {  
     this.apiKey = CryptoJS.AES.decrypt(encryptText, this.decPassword.trim()).toString(CryptoJS.enc.Utf8);  
-  }  
+  } 
+  gettime(c: Date): number
+  { 
+    let a = new Date(c);
+    let b = new Date().getFullYear() - a.getFullYear(); 
+    return b;
+  }
+  removeAccount(id: number):void{
+    this.apiService.RemoveAccount(id, this.apiKey).subscribe(data=>{
+      console.log(data['message']);
+      this.ngOnInit();
+    }
+      )
+  }
 
 }
+

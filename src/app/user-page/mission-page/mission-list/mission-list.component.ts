@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import * as CryptoJS from 'crypto-js';  
 import { CookieService } from 'ngx-cookie-service';
-import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { MissionModule } from 'src/app/models/mission/mission.module';
 
 @Component({
   selector: 'app-mission-list',
@@ -20,8 +19,8 @@ export class MissionListComponent implements OnInit {
 
   ngOnInit(): void {
     this.Decrypt(this.cookieService.get('cookieLogin'));
-    this.apiService.GetListAreThere().subscribe(
-      data=>{
+    this.apiService.GetListMission(this.apiKey).subscribe(
+      (data: MissionModule[])=>{
         this.listMission = data['results'];
         this.totalRecords = data['results'].length;
       }
