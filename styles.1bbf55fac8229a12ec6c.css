@@ -1,4 +1,4 @@
-*{margin:0;padding:0;box-sizing:border-box}body{background-image:url(bg-home1.6c3965b00e718002ffa6.jpg);background-size:cover}
+*{margin:0;padding:0;box-sizing:border-box}#list-pagination{text-align:center}#list-pagination /deep/ .ngx-pagination .current{border-radius:50%;background-color:#4d0d97}
 /*!
  * Font Awesome Free 5.13.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
