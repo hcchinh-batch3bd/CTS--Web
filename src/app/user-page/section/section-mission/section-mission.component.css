@@ -50,6 +50,7 @@ section .container h1::after{
     height: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: justify;
 }
 
 .text-mission h5{
@@ -115,4 +116,6 @@ p{
         margin-bottom: 10px;
     }
 }
-
+.dialog-detail{
+    color: #4D0D97;
+}

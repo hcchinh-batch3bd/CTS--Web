@@ -12,7 +12,7 @@ const routes: Routes = [
     {path: '', component: SectionComponent},
     {path: 'mission', component: MissionPageComponent},
     {path: 'account', component: AccountPageComponent},
-    {path: 'detail', component: MissionDetailPageComponent},
+    {path: ':id/detail', component:MissionDetailPageComponent}
   ]}
 ]
 

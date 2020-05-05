@@ -28,6 +28,9 @@ export class ApiService {
   public GetListAreThere(){
     return this.httpClient.get(`${this.apiURL}/Missison/Missionavailable`);
   }
+  public GetDetail(id: number){
+    return this.httpClient.get(`${this.apiURL}/Mission/`+id+`/Describe`);
+  }
   public GetLisProcess(apiKey: string){
     return this.httpClient.get(`${this.apiURL}/Mission/Missionavailableemp?apiKey=`+apiKey);
   }
