@@ -18,6 +18,8 @@ import { UserModule } from './user-page/user.module';
     AdminModule,
     UserModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
