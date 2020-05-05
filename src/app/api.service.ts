@@ -40,6 +40,11 @@ export class ApiService {
   public DeleteMission(id: number, apiKey: string, mission: MissionModule){
     return this.httpClient.put(`${this.apiURL}/Mission/`+id+`/ClearMission?apiKey=`+apiKey,mission);
   }
+  public GetDetailMission(id:number)
+  { 
+    return this.httpClient.get(`${this.apiURL}/Mission/`+id+`/Describe`);
+  }
+
   public createTypeMission(apiKey: string, typeMission: TypemissionModule){
     return this.httpClient.post(`${this.apiURL}/Type_Mission/Create?apiKey=`+apiKey,typeMission);
 }

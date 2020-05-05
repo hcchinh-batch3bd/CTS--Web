@@ -2,35 +2,49 @@ import { Component, OnInit, Input } from '@angular/core';
 import {TypemissionModule} from 'src/app/models/typemission/typemission.module';
 import { ApiService } from 'src/app/api.service';
 import { MissionModule } from 'src/app/models/mission/mission.module';
-
+import {ActivatedRoute, Router} from '@angular/router';
 @Component({
   selector: 'app-add-mission',
   templateUrl: './add-mission.component.html',
   styleUrls: ['./add-mission.component.css']
 })
 export class AddMissionComponent implements OnInit {
-  @Input() idMission: number
+  idMission: number
   name:string ="";
   apiKey: string = "admin";
   id_employee: number =189201;
   listTypeMission: TypemissionModule[];
-  constructor(private apiService: ApiService) { }
+  mission: MissionModule;
+  nameMission:string ;
+
+  constructor(private apiService: ApiService,
+              private activatedRoute: ActivatedRoute,
+              private router : Router              
+              ) { }
 
   ngOnInit(): void {
+    let id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.idMission = id;
     this.apiService.GetListTypeMission().subscribe((data: TypemissionModule[])=>
     {
     this.listTypeMission = data;
     },
     err => {
       console.log(err);
-    }
-    )
+    });
+    this.apiService.GetDetailMission(this.idMission).subscribe(
+      (data: MissionModule[] )=>{
+        this.mission = data['results'];
+        this.nameMission = data['results'].name_mission;
+        console.log(data['results']);
+      });
+      
   }
   addMission(name: string, point: string, exprie: string,describe: string, count: string,id_type: number): void
   { 
     name = name.trim();
     describe = describe.trim();
-    if( name && point && exprie  && describe )
+    if( name && count && point && exprie  && describe )
     {
       if(!isNaN(Number(point)) && !isNaN(Number(exprie)) && !isNaN(Number(count)))
       { 
@@ -60,6 +74,7 @@ export class AddMissionComponent implements OnInit {
           newMission.id_employee = this.id_employee, 
           this.apiService.CreateMission('admin',newMission).subscribe(data => {
             alert(data['message']);
+            this.router.navigate(['/mission']);
             this.ngOnInit();
         }) 
         }
@@ -72,7 +87,46 @@ export class AddMissionComponent implements OnInit {
     }
    else alert("Chưa nhập đủ thông tin");
   }
-  
+
+editMission(idMission:string, name: string, point: string, exprie: string,describe: string, count: string,id_type: number):void 
+{ 
+  name = name.trim();
+    describe = describe.trim();
+    if( name && count && describe )
+    { 
+      if(!isNaN(Number(count)))
+      {   
+        if(Number(count) > 100 )
+        { 
+          alert("Số lượng nhiệm vụ phải từ 0-100.\n*Với 0: Không giới hạn");
+        }
+        else { 
+          const editMission: MissionModule = new MissionModule(); 
+          editMission.id_mission = Number(idMission);
+          editMission.name_mission=name,
+          editMission.Stardate = new Date(),
+          editMission.point =  Number(point),
+          editMission.exprie = Number(exprie),
+          editMission.Count = Number(count),
+          editMission.describe =describe,
+          editMission.status = 1,
+          editMission.id_type = Number(id_type),
+          editMission.id_employee = this.id_employee, 
+          this.apiService.EditMission('admin',editMission).subscribe(data => {
+            alert(data['message']);
+            this.router.navigate(['/mission']);
+            this.ngOnInit();
+        }) 
+        }
+      }
+      else
+      {
+        alert("Vui lòng nhập dữ liệu là số nguyên !! ");
+        return;
+      } 
+    }
+   else alert("Chưa nhập đủ thông tin");
+}  
 
 
 }
