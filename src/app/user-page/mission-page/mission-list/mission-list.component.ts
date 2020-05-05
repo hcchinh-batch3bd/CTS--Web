@@ -10,7 +10,7 @@ import { MissionModule } from 'src/app/models/mission/mission.module';
   styleUrls: ['./mission-list.component.css']
 })
 export class MissionListComponent implements OnInit {
-  listMission: Object[];
+  listMission;
   apiKey: string;
   totalRecords: string;
   page: number=1;
@@ -19,10 +19,11 @@ export class MissionListComponent implements OnInit {
 
   ngOnInit(): void {
     this.Decrypt(this.cookieService.get('cookieLogin'));
-    this.apiService.GetListMission(this.apiKey).subscribe(
-      (data: MissionModule[])=>{
+    this.apiService.GetListAreThere().subscribe(
+      data=>{
         this.listMission = data['results'];
         this.totalRecords = data['results'].length;
+        console.log(this.listMission);
       }
     );
   }

@@ -24,7 +24,7 @@ export class SectionMissionComponent implements OnInit {
 
   ngOnInit(): void {
     this.Decrypt(this.cookie.get('cookieLogin'));
-    this.apiService.GetListMission(this.apiKey).subscribe(
+    this.apiService.GetListAreThere().subscribe(
       (data: MissionModule[])=>{
       this.listMission = data['results'];
       this.totalRecords = data['results'].length;
