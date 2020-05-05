@@ -12,28 +12,37 @@ import { TypemissionModule } from 'src/app/models/typemission/typemission.module
 })
 export class TypemissionPageComponent implements OnInit {
   listtypemission: TypemissionModule[];
-  name2: string="";
-  name: string="";
+  name_type:string = "";
+  name2: string = "";
+  name: string = "";
   apiKey: string = "admin";
   //decPassword:string = "CTS-Security";
   typemission: TypemissionModule;
-  constructor(private apiService: ApiService, private cookieService: CookieService) { 
-  
+  constructor(private apiService: ApiService, private cookieService: CookieService) {
+
   }
   ngOnInit(): void {
     //this.Decrypt(this.cookieService.get('cookieLogin'));
-    this.apiService.GetlistTypeMission().subscribe((data: TypemissionModule[])=>
-    {
+    this.apiService.GetlistTypeMission().subscribe((data: TypemissionModule[]) => {
       this.listtypemission = data;
     },
-    err => {
-      console.log(err);
-    }
+      err => {
+        console.log(err);
+      }
     )
   }
- 
-  createTypeMission() : void
-  {
+  private checkName(nametypes: string): Boolean {
+    for(let item of this.listtypemission)
+    {
+      if(item.name_type_mission == nametypes){
+        if(item.status == true)
+        return true;
+      }
+    }
+    return false;
+  }
+
+  createTypeMission(): void {
     var typemission = {
       id_type: null,
       name_type_mission: this.name,
@@ -41,26 +50,39 @@ export class TypemissionPageComponent implements OnInit {
       id_employee: 189239,
       date: new Date(),
     }
-    this.apiService.createTypeMission(this.apiKey, typemission).subscribe(data => {
-      console.log(data['message']);
+    if(this.name != "" && this.name.trim().length > 0){
+      if (!this.checkName(this.name.trim())) {
+        this.apiService.createTypeMission(this.apiKey, typemission).subscribe(data => {
+          console.log(data['message']);
+          this.ngOnInit();
+        },
+          err => {
+            console.log(err);
+          })
+      }
+      else alert('Tên loại nhiệm vụ đã tồn tại');
       this.ngOnInit();
-    },
-    err => {
-      console.log(err);
-    })
-  }
-  deleteTypeMission(id: number) : void
-  {
-    this.apiService.deleteTypeMission(id,this.apiKey,this.typemission).subscribe(data =>{
-      console.log(data['message']);
+    }
+    else alert('Vui lòng nhập tên loại nhiệm vụ');
       this.ngOnInit();
-    })
   }
-  editTypeMission(type: TypemissionModule) : void
-  {
-    this.apiService.editTypeMission(this.apiKey,type);
-    this.ngOnInit();
+  deleteTypeMission(id: number): void {
+    var result = confirm('Bạn có muốn xoá không ?');
+    if (result == true) {
+      this.apiService.deleteTypeMission(id, this.apiKey, this.typemission).subscribe(data => {
+        console.log(data['message']);
+        this.ngOnInit();
+      })
+    }
+    else this.ngOnInit();
   }
+  editTypeMission(type: TypemissionModule): void {
+      this.apiService.editTypeMission(this.apiKey, type).subscribe(data => {
+        console.log(data['message']);
+         this.ngOnInit();
+       });
+    }
+    
   /*private Decrypt (encryptText : string) {  
     this.apiKey = CryptoJS.AES.decrypt(encryptText, this.decPassword.trim()).toString(CryptoJS.enc.Utf8);  
   }*/

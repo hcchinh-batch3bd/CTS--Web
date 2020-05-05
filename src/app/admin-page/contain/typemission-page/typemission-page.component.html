@@ -13,10 +13,9 @@
         </div>
     </div>
 </div>
-<section class="content">
+<!-- Main content -->
+<div class="content">
     <div class="container-fluid">
-
-      
         <div class="row" style="padding: 0 7px">
 
             <div class="card mb-3" style="width: 100%; height:100%">
@@ -28,20 +27,8 @@
                         <div *ngIf="cc.touched && cc.invalid" class="error">
                             <span *ngIf="cc.errors.required">Vui lòng nhập loại nhiệm vụ!</span>
                         </div>
-                        <button class="btn btn-primary" (click)="createTypeMission()">
-                            <i class="far fa-plus-square"></i>
-                            Thêm loại nhiệm vụ
-                        </button>
-                    <div class="row">
-                        <div class="col">
-                            <i class="fas fa-table"></i>
-                            Danh sách loại nhiệm vụ
-                        </div>
+                    <div class="row">  
                         <div class="col"></div>
-                        <div class="col">
-                            <input class="form-control" placeholder="Tên loại nhiệm vụ" type="text" [(ngModel)]="name"
-                                [ngModelOptions]="{standalone: true}">
-                        
                             <button class="btn btn-primary" (click)="createTypeMission()">
                                 <i class="far fa-plus-square"></i>
                                 Thêm loại nhiệm vụ
@@ -65,12 +52,11 @@
                                     <th scope="row">{{p.id_type}}</th>
                                     <td *ngIf= "p.status === true"><input class="form-control" type="text" value ="{{p.name_type_mission}}" [(ngModel)]="p.name_type_mission" [ngModelOptions]="{standalone: true}"></td>
                                     <td *ngIf= "p.status === false"><input class="form-control" type="text" value ="{{p.name_type_mission}}" readonly></td>
-                                    <td *ngIf= "p.status === true">Đang hoạt động</td>
-                                    <td *ngIf= "p.status === false">Dừng hoạt động</td>
-                                    <td><a (click)="deleteTypeMission(p.id_type)" style="color: red;">
+                                    <td >{{p.status ? 'Đang hoạt động' : 'Dừng hoạt động'}}</td>
+                                    <td ><button class="btn-tt" [disabled]="!p.status" (click)="deleteTypeMission(p.id_type)" style="color: red;">
                                             <i class="far fa-trash-alt"></i>
-                                        </a>
-                                        <button  (click)="editTypeMission(p)" style="margin-left: 10px; color: rgb(152, 152, 248);">
+                                    </button>
+                                        <button class="btn-tt" [disabled]="!p.status" (click)="editTypeMission(p)" style="margin-left: 10px; color: rgb(152, 152, 248);">
                                             <i class="fas fa-tools"></i>
                                         </button></td>
                                 </tr>
@@ -81,4 +67,4 @@
             </div>
         </div>
     </div>
-</section>
+</div>

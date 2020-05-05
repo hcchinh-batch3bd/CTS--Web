@@ -12,3 +12,8 @@
 .btn:hover, .btn:active{
     transform: scale(0.9);
 }
+
+.btn-tt{
+    outline: none;
+    border: none;
+}
