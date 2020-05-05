@@ -10,6 +10,7 @@ import * as CryptoJS from 'crypto-js';
   styleUrls: ['./account-page.component.css']
 })
 export class AccountPageComponent implements OnInit {
+
   listaccount: AccountModule[];
   name="p.name_employee";
   decPassword:string = "CTS-Security";
@@ -39,7 +40,7 @@ export class AccountPageComponent implements OnInit {
         console.log(data['message']);
         this.ngOnInit();
       }
-      )
+    )
   }
   getAge(a: Date):number{
     let b = new Date(a); 
@@ -50,3 +51,4 @@ export class AccountPageComponent implements OnInit {
     this.apiKey = CryptoJS.AES.decrypt(encryptText, this.decPassword.trim()).toString(CryptoJS.enc.Utf8);  
   }  
 }
+

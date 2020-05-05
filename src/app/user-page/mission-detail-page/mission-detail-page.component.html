@@ -2,25 +2,20 @@
     <div class="container">
         <h1><i class="fas fa-file-alt"></i> Chi tiết nhiệm vụ</h1>
         <div class="row">
-            <div class="col">
-                <h5>Tên nhiệm vụ: <span>Tìm nhẫn</span></h5>
-                <h5>Loại nhiệm vụ: <span>Sự kiện</span></h5>
-                <h5>Số lượng còn lại: <span>5</span></h5>
-                <h5>Người tạo: <span>18200</span></h5>
-                <h5>Thời gian bắt đầu: <span>1/5/2020</span></h5>
-                <h5>Thời gian kết thúc: <span>10/5/2020</span></h5>
-                <h5>Điểm nhận được: <span>100</span></h5>
+            <div class="col" *ngIf="mission != null">
+                <h5>Tên nhiệm vụ: </h5><span>{{mission.name_mission}}</span>
+                <h5>Loại nhiệm vụ: </h5><span>{{mission.name_type_mission}}</span>
+                <h5>Số lượng còn lại: </h5><span>{{mission.count}}</span>
+                <h5>Người tạo: </h5><span>{{mission.id_employee}}</span>
+                <h5>Thời gian bắt đầu: </h5><span>{{mission.Stardate}}</span>
+                <h5>Thời gian kết thúc:</h5> <span>{{mission.exprie}}</span>
+                <h5>Điểm nhận được: </h5><span>{{mission.point}}</span>
                 <h5>Mô tả nhiệm vụ:</h5>
-                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Illum dignissimos qui a incidunt ratione
-                    distinctio totam dolores numquam eligendi alias?</span>
+                <span>{{mission.describe}}</span>
             </div>
         </div>
         <div class="row">
             <button>Nhận nhiệm vụ</button>
         </div>
     </div>
-</section>
-<section class="mission-list">
-    <app-mission-list ></app-mission-list>
 </section>

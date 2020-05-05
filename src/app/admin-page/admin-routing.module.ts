@@ -8,10 +8,12 @@ import { AccountPageComponent } from './contain/account-page/account-page.compon
 import { AddMissionComponent } from './contain/add-mission/add-mission.component';
 import { AddAccountComponent } from './contain/add-account/add-account.component';
 
+import { from } from 'rxjs';
+
 const routes: Routes = [
   {
     path: '', component: AdminPageComponent, children: [
-      { path: '', component: StatisticalPageComponent },
+      { path: '', redirectTo:'statistical', pathMatch:'full' },
       { path: 'statistical', component: StatisticalPageComponent },
       { path: 'mission', component: MissionPageComponent},
       { path: 'add-mission', component:AddMissionComponent},

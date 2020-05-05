@@ -18,6 +18,8 @@ import { MissionCompleteComponent } from './mission-page/mission-complete/missio
 import { MissionDetailPageComponent } from './mission-detail-page/mission-detail-page.component';
 import{NgxPaginationModule} from 'ngx-pagination';
 import { from } from 'rxjs';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { from } from 'rxjs';
     CommonModule,
     UserRoutingModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot(),
   ],
   exports:[
     HomePageComponent

@@ -11,7 +11,7 @@
                             <th scope="col">Tên nhiệm vụ</th>
                             <th scope="col">Mô tả</th>
                             <th scope="col">Ngày bắt đầu</th>
-                            <th scope="col">Số lượng</th>
+                            <th scope="col">Số ngày kết thúc</th>
                             <th scope="col">Loại nhiện vụ</th>
                             <th scope="col">Điểm</th>
                             <th scope="col">Tác vụ</th>
@@ -25,9 +25,9 @@
                             <td>{{mission.describe}}</td>
                             <td>{{mission.Stardate}}</td>
                             <td>{{mission.exprie}}</td>
-                            <td>{{mission.id_type}}</td>
+                            <td>{{mission.name_type_mission}}</td>
                             <td>{{mission.point}}</td>
-                            <td><a routerLink="../detail">Xem chi tiết</a></td>
+                            <td><a routerLink="../{{mission.id_mission}}/detail">Xem chi tiết</a></td>
                         </tr>
                     </tbody>
                 </table>

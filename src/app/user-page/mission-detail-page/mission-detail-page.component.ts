@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-mission-detail-page',
@@ -6,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mission-detail-page.component.css']
 })
 export class MissionDetailPageComponent implements OnInit {
-
-  constructor() { }
+  private routeSub: Subscription;
+  private id: number;
+  mission;
+  constructor(private route: ActivatedRoute, private apiService:ApiService) { }
 
   ngOnInit(): void {
+    this.mission = new Object();
+    this.routeSub = this.route.params.subscribe(params=>{
+      this.id = params['id'];
+    });
+    this.apiService.GetDetail(this.id).subscribe(data=>{
+      this.mission = data['results'][0];
+    });
   }
 
 }
