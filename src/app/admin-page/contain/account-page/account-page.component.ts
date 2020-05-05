@@ -16,20 +16,22 @@ export class AccountPageComponent implements OnInit {
   apiKey: string;
   account: AccountModule;
   constructor(private apiService : ApiService, private cookieSerive: CookieService) { }
+  
 
   ngOnInit(): void {
     this.Decrypt(this.cookieSerive.get('cookieLogin'));
-     this.apiService.GetListAccount('admin').subscribe(data=>
-      {
-        this.listaccount = data['results'];
-        console.log(this.apiKey);
-      },
-      err => {
-        console.log(err);
-      }
-      )
-      
-  }
+    this.apiService.GetListAccount('admin').subscribe(data=>
+     {
+       this.listaccount = data['results'];
+       console.log(this.apiKey);
+       console.log(this.listaccount);
+     },
+     err => {
+       console.log(err);
+     }
+     )
+     
+   } 
   deleteAC(id:number):void
   {
     this.apiService.DeleteAccount(id,'admin',this.account).subscribe(data=>
@@ -47,5 +49,4 @@ export class AccountPageComponent implements OnInit {
   private Decrypt (encryptText : string) {  
     this.apiKey = CryptoJS.AES.decrypt(encryptText, this.decPassword.trim()).toString(CryptoJS.enc.Utf8);  
   }  
-
 }
