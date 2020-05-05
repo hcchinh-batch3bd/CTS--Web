@@ -14,14 +14,15 @@ export class MissionListComponent implements OnInit {
   totalRecords: string;
   page: number=1;
   decPassword:string = "CTS-Security";
+
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.apiService.GetListMission("hello").subscribe(
-      (data: MissionModule[])=>{
+    this.apiService.GetListMission().subscribe(
+      (data: MissionModule[] )=>{
         this.listMission = data['results'];
         this.totalRecords = data['results'].length;
-        console.log(data['results'].length);
+        //console.log(data['results'].length);
       }
     );
   }

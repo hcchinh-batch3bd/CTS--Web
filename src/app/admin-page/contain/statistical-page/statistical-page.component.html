@@ -93,7 +93,7 @@
 
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered" style="border-radius: 5px">
+            <table class="table table-bordered" style="border-radius: 5px" id="excel-table">
               <thead>
                 <tr>
                   <th scope="col">Vị trí</th>
@@ -103,27 +103,15 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>10</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>9</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry the Bird</td>
-                  <td>Larry the Bird</td>
-                  <td>8</td>
-                </tr>
+                <tr *ngFor="let employee of listEmployee; let i = index " >
+                  <th scope="row">{{i + 1}}</th>
+                  <td>{{employee.id_employee}}</td>
+                  <td>{{employee.name_employee}}</td>
+                  <td>{{employee.point}}</td>
+                 </tr>
               </tbody>
             </table>
-            <button class="btn-excel">
+            <button (click)="ExportExcel()" class="btn-excel">
               <img width="20px" src="https://www.iconsdb.com/icons/preview/light-gray/excel-3-xxl.png" alt="photo">
               Xuất file excel
             </button>

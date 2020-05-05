@@ -29,7 +29,7 @@
                 <div class="card-header">
                     <i class="fas fa-table"></i>
                     Danh sách nhiệm vụ
-                    <button class="btn-add"  onclick="showDialog()"><i class="far fa-plus-square"></i>
+                    <button class="btn-add" routerLink="../addmission"  ><i class="far fa-plus-square"></i>
                       Thêm nhiệm vụ</button>
                 </div>
                 
@@ -49,37 +49,42 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>Lorem ipsum dolor sit, 
-                      amet consectetur adipisicing elit. 
-                      Sed expedita sequi atq</td>
-                    <td>10</td>
-                    <td>Chờ duyệt</td>
-                    <td>1000</td>
-                    <td><a href="#" onclick="showDetail()">Xem chi tiết</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>Lorem ipsum dolor sit, 
-                      amet consectetur adipisicing elit. 
-                      Sed expedita sequi atq</td>
-                    <td>10</td>
-                    <td>Chờ duyệt</td>
-                    <td>1000</td>
-                    <td><a href="#" onclick="showDetail()">Xem chi tiết</a></td>
-                  </tr>
-                </tbody>
+                  <tr *ngFor="let mission of listMission  " >
+                    
+                     <th scope="row">{{mission.id_mission}}</th>
+                     <td>{{mission.name_mission}}</td>
+                     <td>{{mission.id_type}}</td>
+                     <td style="width: 300px">{{mission.describe}}</td>
+                     <td *ngIf="mission.Count===0; else count"> Không giới hạn</td>
+                     <td *ngIf="mission.status===1; else status"> Đang chạy</td>
+                     <td>{{mission.point}}</td>
+                     <td style="width: 80px"><a (click)="deleteMission(mission.id_mission,mission.status)" style="color: red;">
+                      <i class="far fa-trash-alt"></i>
+                      </a>
+                      <button routerLink="../addmission" (click)="EditMission(mission.id_mission,true)" [attr.idMission]="mission.id_mission" style="margin-left: 10px; color: rgb(152, 152, 248);">
+                      <i class="fas fa-tools"></i>
+                      </button>
+                    </td>
+
+                     <ng-template #status>
+                      <td *ngIf="mission.status===0"> Đang duyệt</td>
+                      <td *ngIf="mission.status===-1"> Đã hủy</td>
+                      </ng-template>
+
+                      <ng-template #count>
+                        <td>{{mission.Count}}</td>
+                        </ng-template>
+                    </tr>
+                 
+             </tbody>
               </table>
+             
                </div>
             
           </div>
           </div>
       </div>
+     
       <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
     

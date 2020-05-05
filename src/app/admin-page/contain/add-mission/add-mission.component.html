@@ -1,0 +1,85 @@
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Nhiệm vụ</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item active">Nhiệm vụ</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+  
+  <!-- Main content -->
+  <section class="content">
+  
+  
+    <div class="container-fluid">
+  
+      <!-- /.row -->
+      <!-- Main row -->
+      <div class="row" style="padding: 0 7px" >
+
+        <div class="card mb-3" style="width: 100%; height:100%">
+          <div class="card-header">
+            <div class="row">
+              <div class="col">
+                <i class="fas fa-table"></i>
+                Thêm nhiệm vụ
+              </div>
+            </div>
+          </div>
+  
+          <div class="card-body">
+            <div class="container" *ngIf="idMission">
+                    <form>
+                      <input #missionName maxlength="100" type="text" placeholder="Sửa nhiệm vụ">
+                      <select #idTypeMission class="form-control" style="width: 100%;" required="required">
+                        <option *ngFor ="let item of listTypeMission"  [value]="item.id_type">{{item.name_type_mission}}</option>
+                      </select>
+                      <input #count maxlength="3" type="text" placeholder="Số lượng">
+                      <input #exprie maxlength="2" type="text" placeholder="Ngày hết hạn">
+                      <input #point maxlength="4" type="text" placeholder="Điểm số">
+                      <label >Nội dung</label>
+                      <textarea maxlength="2147483647" #describe>
+            
+                      </textarea>
+                      <div>
+                        <button (click)="addMission(missionName.value, point.value, exprie.value,describe.value, count.value,idTypeMission.value)" type="button" class="btn btn-primary">Thêm mới</button>
+                        <button routerLink="../mission" type="button" class="btn btn-primary">Quay lại</button>
+                      </div>
+                    </form>
+
+            </div>
+            
+            <form>
+                <input #missionName maxlength="100" type="text" placeholder="Tên nhiệm vụ">
+                <select #idTypeMission class="form-control" style="width: 100%;" required="required">
+                  <option *ngFor ="let item of listTypeMission"  [value]="item.id_type">{{item.name_type_mission}}</option>
+                </select>
+                <input #count maxlength="3" type="text" placeholder="Số lượng">
+                <input #exprie maxlength="2" type="text" placeholder="Ngày hết hạn">
+                <input #point maxlength="4" type="text" placeholder="Điểm số">
+                <label >Nội dung</label>
+                <textarea maxlength="2147483647" #describe>
+      
+                </textarea>
+                <div>
+                  <button (click)="addMission(missionName.value, point.value, exprie.value,describe.value, count.value,idTypeMission.value)" type="button" class="btn btn-primary">Thêm mới</button>
+                  <button routerLink="../mission" type="button" class="btn btn-primary">Quay lại</button>
+                </div>
+              </form>
+  
+          </div>
+          
+        </div>
+      </div>
+      <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+  
+  </section>

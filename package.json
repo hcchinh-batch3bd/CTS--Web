@@ -31,6 +31,7 @@
     "rxjs-observable": "0.0.7",
     "tslib": "^1.10.0",
     "web3": "^0.20.5",
+    "xlsx": "^0.15.6",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
