@@ -13,28 +13,22 @@
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
-<!-- /.content-header -->
-
 <!-- Main content -->
-<section class="content">
+<div class="content">
     <div class="container-fluid">
-
-        <!-- /.row -->
-        <!-- Main row -->
         <div class="row" style="padding: 0 7px">
 
             <div class="card mb-3" style="width: 100%; height:100%">
                 <div class="card-header">
-                    <div class="row">
-                        <div class="col">
-                            <i class="fas fa-table"></i>
-                            Danh sách loại nhiệm vụ
+                    <i class="fas fa-table"></i>
+                    Danh sách loại nhiệm vụ
+                    <div class="card-add">
+                        <input class="form-control" placeholder="Tên loại nhiệm vụ" type="text" required ngModel #cc="ngModel" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+                        <div *ngIf="cc.touched && cc.invalid" class="error">
+                            <span *ngIf="cc.errors.required">Vui lòng nhập loại nhiệm vụ!</span>
                         </div>
+                    <div class="row"> 
                         <div class="col"></div>
-                        <div class="col">
-                            <input class="form-control" placeholder="Tên loại nhiệm vụ" type="text" [(ngModel)]="name"
-                                [ngModelOptions]="{standalone: true}">
-                        
                             <button class="btn btn-primary" (click)="createTypeMission()">
                                 <i class="far fa-plus-square"></i>
                                 Thêm loại nhiệm vụ
@@ -55,25 +49,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Otto</td>
-                                    <td>Đang hoạt động</td>
-                                    <td><a href="#" style="color: red;">
+                                <tr *ngFor = "let p of listtypemission">
+                                    <th scope="row">{{p.id_type}}</th>
+                                    <td *ngIf= "p.status === true"><input class="form-control" type="text" value ="{{p.name_type_mission}}" [(ngModel)]="p.name_type_mission" [ngModelOptions]="{standalone: true}"></td>
+                                    <td *ngIf= "p.status === false"><input class="form-control" type="text" value ="{{p.name_type_mission}}" readonly></td>
+                                    <td >{{p.status ? 'Đang hoạt động' : 'Dừng hoạt động'}}</td>
+                                    <td ><button class="btn-tt" [disabled]="!p.status" (click)="deleteTypeMission(p.id_type)" style="color: red;">
                                             <i class="far fa-trash-alt"></i>
-                                        </a>
-                                        <a href="#" style="margin-left: 10px; ">
-                                            <i class="fas fa-tools"></i>
-                                        </a></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Otto</td>
-                                    <td>Đang hoạt động</td>
-                                    <td><a href="#" style="color: red;">
-                                            <i class="far fa-trash-alt"></i>
-                                        </a>
-                                        <a href="#" style="margin-left: 10px; ">
+                                    </button>
+                                        <button class="btn-tt" [disabled]="!p.status" (click)="editTypeMission(p)" style="margin-left: 10px; color: rgb(152, 152, 248);">
                                             <i class="fas fa-tools"></i>
                                         </a></td>
                                 </tr>
@@ -106,6 +90,5 @@
                 </div>
             </div>
         </div>
-        <!-- /.row (main row) -->
-    </div><!-- /.container-fluid -->
-</section>
+    </div>
+</div>
