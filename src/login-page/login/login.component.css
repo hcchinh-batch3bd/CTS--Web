@@ -2,7 +2,7 @@
 @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
 .container-login {
-    background-image: url("../../resource/img/background.jpg");
+    background-image: url("../../assets/img/galaxy-background-rocket-flying-vector.jpg");
     background-size: cover;
     width: 100%;
     height: 100vh;
@@ -26,7 +26,6 @@
     border-radius: 20px;
     box-shadow: 0 5px 20px 10px #000000;
     opacity: 0.95;
-    min-height: 451px;
 }
 
 h1{
@@ -37,7 +36,6 @@ h1{
 }
 
 p{
-    font-size: 17px;
     letter-spacing: 0.5px;
     font-weight: 100;
 }
@@ -132,6 +130,8 @@ button{
     color: white;
     display: block;
     margin: 0 auto;
+    max-width: 100%;
+    font-size: 100%;
 }
 
 button:hover{
@@ -163,4 +163,22 @@ input:focus{
 }
 .error span{
     padding: 0;
+}
+
+@media (max-width: 450px){
+    
+    .container-login form{
+        width: 300px;
+        font-size: 12px;
+        padding: 30px 50px;
+        line-height: 40px;
+    }
+    h1{
+        font-size: 26px;
+        margin: 0;
+    }
+
+    p{
+        margin: 0;
+    }
 }

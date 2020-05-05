@@ -1,0 +1,130 @@
+nav{
+    float: right;
+    margin-top: 10px;
+}
+
+nav ul{
+    display: flex;
+}
+
+nav ul li{
+    list-style: none;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    margin: 20px;
+    margin-top: 40px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+nav ul li a.active,
+nav ul li a:hover{
+    text-shadow: 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6;
+    position: 0.2s;
+}
+@media (max-width: 1200px){
+    .container{
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+    .container img{
+        width: 250px;
+        margin: 0;
+    }
+    nav ul li a{
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 865px){
+   
+    header img{
+        width: 40%;
+        margin: 0;
+    }
+    nav ul li a{
+        margin-left: 0px;
+    }
+}
+@media (max-width: 767px){
+    header{
+        padding: 0;
+        margin: 0;
+    }
+    header img{
+        width: 250px;
+        padding: 0;
+        
+    }
+    .menu-toggle{
+        display: block;
+        width: 50px;
+        height: 50px;
+        float: right;
+        margin: 10px;
+        margin-top: 30px;
+        cursor: pointer;
+        text-align: center;
+        font-size: 30px; 
+    }
+    .menu-toggle::before{
+        font-family: "Font Awesome 5 Free";
+        content: "\f0c9";
+        display: inline-block;
+        padding-right: 3px;
+        vertical-align: middle;
+        font-weight: 900;
+        color: #ffffff;
+    }
+
+    .menu-toggle.active::before{
+        font-family: "Font Awesome 5 Free";
+        content: "\f00d";
+        display: inline-block;
+        padding-right: 3px;
+        vertical-align: middle;
+        font-weight: 900;
+        color: #ffffff;
+        position: absolute;
+        right: 20px;
+        z-index: 100;
+    }
+    nav{
+        display: none;
+        margin: 0;
+        position: absolute;
+        top: 0px;
+        right: 0;
+    }
+    nav ul li a{
+        font-size: 12px;
+    }
+    .nav-menu.active{
+        display: block;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        
+    }
+    nav ul{
+        display: block;
+    }
+}
+
+@media (max-width: 320px){
+    header .container img{
+        width: 200px;
+    }
+    .menu-toggle{
+        font-size: 20px;
+    }
+    nav ul li a{
+        font-size: 12px;
+    }
+}

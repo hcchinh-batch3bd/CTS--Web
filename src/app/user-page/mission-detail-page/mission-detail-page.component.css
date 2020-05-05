@@ -1,0 +1,53 @@
+section .container h1{
+    background-color: #4D0D97;
+    color: #fff;
+    width: 250px;
+    font-size: 24px;
+    padding: 5px;
+    height: 40px;
+    display: inline-block;
+    margin-top: 2%;
+}
+
+section .container h1::after{
+    content: '';
+    border-top: 40px solid #4D0D97;
+    border-right: 40px solid transparent;
+    position: relative;
+    top: 37px;
+    left: 35px;
+}
+
+section .container h5, span{
+    color: #4D0D97;
+}
+section .container h5 span{
+    font-size: 18px;
+    font-weight: 400;
+}
+.row button{
+    float: right;
+    background-color: #9B0188;
+    padding: 5px 10px;
+    color: #fff;
+    border: 1px solid #9B0188;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.row button:hover, .row button:active{
+    background-color: #CD34BA;
+    outline: none;
+}
+.row button:active{
+    transform: scale(0.9);
+    transition: 0.5s;
+}
+
+.mission-list{
+    background-image: url("../../../assets/img/10_Galaxy_background.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    margin-top: 2%;
+}
