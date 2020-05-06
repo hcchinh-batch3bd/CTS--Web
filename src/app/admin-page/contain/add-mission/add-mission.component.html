@@ -28,7 +28,7 @@
         <div class="card mb-3" style="width: 100%; height:100%">
           <div class="card-header">
             <div class="row">
-              <div class="col" *ngIf="idMission <= 1 ;else title ">
+              <div class="col" *ngIf="!idMission ;else title ">
                 <i class="fas fa-table"></i>
                 Thêm nhiệm vụ
               </div>
@@ -40,7 +40,7 @@
           </div>
   
           <div class="card-body">
-            <div class="container" *ngIf="idMission <= 1 ;else edit">                    
+            <div class="container" *ngIf="!idMission ;else edit">                    
                     <form>
                       <input #missionName maxlength="100" type="text"  placeholder="Tên nhiệm vụ" > 
                       <select #idTypeMission class="form-control" style="width: 100%;" required="required">
@@ -50,9 +50,7 @@
                       <input #exprie maxlength="2" type="text" placeholder="Ngày hết hạn">
                       <input #point maxlength="4" type="text" placeholder="Điểm số">
                       <label >Nội dung</label>
-                      <textarea maxlength="2147483647" #describe>
-            
-                      </textarea>
+                      <textarea maxlength="2147483647" #describe></textarea>
                       <div>
                         <button (click)="addMission(missionName.value, point.value, exprie.value,describe.value, count.value,idTypeMission.value)" type="button" class="btn btn-primary">Thêm mới</button>
                         <button routerLink="/mission" type="button" class="btn btn-primary">Quay lại</button>
@@ -60,7 +58,7 @@
                     </form>         
             </div>
             <ng-template #edit>
-              <form *ngFor="let m of mission  ">
+              <form *ngFor="let m of mission ">
                 <input #missionName maxlength="100" [(value)]="m.name_mission" placeholder=" Chỉnh Sửa nhiệm vụ">
                 <select #idTypeMission class="form-control" style="width: 100%;" required="required">   
                     <option *ngFor ="let item of listTypeMission" [value]="item.id_type" [selected]="item.id_type== m.id_type" >{{item.name_type_mission}}</option>
@@ -72,10 +70,13 @@
                 <textarea maxlength="2147483647" [(value)]="m.describe" #describe>
                 </textarea>
                 <div>
-                  <button (click)="editMission(m.id_mission,missionName.value, point.value, exprie.value,describe.value,count.value,idTypeMission.value)" type="button" class="btn btn-primary">Chỉnh sửa</button>
+                  <button (click)="editMission(m.id_mission,missionName.value, m.Stardate, point.value, exprie.value,describe.value,count.value,idTypeMission.value)" type="button" class="btn btn-primary">Chỉnh sửa</button>
                   <button routerLink="/mission" type="button" class="btn btn-primary">Quay lại</button>
                 </div>
               </form>
+            </ng-template>
+            <ng-template #error>
+                <p>Không có nhiệm vụ</p>
             </ng-template>     
       </div>
           

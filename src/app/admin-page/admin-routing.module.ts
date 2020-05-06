@@ -15,7 +15,8 @@ const routes: Routes = [
       { path: 'mission', component: MissionPageComponent },
       { path: 'typemission', component: TypemissionPageComponent },
       { path: 'account', component: AccountPageComponent },
-      { path: 'addmission/:id', component:AddMissionComponent}
+      { path: 'addmission', component:AddMissionComponent},
+      { path: 'editmission/:id', component:AddMissionComponent}
     ]
   },
 

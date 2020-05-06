@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MissionModule } from 'src/app/models/mission/mission.module';
 import { ApiService } from 'src/app/api.service';
 import {Router } from '@angular/router';
+import { NgxPaginationModule} from 'ngx-pagination';
 
 @Component({
   selector: 'app-mission-page',
@@ -38,7 +39,7 @@ export class MissionPageComponent implements OnInit {
       return;
     }
     else  
-    this.router.navigate(['/addmission',id]);
+    this.router.navigate(['/editmission',id]);
   }
   constructor(private apiService: ApiService,
                 private router: Router) { }
@@ -48,7 +49,7 @@ export class MissionPageComponent implements OnInit {
     this.apiService.GetListMission().subscribe(
       (data: MissionModule[] )=>{
         this.listMission = data['results'];
-        this.totalRecords = data['results'].length;
+        this.totalRecords = data['results'].lenght;
       })
      
       }

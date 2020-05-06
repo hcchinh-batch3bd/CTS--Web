@@ -29,7 +29,7 @@
                 <div class="card-header">
                     <i class="fas fa-table"></i>
                     Danh sách nhiệm vụ
-                    <button class="btn-add" routerLink="../addmission/0"  ><i class="far fa-plus-square"></i>
+                    <button class="btn-add" routerLink="../addmission"  ><i class="far fa-plus-square"></i>
                       Thêm nhiệm vụ</button>
                 </div>
                 
@@ -49,7 +49,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let mission of listMission  " >
+                  <tr *ngFor="let mission of listMission " >
                     
                      <th scope="row">{{mission.id_mission}}</th>
                      <td>{{mission.name_mission}}</td>
@@ -78,7 +78,6 @@
                  
              </tbody>
               </table>
-             
                </div>
             
           </div>

@@ -15,16 +15,24 @@ export class AddMissionComponent implements OnInit {
   id_employee: number =189201;
   listTypeMission: TypemissionModule[];
   mission: MissionModule;
+  listMission: MissionModule[];
   nameMission:string ;
+  i: number;
+  checkId: boolean = true;
 
   constructor(private apiService: ApiService,
               private activatedRoute: ActivatedRoute,
               private router : Router              
               ) { }
-
+    
   ngOnInit(): void {
+    
+    this.apiService.GetListMission().subscribe(
+      (data: MissionModule[] )=>{
+        this.listMission = data['results']; 
+      });
     let id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.idMission = id;
+    this.idMission = id;    
     this.apiService.GetListTypeMission().subscribe((data: TypemissionModule[])=>
     {
     this.listTypeMission = data;
@@ -35,11 +43,9 @@ export class AddMissionComponent implements OnInit {
     this.apiService.GetDetailMission(this.idMission).subscribe(
       (data: MissionModule[] )=>{
         this.mission = data['results'];
-        this.nameMission = data['results'].name_mission;
-        console.log(data['results']);
       });
       
-  }
+  }    
   addMission(name: string, point: string, exprie: string,describe: string, count: string,id_type: number): void
   { 
     name = name.trim();
@@ -88,7 +94,7 @@ export class AddMissionComponent implements OnInit {
    else alert("Chưa nhập đủ thông tin");
   }
 
-editMission(idMission:string, name: string, point: string, exprie: string,describe: string, count: string,id_type: number):void 
+editMission(idMission:string, name: string, date: Date, point: string, exprie: string,describe: string, count: string,id_type: number):void 
 { 
   name = name.trim();
     describe = describe.trim();
@@ -104,7 +110,7 @@ editMission(idMission:string, name: string, point: string, exprie: string,descri
           const editMission: MissionModule = new MissionModule(); 
           editMission.id_mission = Number(idMission);
           editMission.name_mission=name,
-          editMission.Stardate = new Date(),
+          editMission.Stardate = date,
           editMission.point =  Number(point),
           editMission.exprie = Number(exprie),
           editMission.Count = Number(count),
