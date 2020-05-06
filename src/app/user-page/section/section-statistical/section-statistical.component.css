@@ -64,3 +64,17 @@
 .table tbody tr:hover{
     background-color: rgba(255, 255, 255, 0.2);
 }
+#list-pagination{
+    text-align: center;
+}
+#list-pagination /deep/ .ngx-pagination .current {
+    border-radius: 50%;
+    background-color: #eeeeee;
+    color: #4D0D97;
+  }
+  #list-pagination /deep/ .ngx-pagination a{
+      color: #eeeeee;
+  }
+  #list-pagination /deep/ .ngx-pagination a:hover{
+      background-color: rgba(255, 255, 255, 0.2);
+  }

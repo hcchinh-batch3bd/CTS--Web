@@ -13,6 +13,10 @@ export class ApiService {
   public checkLogin(id: number, password: string){
     return this.httpClient.get(`${this.apiURL}/Account/CheckLogin?id=`+id+`&pw=`+password);
   }
+  public GetInfo(apiKey: string){
+    return this.httpClient.get(`${this.apiURL}/Account?apiKey=`+apiKey);
+
+  }
   public GetListAccount(apiKey: string)
   {
     return this.httpClient.get<AccountModule[]>(`${this.apiURL}/Account/ListEmployee?apiKey=`+'hello');
@@ -57,5 +61,9 @@ export class ApiService {
   }
   public deleteTypeMission( id:number, apiKey: string, typeMission: TypemissionModule){
     return this.httpClient.put(`${this.apiURL}/Type_Mission/`+id+`/Remove?apiKey=`+apiKey,typeMission);
+  }
+
+  public GetMissionProcess(apiKey:string){
+    return this.httpClient.get(`${this.apiURL}/Mission/Missionavailableemp?apiKey=`+apiKey);
   }
 }

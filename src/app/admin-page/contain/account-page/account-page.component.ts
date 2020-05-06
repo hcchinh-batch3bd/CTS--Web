@@ -16,6 +16,8 @@ export class AccountPageComponent implements OnInit {
   decPassword:string = "CTS-Security";
   apiKey: string;
   account: AccountModule;
+  totalRecords: number;
+  page: number=1;
   constructor(private apiService : ApiService, private cookieSerive: CookieService) { }
   
 
@@ -24,8 +26,7 @@ export class AccountPageComponent implements OnInit {
     this.apiService.GetListAccount('admin').subscribe(data=>
      {
        this.listaccount = data['results'];
-       console.log(this.apiKey);
-       console.log(this.listaccount);
+       this.totalRecords = this.listaccount.length;
      },
      err => {
        console.log(err);

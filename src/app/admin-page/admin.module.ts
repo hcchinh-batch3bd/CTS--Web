@@ -13,8 +13,7 @@ import { AdminPageComponent } from './admin-page.component';
 import { FormsModule } from '@angular/forms';
 import { AddMissionComponent } from './contain/add-mission/add-mission.component';
 import { AddAccountComponent } from './contain/add-account/add-account.component';
-
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -29,6 +28,7 @@ import { AddAccountComponent } from './contain/add-account/add-account.component
   imports: [
     CommonModule,
     AdminRoutingModule,
+    NgxPaginationModule,
     FormsModule
   ],
   exports:[

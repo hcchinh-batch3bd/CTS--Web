@@ -4,7 +4,6 @@ import { MissionModule } from 'src/app/models/mission/mission.module';
 import { ApiService } from 'src/app/api.service';
 import { CookieService } from 'ngx-cookie-service';
 import { BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
-import { Template } from '@angular/compiler/src/render3/r3_ast';
 
 @Component({
   selector: 'app-section-mission',

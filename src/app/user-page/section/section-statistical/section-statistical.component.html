@@ -10,24 +10,28 @@
                         <th scope="col">ID</th>
                         <th scope="col">Tên nhiệm vụ</th>
                         <th scope="col">Loại nhiệm vụ</th>
-                        <th scope="col">Trạng thái</th>
+                        <th scope="col">Ngày nhận</th>
+                        <th scope="col">Điểm</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody *ngFor="let mission of listProcess| 
+                    paginate: {id:'list-pagination', itemsPerPage: 5, currentPage: page, totalItems: totalRecords}">
                       <tr>
-                        <th scope="row">1</th>
-                        <td>Tìm nhẫn</td>
-                        <td>Sự kiện</td>
-                        <td>Đang làm</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Tìm kẹo</td>
-                        <td>Sự kiện</td>
-                        <td>Đã hoàn thành</td>
+                        <th scope="row">{{mission.id_mission}}</th>
+                        <td>{{mission.name_mission}}</td>
+                        <td>{{mission.name_type_mission}}</td>
+                        <td>{{mission.Stardate}}</td>
+                        <td>{{mission.point}}</td>
                       </tr>
                     </tbody>
                   </table>
+                  <div>
+                    <pagination-controls id="list-pagination" 
+                                        (pageChange)="page = $event" 
+                                        previousLabel="Trước"
+                                        nextLabel="Sau">
+                    </pagination-controls>
+                </div>
             </div>
         </div>
     </div>
