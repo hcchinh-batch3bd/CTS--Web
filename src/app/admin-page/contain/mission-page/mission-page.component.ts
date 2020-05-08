@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MissionModule } from 'src/app/models/mission/mission.module';
 import { ApiService } from 'src/app/api.service';
 import {Router } from '@angular/router';
+import {DataService} from 'src/app/data.service';
 
 @Component({
   selector: 'app-mission-page',
@@ -19,6 +20,7 @@ export class MissionPageComponent implements OnInit  {
   idMission:number;
   edit:boolean;
   idNew: number ;
+
   deleteMission(id: number, status: number){
     if(status == -1)
     { 
@@ -36,14 +38,13 @@ export class MissionPageComponent implements OnInit  {
       )}
       }    
   }
-    DetailMission(id: number){ 
-    this.router.navigate(['/detail',id]);
+  DetailMission(id: number){
+    this.dataService.idMission = id; 
+    this.router.navigate(['/detail']);
   }
   onSelectNew() {
-    this.listMission.forEach(item => {
-      this.idNew = item.id_mission+1;
-    });
-    this.router.navigate(['/addmission',this.idNew]);
+    this.dataService.idMission=null;
+    this.router.navigate(['/addmission']);
   }
   onSelect(id: number, status: number) {
     if(status == -1)
@@ -51,11 +52,15 @@ export class MissionPageComponent implements OnInit  {
       alert("Nhiệm vụ đã hủy từ trước");
       return;
     }
-    else  
-    this.router.navigate(['/editmission',id]);
+    else
+    {this.dataService.idMission = id;  
+      this.router.navigate(['/editmission']);
+    }
   }
   constructor(private apiService: ApiService,
-                private router: Router) { }
+                private router: Router,
+                private dataService:DataService) { 
+                }
 
   ngOnInit(): void {
     let i;

@@ -3,6 +3,7 @@ import {TypemissionModule} from 'src/app/models/typemission/typemission.module';
 import { ApiService } from 'src/app/api.service';
 import { MissionModule } from 'src/app/models/mission/mission.module';
 import {ActivatedRoute, Router} from '@angular/router';
+import {DataService} from 'src/app/data.service';
 @Component({
   selector: 'app-add-mission',
   templateUrl: './add-mission.component.html',
@@ -12,25 +13,32 @@ export class AddMissionComponent implements OnInit {
   idMission: number
   name:string ="";
   apiKey: string = "admin";
-  id_employee: number =189201;
+  id_employee: number = 189201;
   listTypeMission: TypemissionModule[];
   mission: MissionModule;
   listMission: MissionModule[];
   nameMission:string ;
   i: number;
   checkId: boolean = false;
+  checkName: boolean = false;
   listId: number[] = []; 
   totalId:string;
   idNew: number;
+  Name: string
+  listName: string[] =[];
   constructor(private apiService: ApiService,
               private activatedRoute: ActivatedRoute,
-              private router : Router              
-              ) { }
+              private router : Router,
+              private dataService:DataService              
+              ) { 
+
+              }
     
   ngOnInit(): void {
+    let name = this.Name;
     var i;
-    let id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.idMission = id;
+    //let id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.idMission = this.dataService.idMission;
     this.apiService.GetListMission().subscribe(
       (data: MissionModule[] )=>{
         this.listMission = data['results'];
@@ -44,16 +52,8 @@ export class AddMissionComponent implements OnInit {
                 this.checkId = true;
               }
             });
-            this.listMission.forEach(item => {
-              this.idNew = item.id_mission+1;
-            })
-            if(this.idNew == this.idMission )
-              { 
-              this.checkId = true;
-              this.router.navigate(['/addmission',this.idNew]);
-              }
+            
           }
-          console.log(this.checkId); 
          if(isNaN(this.idMission) || !this.checkId)
           {
               alert('không tồn tại');
@@ -78,7 +78,7 @@ export class AddMissionComponent implements OnInit {
   { 
     name = name.trim();
     describe = describe.trim();
-    if( name && count && point && exprie  && describe )
+   if( name && count && point && exprie  && describe )
     {
       if(!isNaN(Number(point)) && !isNaN(Number(exprie)) && !isNaN(Number(count)))
       { 
@@ -107,7 +107,7 @@ export class AddMissionComponent implements OnInit {
           newMission.id_type = Number(id_type),
           newMission.id_employee = this.id_employee, 
           this.apiService.CreateMission('admin',newMission).subscribe(data => {
-            alert(data['message']); 
+            alert(data['message']);
             this.router.navigate(['/mission']);
             this.ngOnInit();
         }) 
@@ -125,7 +125,7 @@ export class AddMissionComponent implements OnInit {
 editMission(idMission:string, name: string, date: Date, point: string, exprie: string,describe: string, count: string,id_type: number):void 
 { 
   name = name.trim();
-    describe = describe.trim();
+  describe = describe.trim();
     if( name && count && describe )
     { 
       if(!isNaN(Number(count)))

@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { MissionPageComponent } from './contain/mission-page/mission-page.component';
 import { AdminPageComponent } from './admin-page.component';
 import { StatisticalPageComponent } from './contain/statistical-page/statistical-page.component';
-import { TypemissionPageComponent } from './contain/typemission-page/typemission-page.component';
 import { AccountPageComponent } from './contain/account-page/account-page.component';
 import {AddMissionComponent} from './contain/add-mission/add-mission.component';
 import{MissionDetailComponent} from './contain/mission-detail/mission-detail.component';
@@ -14,11 +13,10 @@ const routes: Routes = [
       { path: '', component: StatisticalPageComponent },
       { path: 'statistical', component: StatisticalPageComponent },
       { path: 'mission', component: MissionPageComponent },
-      { path: 'typemission', component: TypemissionPageComponent },
       { path: 'account', component: AccountPageComponent },
-      { path: 'addmission/:id', component:AddMissionComponent},
-      { path: 'editmission/:id', component:AddMissionComponent},
-      { path: 'detail/:id', component:MissionDetailComponent}
+      { path: 'addmission', component:AddMissionComponent},
+      { path: 'editmission', component:AddMissionComponent},
+      { path: 'detail', component:MissionDetailComponent}
     ]
   },
 

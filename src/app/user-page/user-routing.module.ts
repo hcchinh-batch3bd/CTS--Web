@@ -13,7 +13,6 @@ const routes: Routes = [
     {path: 'addmission', component: MissionPageComponent},
     {path: 'account', component: AccountPageComponent},
     {path: 'detail', component: MissionDetailPageComponent},
-    {path: ':id/detail', component:MissionDetailPageComponent}
   ]}
 ]
 

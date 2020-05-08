@@ -4,7 +4,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MenuComponent } from './menu/menu.component';
 import { MissionPageComponent } from './contain/mission-page/mission-page.component';
-import { TypemissionPageComponent } from './contain/typemission-page/typemission-page.component';
 import { AccountPageComponent } from './contain/account-page/account-page.component';
 import { StatisticalPageComponent } from './contain/statistical-page/statistical-page.component';
 import { FooterComponent } from './footer/footer.component';
@@ -15,7 +14,7 @@ import { AddMissionComponent } from 'src/app/admin-page/contain/add-mission/add-
 import { NgxPaginationModule} from 'ngx-pagination';
 import {ReversePipe } from 'src/app/Pipes/reserve.pipes';
 import { MissionDetailComponent } from './contain/mission-detail/mission-detail.component';
-
+import {DataService} from 'src/app/data.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,6 @@ import { MissionDetailComponent } from './contain/mission-detail/mission-detail.
     NavbarComponent, 
     MenuComponent,
     MissionPageComponent, 
-    TypemissionPageComponent, 
     AccountPageComponent, 
     StatisticalPageComponent, 
     FooterComponent, AdminPageComponent, AddMissionComponent,ReversePipe, MissionDetailComponent
@@ -32,8 +30,9 @@ import { MissionDetailComponent } from './contain/mission-detail/mission-detail.
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
+  providers: [DataService],
   exports:[
     AdminPageComponent
   ]

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MissionModule } from 'src/app/models/mission/mission.module';
 import { ApiService } from 'src/app/api.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {DataService} from 'src/app/data.service';
 
 @Component({
   selector: 'app-mission-detail',
@@ -13,12 +14,11 @@ export class MissionDetailComponent implements OnInit {
   mission: MissionModule;
 
   constructor(private apiService: ApiService,
-            private activatedRoute: ActivatedRoute) { }
+            private dataService: DataService ) { }
 
   ngOnInit(): void {
-    let id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.idMission = id;
-
+  
+    this.idMission = this.dataService.idMission;
     this.apiService.GetDetailMission(this.idMission).subscribe(
       (data: MissionModule[] )=>{
         this.mission = data['results'];

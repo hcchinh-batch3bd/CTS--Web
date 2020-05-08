@@ -20,7 +20,6 @@
   
   
     <div class="container-fluid">
-  
       <!-- /.row -->
       <!-- Main row -->
       <div class="row" style="padding: 0 7px" >
@@ -41,15 +40,16 @@
                 <h1><i class="fas fa-file-alt"></i> Chi tiết nhiệm vụ</h1>
         <div class="row">
             <div class="col" *ngFor="let m of mission " >
-                <h5>Tên nhiệm vụ: </h5><span>{{m.name_mission}}</span>
-                <h5>Loại nhiệm vụ: </h5><span>{{m.name_type_mission}}</span>
-                <h5>Số lượng còn lại: </h5><span>{{m.Count}}</span>
-                <h5>Người tạo: </h5><span>{{m.id_employee}}</span>
-                <h5>Thời gian bắt đầu: </h5><span>{{m.Stardate}}</span>
-                <h5>Thời gian kết thúc:</h5> <span>{{m.exprie}}</span>
-                <h5>Điểm nhận được: </h5><span>{{m.point}}</span>
-                <h5>Mô tả nhiệm vụ:</h5>
-                <span>{{m.describe}}</span>
+              <h5>Tên nhiệm vụ: </h5><span>{{m.name_mission}}</span>
+              <h5>Loại nhiệm vụ: </h5><span>{{m.name_type_mission}}</span>
+              <h5>Số lượng còn lại: </h5><span>{{m.Count}}</span>
+              <h5>Người tạo: </h5><span>{{m.id_employee}}</span>
+              <h5>Thời gian bắt đầu: </h5><span>{{m.Stardate}}</span>
+              <h5>Thời gian kết thúc:</h5> <span>{{m.exprie}}</span>
+              <h5>Điểm nhận được: </h5><span>{{m.point}}</span>
+              <h5>Mô tả nhiệm vụ:</h5>
+              <span>{{m.describe}}</span>
+          
             </div>
         </div>
         <div class="row">
