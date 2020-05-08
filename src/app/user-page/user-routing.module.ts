@@ -10,9 +10,10 @@ import { MissionDetailPageComponent } from './mission-detail-page/mission-detail
 const routes: Routes = [
   { path:'', component:HomePageComponent, children:[
     {path: '', component: SectionComponent},
-    {path: 'mission', component: MissionPageComponent},
+    {path: 'addmission', component: MissionPageComponent},
     {path: 'account', component: AccountPageComponent},
     {path: 'detail', component: MissionDetailPageComponent},
+    {path: ':id/detail', component:MissionDetailPageComponent}
   ]}
 ]
 

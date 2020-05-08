@@ -6,12 +6,12 @@ import { AppComponent } from './app.component';
 import { LoginModule } from 'src/login-page/login.module';
 import { AdminModule } from './admin-page/admin.module';
 import { UserModule } from './user-page/user.module';
-import { NgxPaginationModule} from 'ngx-pagination';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,8 +19,7 @@ import { NgxPaginationModule} from 'ngx-pagination';
     LoginModule,
     AdminModule,
     UserModule,
-    HttpClientModule,
-    NgxPaginationModule
+    HttpClientModule
   
   ],
   providers: [],

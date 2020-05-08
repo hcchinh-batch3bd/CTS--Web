@@ -6,6 +6,7 @@ import { StatisticalPageComponent } from './contain/statistical-page/statistical
 import { TypemissionPageComponent } from './contain/typemission-page/typemission-page.component';
 import { AccountPageComponent } from './contain/account-page/account-page.component';
 import {AddMissionComponent} from './contain/add-mission/add-mission.component';
+import{MissionDetailComponent} from './contain/mission-detail/mission-detail.component';
 
 const routes: Routes = [
   {
@@ -15,8 +16,9 @@ const routes: Routes = [
       { path: 'mission', component: MissionPageComponent },
       { path: 'typemission', component: TypemissionPageComponent },
       { path: 'account', component: AccountPageComponent },
-      { path: 'addmission', component:AddMissionComponent},
-      { path: 'editmission/:id', component:AddMissionComponent}
+      { path: 'addmission/:id', component:AddMissionComponent},
+      { path: 'editmission/:id', component:AddMissionComponent},
+      { path: 'detail/:id', component:MissionDetailComponent}
     ]
   },
 

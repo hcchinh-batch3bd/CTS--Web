@@ -19,5 +19,6 @@ export class MissionModule {
   status: number;
   Count:number;
   id_type:number;
+  name_type_mission: string;
   id_employee:number
  }

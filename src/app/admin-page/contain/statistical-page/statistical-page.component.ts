@@ -12,21 +12,26 @@ export class StatisticalPageComponent implements OnInit {
   listEmployee: AccountModule[];
   i: Number = 1;
   apiKey:string = "admin";
-  fileName= 'ExcelSheet.xlsx';  
+  fileName= 'Rank-Employee.xlsx';  
+  totalRecords: string;
+  page: number =1;
   constructor(private apiService: ApiService) { }
   ExportExcel(): void 
     {
-       let element = document.getElementById('excel-table'); 
+      let element = document.getElementById('excel-table'); 
        const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
        const wb: XLSX.WorkBook = XLSX.utils.book_new();
        XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
        XLSX.writeFile(wb, this.fileName);
 			
     }
+
   ngOnInit() {
    
        this.apiService.getRankEmployee(this.apiKey).subscribe(
-         (data: AccountModule[])=>this.listEmployee = data['results']
-       )
+         (data: AccountModule[])=>{ 
+          this.listEmployee = data['results'];
+         this.totalRecords = data['results'].lenght}
+        )
        }
   }

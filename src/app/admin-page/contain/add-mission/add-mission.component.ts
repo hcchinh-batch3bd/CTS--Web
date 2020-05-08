@@ -18,21 +18,49 @@ export class AddMissionComponent implements OnInit {
   listMission: MissionModule[];
   nameMission:string ;
   i: number;
-  checkId: boolean = true;
-
+  checkId: boolean = false;
+  listId: number[] = []; 
+  totalId:string;
+  idNew: number;
   constructor(private apiService: ApiService,
               private activatedRoute: ActivatedRoute,
               private router : Router              
               ) { }
     
   ngOnInit(): void {
-    
+    var i;
+    let id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.idMission = id;
     this.apiService.GetListMission().subscribe(
       (data: MissionModule[] )=>{
-        this.listMission = data['results']; 
-      });
-    let id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.idMission = id;    
+        this.listMission = data['results'];
+        this.totalId = data['results'].length;
+        for(i=0; i< Number( this.totalId)  ; i++ )
+          {
+            this.listId.push(Number(data['results'][i]?.id_mission));
+            this.listId.forEach(item => {
+              if(item == this.idMission)
+              { 
+                this.checkId = true;
+              }
+            });
+            this.listMission.forEach(item => {
+              this.idNew = item.id_mission+1;
+            })
+            if(this.idNew == this.idMission )
+              { 
+              this.checkId = true;
+              this.router.navigate(['/addmission',this.idNew]);
+              }
+          }
+          console.log(this.checkId); 
+         if(isNaN(this.idMission) || !this.checkId)
+          {
+              alert('không tồn tại');
+            this.router.navigate(['/mission']);
+            }              
+        });
+  
     this.apiService.GetListTypeMission().subscribe((data: TypemissionModule[])=>
     {
     this.listTypeMission = data;
@@ -79,7 +107,7 @@ export class AddMissionComponent implements OnInit {
           newMission.id_type = Number(id_type),
           newMission.id_employee = this.id_employee, 
           this.apiService.CreateMission('admin',newMission).subscribe(data => {
-            alert(data['message']);
+            alert(data['message']); 
             this.router.navigate(['/mission']);
             this.ngOnInit();
         }) 

@@ -12,6 +12,9 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminPageComponent } from './admin-page.component';
 import { FormsModule } from '@angular/forms';
 import { AddMissionComponent } from 'src/app/admin-page/contain/add-mission/add-mission.component';
+import { NgxPaginationModule} from 'ngx-pagination';
+import {ReversePipe } from 'src/app/Pipes/reserve.pipes';
+import { MissionDetailComponent } from './contain/mission-detail/mission-detail.component';
 
 
 @NgModule({
@@ -23,11 +26,13 @@ import { AddMissionComponent } from 'src/app/admin-page/contain/add-mission/add-
     TypemissionPageComponent, 
     AccountPageComponent, 
     StatisticalPageComponent, 
-    FooterComponent, AdminPageComponent, AddMissionComponent],
+    FooterComponent, AdminPageComponent, AddMissionComponent,ReversePipe, MissionDetailComponent
+    ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   exports:[
     AdminPageComponent

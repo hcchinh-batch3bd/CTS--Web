@@ -29,7 +29,7 @@
                 <div class="card-header">
                     <i class="fas fa-table"></i>
                     Danh sách nhiệm vụ
-                    <button class="btn-add" routerLink="../addmission"  ><i class="far fa-plus-square"></i>
+                    <button class="btn-add" (click)="onSelectNew()" ><i class="far fa-plus-square"></i>
                       Thêm nhiệm vụ</button>
                 </div>
                 
@@ -49,8 +49,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let mission of listMission " >
-                    
+                  <tr *ngFor="let mission of listMission | reverse | paginate: {id:'list-pagination', itemsPerPage: 10, currentPage: page, totalItems: totalRecords}  ">           
                      <th scope="row">{{mission.id_mission}}</th>
                      <td>{{mission.name_mission}}</td>
                      <td>{{mission.id_type}}</td>
@@ -64,8 +63,9 @@
                       <button (click)="onSelect(mission.id_mission,mission.status)" style="margin-left: 10px; color: rgb(152, 152, 248);">
                       <i class="fas fa-tools"></i>
                       </button>
+                      <button (click)="DetailMission(mission.id_mission)"> Xem chi tiết </button>
+                    
                     </td>
-
                      <ng-template #status>
                       <td *ngIf="mission.status===0"> Đang duyệt</td>
                       <td *ngIf="mission.status===-1"> Đã hủy</td>
@@ -74,10 +74,13 @@
                       <ng-template #count>
                         <td>{{mission.Count}}</td>
                         </ng-template>
-                    </tr>
-                 
+                    </tr>  
              </tbody>
               </table>
+              <div>
+                <pagination-controls id="list-pagination" (pageChange)="page = $event" previousLabel="Trước"
+                nextLabel="Sau"></pagination-controls>
+            </div>
                </div>
             
           </div>

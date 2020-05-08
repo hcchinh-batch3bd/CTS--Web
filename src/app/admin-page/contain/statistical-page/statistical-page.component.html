@@ -103,14 +103,15 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let employee of listEmployee; let i = index " >
-                  <th scope="row">{{i + 1}}</th>
+                <tr *ngFor="let employee of listEmployee; let i = index  " >
+                  <td>{{i+1}}</td>
                   <td>{{employee.id_employee}}</td>
                   <td>{{employee.name_employee}}</td>
                   <td>{{employee.point}}</td>
                  </tr>
               </tbody>
             </table>
+        
             <button (click)="ExportExcel()" class="btn-excel">
               <img width="20px" src="https://www.iconsdb.com/icons/preview/light-gray/excel-3-xxl.png" alt="photo">
               Xuất file excel
