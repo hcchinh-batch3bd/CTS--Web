@@ -23,6 +23,9 @@ export class ApiService {
   public GetlistTypeMission(){
     return this.httpClient.get(`${this.apiURL}/Type_Mission/GetAll`);
   }
+  public GetDetailType(id: number){
+    return this.httpClient.get(`${this.apiURL}/Type_Mission/`+id);
+  }
   public createTypeMission(apiKey: string, typeMission: TypemissionModule){
     return this.httpClient.post(`${this.apiURL}/Type_Mission/Create?apiKey=`+apiKey,typeMission);
   }
