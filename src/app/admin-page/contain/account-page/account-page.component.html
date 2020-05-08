@@ -45,22 +45,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let p of listaccount">
-                                    <td>{{p.id_employee}}</td>
+                                <tr *ngFor="let p of listaccount| 
+                                paginate: {id:'list-pagination', itemsPerPage: 10, currentPage: page, totalItems: totalRecords}">
+                                    <td scope="row">{{p.id_employee}}</td>
                                     <td>{{p.name_employee}}</td>
                                     <td>{{getAge(p.date)}}</td>
-                                    <td>{{gettime(p.date)}}</td>
                                     <td>{{p.email}}</td>
                                     <td>{{p.point}}</td>
                                     <td>{{p.level}}</td>
-                                    <td>{{p.status}}</td>
-                                    <td><button><a (click)="deleteAC(p.id_employee)" style="color: red;">
+                                    <td>{{p.status}} </td>
+                                    <td><button><a  (click)="deleteAC(p.id_employee, p.status)" style="color: red;">
                                         <i class="far fa-trash-alt"></i>
                                     </a></button>
                                     </td>
+                                    <ng-template #status>
+                                        <td *ngIf="p.status===1"> Hoạt động</td>
+                                        <td *ngIf="p.status===-1"> Nghỉ việc</td>
+                                        </ng-template>
                                 </tr>
                             </tbody>
                         </table>
+                        <div>
+                            <pagination-controls id="list-pagination" (pageChange)="page = $event" previousLabel="Trước"
+                            nextLabel="Sau"></pagination-controls>
+                        </div>
                     </div>
                 </div>
 

@@ -19,23 +19,23 @@ export class SectionAccountComponent implements OnInit {
   constructor(private apiService: ApiService, private cookie: CookieService,
      private modalService: BsModalService) { }
 
-  ngOnInit(): void {
-    this.Decrypt(this.cookie.get("cookieLogin"));
-    this.apiService.GetListAccount(this.apiKey).subscribe((data: InfoModule)=>{
-      this.info = data;
-    });
+   ngOnInit(): void {
+//     this.Decrypt(this.cookie.get("cookieLogin"));
+//     this.apiService.GetListAccount(this.apiKey).subscribe( (data: InfoModule)=>{
+//       this.info=data;
+//     });
   }
 
-  private Decrypt(encrypText: string){
-    this.apiKey = CryptoJS.AES.decrypt(encrypText, this.decPasswrod.trim()).toString(CryptoJS.enc.Utf8);
-  }
+//   private Decrypt(encrypText: string){
+//     this.apiKey = CryptoJS.AES.decrypt(encrypText, this.decPasswrod.trim()).toString(CryptoJS.enc.Utf8);
+//   }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
-  }
-  changePass(){
-    window.location.href="";
-  }
+//   openModal(template: TemplateRef<any>) {
+//     this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+//   }
+//   changePass(){
+//     window.location.href="";
+//   }
   // closeFirstModal() {
   //   if (!this.modalRef) {
   //     return;

@@ -10,7 +10,8 @@ import * as CryptoJS from 'crypto-js';
   styleUrls: ['./account-page.component.css']
 })
 export class AccountPageComponent implements OnInit {
-
+  totalRecords: number;
+  page: number=1;
   listaccount: AccountModule[];
   name="p.name_employee";
   decPassword:string = "CTS-Security";
@@ -24,6 +25,7 @@ export class AccountPageComponent implements OnInit {
     this.apiService.GetListAccount('admin').subscribe(data=>
      {
        this.listaccount = data['results'];
+       this.totalRecords = this.listaccount.length;
        console.log(this.apiKey);
        console.log(this.listaccount);
      },
@@ -33,14 +35,28 @@ export class AccountPageComponent implements OnInit {
      )
      
    } 
-  deleteAC(id:number):void
+  deleteAC(id:number, statuss:string)
   {
-    this.apiService.DeleteAccount(id,'admin',this.account).subscribe(data=>
-      {
-        console.log(data['message']);
-        this.ngOnInit();
+    if(statuss == "Nghỉ việc"){
+      alert("Tài khoản này đã bị xoá trước đó");
+      return ;
+    }
+    else
+    {
+      var result1 = confirm("Bạn có chắc chắn xoá tài khoản này không?");
+      if(result1){
+        this.apiService.DeleteAccount(id,'admin',this.account).subscribe((data=>
+          {
+            alert("Xoá tài khoản thành công");
+            // alert(data['message']);
+            console.log(data['message']);        
+            this.ngOnInit();
+          })
+        )
       }
-    )
+      
+    }
+    
   }
   getAge(a: Date):number{
     let b = new Date(a); 
@@ -49,6 +65,7 @@ export class AccountPageComponent implements OnInit {
   }
   private Decrypt (encryptText : string) {  
     this.apiKey = CryptoJS.AES.decrypt(encryptText, this.decPassword.trim()).toString(CryptoJS.enc.Utf8);  
-  }  
+  } 
+ 
 }
 

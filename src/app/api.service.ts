@@ -15,11 +15,7 @@ export class ApiService {
   }
   public GetListAccount(apiKey: string)
   {
-    return this.httpClient.get<AccountModule[]>(`${this.apiURL}/Account/ListEmployee?apiKey=`+'hello');
-  }
-  public RemoveAccount( id: number,apiKey: string): Observable<AccountModule[]>
-  {
-    return this.httpClient.get<AccountModule[]>(`${this.apiURL}/Account/`+id+`/DeleteEmployee?=`+'admin');
+    return this.httpClient.get(`${this.apiURL}/Account/ListEmployee?apiKey=`+'hello');
   }
   public DeleteAccount(id: number, apiKey: string, DeleteAccount: AccountModule)
   {

@@ -17,9 +17,7 @@ import { UserModule } from './user-page/user.module';
     LoginModule,
     AdminModule,
     UserModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

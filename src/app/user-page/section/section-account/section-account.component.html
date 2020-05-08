@@ -9,16 +9,16 @@
         <h5>Số nhiệm vụ hoàn thành: <span>{{info.totalComplete}}</span></h5>
         <h5>Số nhiệm vụ đang làm: <span>{{info.totalProcess}}</span></h5>
         <h5>Điểm: <span>{{info.point}}</span></h5>
-        <button (click)="openModal(changPass)">Đổi mật khẩu</button>
+        <!-- <button (click)="openModal(changPass)">Đổi mật khẩu</button> -->
       </div>
     </div>
   </div>
   <ng-template #changPass>
     <div class="modal-header">
       <h4 class="modal-title pull-left">ĐỔI MẬT KHẨU</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
-      </button>
+      </button> -->
     </div>
     <div class="modal-body">
       <form>
@@ -28,7 +28,7 @@
         <span class="err" *ngIf="npass.touched && pass.errors.required">Vui lòng nhập mật khẩu mới</span>
         <input type="text" placeholder="Nhập lại mật khẩu" required ngModel #rpass="ngModel" [ngModelOptions]="{standalone: true}">
         <span class="err" *ngIf="rpass.touched && pass.errors.required">Vui lòng nhập lại mật khẩu</span>
-        <button type="button" class="btn btn-primary" (click)="changePass()">Xác nhận</button>
+        <!-- <button type="button" class="btn btn-primary" (click)="changePass()">Xác nhận</button> -->
       </form>
     </div>
   </ng-template>
