@@ -11,8 +11,8 @@ import { CookieService } from 'ngx-cookie-service';
 export class SectionStatisticalComponent implements OnInit {
   apiKey: string;
   decPassword: string = "CTS-Security";
-  totalRecords: string;
-  page: number=1;
+  totalRecords: number;
+  page: number = 1;
   listProcess;
   constructor(private apiService: ApiService, private cookie: CookieService) { }
 

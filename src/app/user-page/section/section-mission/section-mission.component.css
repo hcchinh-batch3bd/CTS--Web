@@ -20,6 +20,7 @@ section .container h1{
     padding: 5px;
     height: 40px;
     display: inline-block;
+    position: relative;
     margin-top: 3%;
     margin-left: 10xp;
 }
@@ -28,9 +29,9 @@ section .container h1::after{
     content: '';
     border-top: 40px solid #4D0D97;
     border-right: 40px solid transparent;
-    position: relative;
-    top: 35px;
-    left: 54px;
+    position: absolute;
+    top: 0px;
+    right: -40px;
 }
 
 .text-mission{

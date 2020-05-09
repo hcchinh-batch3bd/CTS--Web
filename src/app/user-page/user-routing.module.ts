@@ -11,6 +11,7 @@ const routes: Routes = [
     {path: '', component: SectionComponent},
     {path: 'mission', component: MissionPageComponent},
     {path: 'account', component: AccountPageComponent},
+    {path: 'confirm', component: SectionComponent},
   ]}
 ]
 

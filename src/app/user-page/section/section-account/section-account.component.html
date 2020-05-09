@@ -9,27 +9,58 @@
         <h5>Số nhiệm vụ hoàn thành: <span>{{info.totalComplete}}</span></h5>
         <h5>Số nhiệm vụ đang làm: <span>{{info.totalProcess}}</span></h5>
         <h5>Điểm: <span>{{info.point}}</span></h5>
-        <button (click)="openModal(changPass)">Đổi mật khẩu</button>
+        <button (click)="openModal(changepass)">Đổi mật khẩu</button>
       </div>
     </div>
   </div>
-  <ng-template #changPass>
+  
+  <ng-template #changepass>
     <div class="modal-header">
       <h4 class="modal-title pull-left">ĐỔI MẬT KHẨU</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="Close()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
       <form>
-        <input type="text" placeholder="Mật khẩu cũ" required ngModel #pass="ngModel" [ngModelOptions]="{standalone: true}">
-        <span class="err" *ngIf="pass.touched && pass.errors.required">Vui lòng nhập mật khẩu cũ</span>
-        <input type="text" placeholder="Mật khẩu mới" required ngModel #npass="ngModel" [ngModelOptions]="{standalone: true}">
-        <span class="err" *ngIf="npass.touched && pass.errors.required">Vui lòng nhập mật khẩu mới</span>
-        <input type="text" placeholder="Nhập lại mật khẩu" required ngModel #rpass="ngModel" [ngModelOptions]="{standalone: true}">
-        <span class="err" *ngIf="rpass.touched && pass.errors.required">Vui lòng nhập lại mật khẩu</span>
-        <button type="button" class="btn btn-primary" (click)="changePass()">Xác nhận</button>
+        <input type="password" placeholder="Mật khẩu cũ" required ngModel #pass="ngModel" minlength="8" maxlength="30" [(ngModel)]="oldPass" [ngModelOptions]="{standalone: true}">
+        <span class="err" *ngIf="pass.valid && !CheckPassword(oldPass)">Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt, 1 ký tự số, 1 chữ cái hoa và thường</span>
+        <div *ngIf="pass.touched && pass.invalid">
+          <span class="err" *ngIf="pass.errors.required">Vui lòng nhập mật khẩu</span>
+          <span class="err" *ngIf="pass.errors.minlength">Mật khẩu phải ít nhất 8 ký tự</span>
+        </div>
+        <input type="password" placeholder="Mật khẩu mới" required ngModel #npass="ngModel" minlength="8" maxlength="30" [(ngModel)]="newPass" [ngModelOptions]="{standalone: true}">
+        <span class="err" *ngIf="npass.valid && !CheckPassword(newPass)">Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt, 1 ký tự số, 1 chữ cái hoa và thường</span>
+        <span class="err" *ngIf="npass.valid && CheckPassword(newPass) && oldPass == newPass">Mật khẩu cần đổi phải khác mật khẩu hiện tại!</span>
+        <div *ngIf="npass.touched && npass.invalid">
+          <span class="err" *ngIf="npass.errors.required">Vui lòng nhập mật khẩu mới</span>
+          <span class="err" *ngIf="npass.errors.minlength">Mật khẩu phải ít nhất 8 ký tự</span>
+        </div>
+        <input type="password" placeholder="Nhập lại mật khẩu" required ngModel #rpass="ngModel" minlength="8" maxlength="30" [(ngModel)]="rePass" [ngModelOptions]="{standalone: true}">
+        <span class="err" *ngIf="rpass.valid && rePass != newPass">Mật khẩu không khớp</span>
+        <div *ngIf="rpass.touched && rpass.invalid">
+          <span class="err" *ngIf="rpass.errors.required">Vui lòng nhập lại mật khẩu</span>
+          <span class="err" *ngIf="rpass.errors.minlength">Mật khẩu phải ít nhất 8 ký tự</span>
+        </div>
+        <button type="button" class="btn btn-primary" 
+        [disabled]="rpass.invalid || npass.invalid || pass.invalid || oldPass == newPass ||
+        rePass != newPass || !CheckPassword(oldPass) || !CheckPassword(newPass)" 
+        (click)="changePass(confirm)">Xác nhận</button>
       </form>
+    </div>
+  </ng-template>
+  <ng-template #confirm>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">THÔNG BÁO</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="notify.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      {{message}}
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="notify.hide()">OK</button>
     </div>
   </ng-template>
 </section>

@@ -18,19 +18,24 @@ export class MenuComponent implements OnInit {
   constructor(private apiService: ApiService, private cookie: CookieService) { }
 
   ngOnInit(): void {
-    this.Decrypt(this.cookie.get("cookieLogin"));
-    this.apiService.GetInfo(this.apiKey).subscribe((data: InfoModule)=>{
-      this.info = data;
-    });
+      this.Decrypt(this.cookie.get("cookieLogin"));
+      this.apiService.GetInfo(this.apiKey).subscribe((data: InfoModule) => {
+        this.info = data;
+      });
   }
 
-  private Decrypt(encryptText: string){
+  private Decrypt(encryptText: string) {
     this.apiKey = CryptoJS.AES.decrypt(encryptText, this.decPass.trim()).toString(CryptoJS.enc.Utf8);
   }
   toggleDisplay() {
     this.show = !this.show;
   }
-  menuShow(){
+  menuShow() {
     this.menu = !this.menu;
+  }
+
+  logout() {
+    this.cookie.delete("cookieLogin");
+    window.location.href = "";
   }
 }

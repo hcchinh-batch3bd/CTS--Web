@@ -13,9 +13,11 @@ export class ApiService {
   public checkLogin(id: number, password: string){
     return this.httpClient.get(`${this.apiURL}/Account/CheckLogin?id=`+id+`&pw=`+password);
   }
+  public ChangePass(oldPass: string, newPass:string, apiKey: string){
+    return this.httpClient.put(`${this.apiURL}/Account/Changepassword?passold=`+oldPass+`&passnew=`+newPass+`&apiKey=`+apiKey,"");
+  }
   public GetInfo(apiKey: string){
     return this.httpClient.get(`${this.apiURL}/Account?apiKey=`+apiKey);
-
   }
   public GetListAccount(apiKey: string)
   {
@@ -65,5 +67,9 @@ export class ApiService {
 
   public GetMissionProcess(apiKey:string){
     return this.httpClient.get(`${this.apiURL}/Mission/Missionavailableemp?apiKey=`+apiKey);
+  }
+
+  public ConfirmMission(id: number, apiKey: string){
+    return this.httpClient.post(`${this.apiURL}/Mission/`+id+`/Order?apiKey=`+apiKey,"");
   }
 }
