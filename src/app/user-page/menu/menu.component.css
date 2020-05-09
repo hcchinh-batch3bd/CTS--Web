@@ -27,6 +27,19 @@ nav ul li a:hover{
     text-shadow: 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6;
     position: 0.2s;
 }
+.logout ul{
+    opacity: 0;
+    position: absolute;
+    transform: translateY(-50%);
+    transition: 0.2s;
+}
+.logout ul li a{
+    margin-top: 0px;
+}
+.logout:hover ul, .logout:active ul{
+    opacity: 1;
+    transform: translateY(0%);
+}
 @media (max-width: 1200px){
     .container{
         margin: 0;
@@ -50,6 +63,10 @@ nav ul li a:hover{
     }
     nav ul li a{
         margin-left: 0px;
+    }
+    .logout:hover ul, .logout:active ul{
+        opacity: 1;
+        transform: translateY(0%);
     }
 }
 @media (max-width: 767px){
@@ -128,3 +145,4 @@ nav ul li a:hover{
         font-size: 12px;
     }
 }
+

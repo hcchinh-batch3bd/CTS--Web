@@ -15,42 +15,52 @@ export class SectionAccountComponent implements OnInit {
   decPasswrod: string = "CTS-Security";
   info: InfoModule;
   modalRef: BsModalRef;
+  notify: BsModalRef;
   message: string;
+  oldPass:string;
+  newPass:string;
+  rePass:string;
   constructor(private apiService: ApiService, private cookie: CookieService,
-     private modalService: BsModalService) { }
+    private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.Decrypt(this.cookie.get("cookieLogin"));
-    this.apiService.GetListAccount(this.apiKey).subscribe((data: InfoModule)=>{
+    this.apiService.GetInfo(this.apiKey).subscribe((data: InfoModule) => {
       this.info = data;
     });
   }
 
-  private Decrypt(encrypText: string){
+  private Decrypt(encrypText: string) {
     this.apiKey = CryptoJS.AES.decrypt(encrypText, this.decPasswrod.trim()).toString(CryptoJS.enc.Utf8);
   }
 
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
-  changePass(){
-    window.location.href="";
+  changePass(template: TemplateRef<any>) {
+    this.notify = this.modalService.show(template, {class: 'notify'});
+    this.apiService.ChangePass(this.oldPass, this.rePass, this.apiKey).subscribe(
+      data=>{
+        this.message = data["message"];
+        if(data["status"]){
+          this.modalRef.hide();
+          window.location.href = "";
+        }
+    });
   }
-  // closeFirstModal() {
-  //   if (!this.modalRef) {
-  //     return;
-  //   }
-  //   this.modalRef.hide();
-  //   this.modalRef = null;
-  // }
-  // confirm(): void {
-  //   this.message = 'Confirmed!';
-  //   this.modalRef.hide();
-  // }
- 
-  // decline(): void {
-  //   this.message = 'Declined!';
-  //   this.modalRef.hide();
-  // }
-
+  Close(){
+    this.modalRef.hide();
+    this.oldPass = undefined;
+    this.newPass = undefined;
+    this.rePass = undefined;
+  }
+  CheckPassword(password: string): boolean {
+    var Pattern1 = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,30}$/;
+    if (Pattern1.test(password) && password != null) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 }

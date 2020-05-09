@@ -16,6 +16,8 @@ export class TypemissionPageComponent implements OnInit {
   name2: string = "";
   name: string = "";
   apiKey: string = "admin";
+  totalRecords: number;
+  page: number=1;
   //decPassword:string = "CTS-Security";
   typemission: TypemissionModule;
   constructor(private apiService: ApiService, private cookieService: CookieService) {
@@ -25,6 +27,7 @@ export class TypemissionPageComponent implements OnInit {
     //this.Decrypt(this.cookieService.get('cookieLogin'));
     this.apiService.GetlistTypeMission().subscribe((data: TypemissionModule[]) => {
       this.listtypemission = data;
+      this.totalRecords = this.listtypemission.length;
     },
       err => {
         console.log(err);

@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { LoginModule } from 'src/login-page/login.module';
 import { AdminModule } from './admin-page/admin.module';
 import { UserModule } from './user-page/user.module';
-
+import { FormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 @NgModule({
   declarations: [
     AppComponent
@@ -19,7 +20,7 @@ import { UserModule } from './user-page/user.module';
     UserModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ModalModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,6 +15,4 @@ export class InfoModule {
   point: number;
   totalComplete:number;
   totalProcess:number;
-  constructor()
-  {}
  }

@@ -24,6 +24,7 @@
     padding: 5px;
     height: 40px;
     display: inline-block;
+    position: relative;
     margin-top: 3%;
 }
 
@@ -31,9 +32,9 @@
     content: '';
     border-top: 40px solid #4D0D97;
     border-right: 40px solid transparent;
-    position: relative;
-    top: 35px;
-    left: 49px;
+    position: absolute;
+    top: 0px;
+    right: -40px;
 }
 
 .col button{
@@ -49,7 +50,7 @@
 .modal-sm{
     width: 500px;
 }
-.modal-body form input[type="text"]{
+.modal-body form input[type="password"]{
     display: block;
     padding: 10px 10px;
     margin-top: 10px;
