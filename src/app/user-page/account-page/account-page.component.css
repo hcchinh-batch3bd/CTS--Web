@@ -1,0 +1,78 @@
+
+/*----------------------------------------------------------*/
+/*---------------------------CHANGE PASS ------------------------*/
+/*----------------------------------------------------------*/
+
+.change-pass{
+    background-color: rgba(255, 239, 253, 0.973);
+}
+.change-pass .container{
+    font-family: sans-serif;
+    letter-spacing: 1px;
+}
+.change-pass .container h1{
+    background-color: #4D0D97;
+    color: #fff;
+    width: 200px;
+    font-size: 24px;
+    padding: 5px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    margin-top: 3%;
+}
+
+.change-pass .container h1::after{
+    content: '';
+    border-top: 40px solid #4D0D97;
+    border-right: 40px solid transparent;
+    position: absolute;
+    top: 0px;
+    right: -40px;
+}
+.row {
+    display: flex;
+    justify-content: center;
+}
+.row img{
+    box-shadow: 0 5px 10px 0px #000000;
+    border-radius: 5px;
+}
+.row .profile{
+    padding-top: 10px;
+    padding-left: 60px;
+}
+.img{
+    background-color: #fff;
+    padding-bottom: 10px;
+}
+.btn{
+    padding: 5px 15px;
+    background-color: #9B0188;
+    color:#fff;
+    border: 1px solid #9B0188;
+    border-radius: 5px;
+}
+.btn:focus{
+    outline: none;
+}
+.modal-sm{
+    width: 500px;
+}
+form{
+    max-width: 100%;
+    width: 600px;
+    margin: 0 auto;
+}
+form .row{
+    display: flex;
+    justify-content: center;
+}
+
+.err{
+    color: red;
+    text-align: left;
+    display: block;
+    margin-left: 5px;
+    margin-top: 5px;
+}
