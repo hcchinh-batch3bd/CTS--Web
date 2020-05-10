@@ -1,3 +1,4 @@
+ 
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -47,17 +48,21 @@
                             <tbody>
                                 <tr *ngFor="let p of listaccount| 
                                 paginate: {id:'list-pagination', itemsPerPage: 10, currentPage: page, totalItems: totalRecords}">
-                                    <th>{{p.id_employee}}</th>
+                                    <td scope="row">{{p.id_employee}}</td>
                                     <td>{{p.name_employee}}</td>
                                     <td>{{getAge(p.date)}}</td>
                                     <td>{{p.email}}</td>
                                     <td>{{p.point}}</td>
                                     <td>{{p.level}}</td>
-                                    <td>{{p.status}}</td>
-                                    <td><button class="btn-del" (click)="deleteAC(p.id_employee)" style="color: red;">
+                                    <td>{{p.status}} </td>
+                                    <td><button><a  (click)="deleteAC()" style="color: red;">
                                         <i class="far fa-trash-alt"></i>
-                                    </button>
+                                    </a></button>
                                     </td>
+                                    <ng-template #status>
+                                        <td *ngIf="p.status===1"> Hoạt động</td>
+                                        <td *ngIf="p.status===-1"> Nghỉ việc</td>
+                                        </ng-template>
                                 </tr>
                             </tbody>
                         </table>
@@ -73,3 +78,4 @@
         </div>
     </div>
 </section>
+
