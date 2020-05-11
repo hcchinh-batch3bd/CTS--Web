@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { AddMissionComponent } from './contain/add-mission/add-mission.component';
 import { AddAccountComponent } from './contain/add-account/add-account.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CommonModule,
     AdminRoutingModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   exports:[
     AdminPageComponent

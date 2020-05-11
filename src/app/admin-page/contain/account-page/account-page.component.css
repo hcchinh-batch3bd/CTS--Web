@@ -7,4 +7,7 @@
 .btn-del{
     border: none;
     background-color: transparent;
+}.btn-tt{
+    outline: none;
+    border: none;
 }

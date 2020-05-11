@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { AccountModule } from 'src/app/models/account/account.module';
 import { CookieService } from 'ngx-cookie-service';
 import * as CryptoJS from 'crypto-js';  
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-account-page',
@@ -15,15 +16,17 @@ export class AccountPageComponent implements OnInit {
   name="p.name_employee";
   decPassword:string = "CTS-Security";
   apiKey: string;
-  account: AccountModule;
   totalRecords: number;
   page: number=1;
-  constructor(private apiService : ApiService, private cookieSerive: CookieService) { }
-  
+  delete: BsModalRef;
+  confirm: BsModalRef;
+  message: string;
+  constructor(private apiService : ApiService, private cookieSerive: CookieService,
+    private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.Decrypt(this.cookieSerive.get('cookieLogin'));
-    this.apiService.GetListAccount('admin').subscribe(data=>
+    this.apiService.GetListAccount(this.apiKey).subscribe(data=>
      {
        this.listaccount = data['results'];
        this.totalRecords = this.listaccount.length;
@@ -34,14 +37,25 @@ export class AccountPageComponent implements OnInit {
      )
      
    } 
-  deleteAC(id:number):void
+  deleteAC( template: TemplateRef<any>)
   {
-    this.apiService.DeleteAccount(id,'admin',this.account).subscribe(data=>
-      {
-        console.log(data['message']);
-        this.ngOnInit();
-      }
-    )
+    this.delete = this.modalService.show(template, {class: 'delete'});
+  }
+  OK(id:number, status:string, template: TemplateRef<any>){
+    this.confirm = this.modalService.show(template, {class: 'notify'});
+    this.delete.hide();
+    if(status == "Nghỉ việc"){
+      this.message = "Tài khoản này đã bị xoá trước đó";
+    }
+    else
+    {
+        this.apiService.DeleteAccount(id,this.apiKey).subscribe(data=>
+          {
+            this.message = "Xoá tài khoản thành công";
+            this.ngOnInit();
+          }
+        )
+    }
   }
   getAge(a: Date):number{
     let b = new Date(a); 

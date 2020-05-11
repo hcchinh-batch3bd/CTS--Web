@@ -16,6 +16,7 @@
 .btn-tt{
     outline: none;
     border: none;
+    background-color: transparent;
 }
 .card-header p{
     float: left;
@@ -23,7 +24,6 @@
 .form{
     float: right;
     max-width: 100%;
-    width: 1000px;
     text-align: right;
 }
 .form .col input{

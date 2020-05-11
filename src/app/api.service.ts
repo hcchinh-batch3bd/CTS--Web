@@ -21,15 +21,15 @@ export class ApiService {
   }
   public GetListAccount(apiKey: string)
   {
-    return this.httpClient.get<AccountModule[]>(`${this.apiURL}/Account/ListEmployee?apiKey=`+'hello');
+    return this.httpClient.get<AccountModule[]>(`${this.apiURL}/Account/ListEmployee?apiKey=`+apiKey);
   }
   public RemoveAccount( id: number,apiKey: string): Observable<AccountModule[]>
   {
     return this.httpClient.get<AccountModule[]>(`${this.apiURL}/Account/`+id+`/DeleteEmployee?=`+'admin');
   }
-  public DeleteAccount(id: number, apiKey: string, DeleteAccount: AccountModule)
+  public DeleteAccount(id: number, apiKey: string)
   {
-    return this.httpClient.put(`${this.apiURL}/Account/`+id+`/DeleteEmployee?apiKey=`+apiKey, DeleteAccount)
+    return this.httpClient.put(`${this.apiURL}/Account/`+id+`/DeleteEmployee?apiKey=`+apiKey, "")
   }
   public CreateAccount( apiKey: string, CreateAccount:AccountModule)
   {
@@ -57,6 +57,9 @@ export class ApiService {
   public GetlistTypeMission()
   {
     return this.httpClient.get(`${this.apiURL}/Type_Mission/GetAll`);
+  }
+  public GetDetailType(id: number){
+    return this.httpClient.get(`${this.apiURL}/Type_Mission/`+id);
   }
   public editTypeMission(apiKey: string, typeMission: TypemissionModule){
     return this.httpClient.put(`${this.apiURL}/Type_Mission/Edit?apiKey=`+apiKey,typeMission);
