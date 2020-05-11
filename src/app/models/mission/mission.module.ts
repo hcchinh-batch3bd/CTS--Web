@@ -12,12 +12,13 @@ import { CommonModule } from '@angular/common';
 export class MissionModule {
   id_mission: number;
   name_mission: string;
-  Stardate: string;
+  Stardate: Date;
   point: number;
   exprie: number;
   describe: string;
-  status: string;
-  count:number;
+  status: number;
+  Count:number;
   id_type:number;
+  name_type_mission: string;
   id_employee:number
  }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { from, Observable, Subject } from 'rxjs';
 import { TypemissionModule } from './models/typemission/typemission.module';
 import { AccountModule } from './models/account/account.module';
+import { MissionModule } from './models/mission/mission.module';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,10 @@ export class ApiService {
   }
   public ChangePass(oldPass: string, newPass:string, apiKey: string){
     return this.httpClient.put(`${this.apiURL}/Account/Changepassword?passold=`+oldPass+`&passnew=`+newPass+`&apiKey=`+apiKey,"");
+  }
+  public getRankEmployee(apiKey: string)
+  {
+    return this.httpClient.get(`${this.apiURL}/Account/RankEmployee?apiKey=`+apiKey);
   }
   public GetInfo(apiKey: string){
     return this.httpClient.get(`${this.apiURL}/Account?apiKey=`+apiKey);
@@ -38,6 +43,9 @@ export class ApiService {
   public GetListMission(apiKey: string)
   {
     return this.httpClient.get(`${this.apiURL}/Mission/ListMission?apiKey=`+apiKey);
+  }
+  public DeleteMission(id: number, apiKey: string, mission: MissionModule){
+    return this.httpClient.put(`${this.apiURL}/Mission/`+id+`/ClearMission?apiKey=`+apiKey,mission);
   }
   public GetListAreThere(){
     return this.httpClient.get(`${this.apiURL}/Missison/Missionavailable`);

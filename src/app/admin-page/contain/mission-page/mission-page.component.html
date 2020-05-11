@@ -27,16 +27,10 @@
 
       <div class="card mb-3" style="width: 100%; height:100%">
         <div class="card-header">
-          <div class="row">
-            <div class="col">
-              <i class="fas fa-table"></i>
-              Danh sách nhiệm vụ
-            </div>
-            <div class="col">
-              <button routerLink="../add-mission" class="btn btn-primary"><i class="far fa-plus-square"></i>
-                Thêm nhiệm vụ</button>
-            </div>
-          </div>
+          <i class="fas fa-table"></i>
+          Danh sách nhiệm vụ
+          <button class="btn-add" (click)="onSelectNew()"><i class="far fa-plus-square"></i>
+            Thêm nhiệm vụ</button>
         </div>
 
         <div class="card-body">
@@ -55,32 +49,41 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>Lorem ipsum dolor sit,
-                    amet consectetur adipisicing elit.
-                    Sed expedita sequi atq</td>
-                  <td>10</td>
-                  <td>Chờ duyệt</td>
-                  <td>1000</td>
-                  <td><a href="#" onclick="showDetail()">Xem chi tiết</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>Lorem ipsum dolor sit,
-                    amet consectetur adipisicing elit.
-                    Sed expedita sequi atq</td>
-                  <td>10</td>
-                  <td>Chờ duyệt</td>
-                  <td>1000</td>
-                  <td><a href="#" onclick="showDetail()">Xem chi tiết</a></td>
+                <tr
+                  *ngFor="let mission of listMission | reverse | paginate: {id:'list-pagination', itemsPerPage: 10, currentPage: page, totalItems: totalRecords}  ">
+                  <th scope="row">{{mission.id_mission}}</th>
+                  <td>{{mission.name_mission}}</td>
+                  <td>{{mission.id_type}}</td>
+                  <td width="500px">{{mission.describe}}</td>
+                  <td *ngIf="mission.Count===0; else count"> Không giới hạn</td>
+                  <td *ngIf="mission.status===1; else status"> Đang chạy</td>
+                  <td>{{mission.point}}</td>
+                  <td>
+                    <a (click)="deleteMission(mission.id_mission,mission.status)"
+                      style="color: red;">
+                      <i class="far fa-trash-alt"></i>
+                    </a>
+                    <button (click)="onSelect(mission.id_mission,mission.status)"
+                      style="margin-left: 10px; color: rgb(152, 152, 248);">
+                      <i class="fas fa-tools"></i>
+                    </button>
+                    <button (click)="DetailMission(mission.id_mission, detail)"> Xem chi tiết </button>
+                  </td>
+                  <ng-template #status>
+                    <td *ngIf="mission.status===0"> Đang duyệt</td>
+                    <td *ngIf="mission.status===-1"> Đã hủy</td>
+                  </ng-template>
+
+                  <ng-template #count>
+                    <td>{{mission.Count}}</td>
+                  </ng-template>
                 </tr>
               </tbody>
             </table>
+            <div>
+              <pagination-controls id="list-pagination" (pageChange)="page = $event" previousLabel="Trước"
+                nextLabel="Sau"></pagination-controls>
+            </div>
           </div>
 
         </div>
@@ -88,5 +91,30 @@
     </div>
     <!-- /.row (main row) -->
   </div><!-- /.container-fluid -->
+  
 
 </section>
+<ng-template #detail>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">CHI TIẾT NHIỆM VỤ</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="detailMission.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="col" *ngIf="mission != null">
+      <h5>Tên nhiệm vụ: </h5><span>{{mission.name_mission}}</span>
+      <h5>Loại nhiệm vụ: </h5><span>{{mission.name_type_mission}}</span>
+      <h5>Số lượng còn lại: </h5><span>{{mission.Count}}</span>
+      <h5>Người tạo: </h5><span>{{mission.id_employee}}</span>
+      <h5>Thời gian bắt đầu: </h5><span>{{mission.Stardate}}</span>
+      <h5>Thời gian kết thúc:</h5> <span>{{mission.exprie}}</span>
+      <h5>Điểm nhận được: </h5><span>{{mission.point}}</span>
+      <h5>Mô tả nhiệm vụ:</h5>
+      <span>{{mission.describe}}</span>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary">Xác nhận</button>
+  </div>
+</ng-template>

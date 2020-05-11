@@ -14,8 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { AddMissionComponent } from './contain/add-mission/add-mission.component';
 import { AddAccountComponent } from './contain/add-account/add-account.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ModalModule } from 'ngx-bootstrap/modal';
-
+import {DataService} from 'src/app/data.service';
+import {ReversePipe } from 'src/app/Pipes/reserve.pipes';
 @NgModule({
   declarations: [
     SidebarComponent, 
@@ -25,16 +25,22 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     TypemissionPageComponent, 
     AccountPageComponent, 
     StatisticalPageComponent, 
-    FooterComponent, AdminPageComponent, AddMissionComponent, AddAccountComponent],
+    FooterComponent,
+    AdminPageComponent,
+    AddMissionComponent, 
+    AddAccountComponent,
+    ReversePipe
+  ],
+    
   imports: [
     CommonModule,
     AdminRoutingModule,
     NgxPaginationModule,
-    FormsModule,
-    ModalModule.forRoot()
+    FormsModule
   ],
   exports:[
     AdminPageComponent
-  ]
+  ],
+  providers: [DataService],
 })
 export class AdminModule { }
