@@ -12,11 +12,11 @@ import { CommonModule } from '@angular/common';
 export class AccountModule {
   id_employee: number;
   name_employee: string;
+  password:string;
   email: string;
   date: Date;
   point: number;
   level: boolean;
   status: string;
-  constructor()
-  {}
+  
  }
