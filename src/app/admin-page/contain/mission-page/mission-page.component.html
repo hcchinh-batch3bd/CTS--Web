@@ -59,14 +59,14 @@
                   <td *ngIf="mission.status===1; else status"> Đang chạy</td>
                   <td>{{mission.point}}</td>
                   <td>
-                    <a (click)="deleteMission(mission.id_mission,mission.status)"
+                    <a (click)="showConfirm(confirm)"
                       style="color: red;">
                       <i class="far fa-trash-alt"></i>
                     </a>
-                    <button (click)="onSelect(mission.id_mission,mission.status)"
+                    <a (click)="onSelect(mission.id_mission,mission.status,notify)"
                       style="margin-left: 10px; color: rgb(152, 152, 248);">
                       <i class="fas fa-tools"></i>
-                    </button>
+                  </a>
                     <button (click)="DetailMission(mission.id_mission, detail)"> Xem chi tiết </button>
                   </td>
                   <ng-template #status>
@@ -77,8 +77,28 @@
                   <ng-template #count>
                     <td>{{mission.Count}}</td>
                   </ng-template>
+
+                  <ng-template #confirm>
+                    <div class="modal-header">
+                        <h4 class="modal-title pull-left">
+                            <i class="fas fa-file-alt"></i>
+                            THÔNG BÁO
+                        </h4>
+                        <button type="button" class="close pull-right" aria-label="Close" (click)="confirmDelete.hide()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn có chắc chắn muốn xóa nhiệm vụ này không?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" (click)="deleteMission(mission.id_mission, mission.status, notify)">Chấp nhận</button>
+                        <button type="button" class="btn btn-danger" (click)="confirmDelete.hide()">Từ chối</button>
+                    </div>
+                  </ng-template>
                 </tr>
               </tbody>
+              
             </table>
             <div>
               <pagination-controls id="list-pagination" (pageChange)="page = $event" previousLabel="Trước"
@@ -94,6 +114,24 @@
   
 
 </section>
+
+<ng-template #notify>
+  <div class="modal-header">
+      <h4 class="modal-title pull-left">THÔNG BÁO</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="showMessage.hide()" >
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      {{message}}
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="showMessage.hide()" >OK</button>
+  </div>
+</ng-template>
+
+
+
 <ng-template #detail>
   <div class="modal-header">
     <h4 class="modal-title pull-left">CHI TIẾT NHIỆM VỤ</h4>
@@ -115,6 +153,6 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary">Xác nhận</button>
+    <button type="button" class="btn btn-primary" (click)="detailMission.hide()" >Xác nhận</button>
   </div>
 </ng-template>

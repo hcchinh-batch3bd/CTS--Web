@@ -4,7 +4,8 @@ import { ApiService } from 'src/app/api.service';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/data.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-
+import * as CryptoJS from 'crypto-js';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-mission-page',
@@ -17,41 +18,51 @@ export class MissionPageComponent implements OnInit {
   mission: MissionModule;
   decPassword: string = "CTS-Security";
   totalRecords: string;
-  apiKey: string = "admin";
+  apiKey: string ;
   page: number = 1;
   idMission: number;
   edit: boolean;
   idNew: number;
   message: string;
   detailMission: BsModalRef;
+  confirmDelete: BsModalRef;
+  showMessage: BsModalRef;
   constructor(
     private apiService: ApiService,
     private router: Router,
     private dataService: DataService,
-    private modal: BsModalService) {
+    private modal: BsModalService,
+    private cookieService: CookieService) {
   }
   ngOnInit(): void {
+    this.Decrypt(this.cookieService.get('cookieLogin'));
     let i;
     this.apiService.GetListMission(this.apiKey).subscribe((data: MissionModule[]) => {
         this.listMission = data['results'],
         this.totalRecords = data['results'].lenght;
       });
   }
-  deleteMission(id: number, status: number) {
+
+  showConfirm( template: TemplateRef<any> )
+  { 
+    this.confirmDelete = this.modal.show(template, {class: 'delete'});
+  }
+
+  deleteMission(id: number, status: number, template: TemplateRef<any>  ) {
+    this.confirmDelete.hide();
+    this.showMessage = this.modal.show(template, {class: 'notify'});
     if (status == -1) {
-      alert("Nhiệm vụ đã hủy từ trước");
+      this.message= "Nhiệm vụ đã hủy từ trước";
       return;
     }
     else {
-      var check = confirm('Bạn có muốn xóa không');
-      if (check == true) {
         this.apiService.DeleteMission(id, this.apiKey, this.mission).subscribe(
           (data => {
-            alert(data['message']);
+            this.message=(data['message']);
+            this.router.navigate(['/mission']);
             this.ngOnInit();
           })
         )
-      }
     }
   }
   DetailMission(id: number, template: TemplateRef<any>) {
@@ -62,16 +73,21 @@ export class MissionPageComponent implements OnInit {
   }
   onSelectNew() {
     this.dataService.idMission = null;
-    this.router.navigate(['/addmission']);
+    this.router.navigate(['admin/add-mission']);
   }
-  onSelect(id: number, status: number) {
-    if (status == -1) {
-      alert("Nhiệm vụ đã hủy từ trước");
-      return;
+
+  onSelect(id: number, status: number, template: TemplateRef<any> ) {
+    if (status >= 0) {
+      this.dataService.idMission = id;
+      this.router.navigate(['admin/edit-mission']);
     }
     else {
-      this.dataService.idMission = id;
-      this.router.navigate(['/editmission']);
+      this.showMessage = this.modal.show(template, {class: 'notify'});
+      this.message=("Nhiệm vụ đã hủy từ trước");
+      return;
     }
+  }
+  private Decrypt (encryptText : string) {  
+    this.apiKey = CryptoJS.AES.decrypt(encryptText, this.decPassword.trim()).toString(CryptoJS.enc.Utf8);  
   }
 }

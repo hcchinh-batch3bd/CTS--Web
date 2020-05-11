@@ -47,6 +47,12 @@ export class ApiService {
   public DeleteMission(id: number, apiKey: string, mission: MissionModule){
     return this.httpClient.put(`${this.apiURL}/Mission/`+id+`/ClearMission?apiKey=`+apiKey,mission);
   }
+  public CreateMission(apiKey: string, mission: MissionModule){
+    return this.httpClient.post(`${this.apiURL}/Mission/Create?apiKey=`+apiKey,mission);
+  }
+  public EditMission(apiKey: string, mission: MissionModule){
+    return this.httpClient.put(`${this.apiURL}/Mission/Edit?apiKey=`+apiKey,mission);
+  }
   public GetListAreThere(){
     return this.httpClient.get(`${this.apiURL}/Missison/Missionavailable`);
   }
@@ -84,3 +90,4 @@ export class ApiService {
     return this.httpClient.post(`${this.apiURL}/Mission/`+id+`/Order?apiKey=`+apiKey,"");
   }
 }
+

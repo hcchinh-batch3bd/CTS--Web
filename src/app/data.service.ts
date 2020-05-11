@@ -6,4 +6,5 @@ constructor(){
 
 }
 public idMission:number;
+public idEmployee: number;
 }
