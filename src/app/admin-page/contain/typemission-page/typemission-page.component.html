@@ -13,7 +13,6 @@
         </div>
     </div>
 </div>
-
 <!-- Main content -->
 <div class="content">
     <div class="container-fluid">
@@ -57,12 +56,7 @@
                                 <tr *ngFor="let p of listtypemission| 
                                 paginate: {id:'list-pagination', itemsPerPage: 5, currentPage: page, totalItems: totalRecords}">
                                     <th scope="row">{{p.id_type}}</th>
-                                    <td *ngIf="p.status === true"><input class="form-control" type="text" required
-                                            ngModel #txt="ngModel" value="{{p.name_type_mission}}"
-                                            [(ngModel)]="p.name_type_mission" [ngModelOptions]="{standalone: true}">
-                                    </td>
-                                    <td *ngIf="p.status === false"><input class="form-control" type="text"
-                                            value="{{p.name_type_mission}}" readonly></td>
+                                    <td>{{p.name_type_mission}} </td>
                                     <td>{{p.status ? 'Đang hoạt động' : 'Dừng hoạt động'}}</td>
                                     <td><button class="btn-tt" [disabled]="!p.status"
                                             (click)="deleteTypeMission(p.id_type)" style="color: red;">
@@ -121,3 +115,4 @@
         <button type="button" class="btn btn-primary" (click)="editmission2.hide()">OK</button>
     </div>
 </ng-template>
+
