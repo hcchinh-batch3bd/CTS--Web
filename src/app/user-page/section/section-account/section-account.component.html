@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col">
                 <h5>ID: <span>189201</span></h5>
-                <h5>Họ và tên: <span>Huynh Công Chính</span></h5>
+                <h5>Họ và tên: <span></span></h5>
                 <h5>Tuổi: <span>22</span></h5>
                 <h5>Số nhiệm vụ hoàn thành: <span>2</span></h5>
                 <h5>Số nhiệm vụ đang làm: <span>2</span></h5>
@@ -14,10 +14,11 @@
               <div class="col">
                 <form>
                   <h5>Đổi mật khẩu</h5>
-                  <input type="text" placeholder="Mật khẩu cũ">
-                  <input type="text" placeholder="Mật khẩu mới">
+                  <input type="text" id="pwold" placeholder="Mật khẩu cũ 1" required [(ngModel)]="pwold" [ngModelOptions]="{standalone: true}">
+
+                  <input type="text" id="pwnew" placeholder="Mật khẩu mới" required [(ngModel)]="pwnew" [ngModelOptions]="{standalone: true}">
                   <input type="text" placeholder="Nhập lại mật khẩu">
-                  <button>Thay đổi</button>
+                  <button (click)="ChangePass()">Thay đổi</button>
                 </form>
               </div>
         </div>

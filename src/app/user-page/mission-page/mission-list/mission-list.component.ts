@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MissionModule } from 'src/app/models/mission/mission.module';
 import { ApiService } from 'src/app/api.service';
+import { element } from 'protractor';
 
 
 @Component({
@@ -17,13 +18,19 @@ export class MissionListComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.apiService.GetListMission("hello").subscribe(
-      (data: MissionModule[])=>{
-        this.listMission = data['results'];
-        this.totalRecords = data['results'].length;
-        console.log(data['results'].length);
-      }
-    );
+      this.apiService.GetListMissionavailable().subscribe(
+        (data: MissionModule[])=>{
+          this.listMission = data['results'];
+          this.listMission.forEach(element=>{
+            if(element.point == 100)
+            console.log(element);
+          })
+          this.totalRecords = data['results'].length;
+          console.log(data['results'].length);
+         // console.log(this.listMission[0].status);
+        }
+      );
+    
   }
 
   
