@@ -24,6 +24,7 @@
     padding: 5px;
     height: 40px;
     display: inline-block;
+    position: relative;
     margin-top: 3%;
 }
 
@@ -31,30 +32,56 @@
     content: '';
     border-top: 40px solid #4D0D97;
     border-right: 40px solid transparent;
-    position: relative;
-    top: 35px;
-    left: 49px;
+    position: absolute;
+    top: 0px;
+    right: -40px;
 }
 
-.col form input[type="text"]{
-    display: block;
-    padding: 4px 10px;
-    max-width: 100%;
-    margin-bottom: 10px;
-    width: 300px;
-    border-radius: 5px;
-    outline: none;
-    border: 1px solid #eeeeee;
-    border-bottom: 1px solid #4D0D97;
-}
-
-.col form button{
+.col button{
     padding: 5px 15px;
     background-color: #9B0188;
     color:#fff;
     border: 1px solid #9B0188;
     border-radius: 5px;
 }
-.col form button:focus, .col form input[type="text"]{
+.col button:focus, .col {
     outline: none;
 }
+.modal-sm{
+    width: 500px;
+}
+.modal-body form input[type="password"]{
+    display: block;
+    padding: 10px 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    max-width: 100%;
+    width: 400px;
+    outline: none;
+    border: 1px solid #eeeeee;
+    border-bottom: 1px solid #4D0D97;
+}
+
+.modal-body form{
+    text-align: center;
+    padding: 5px;
+}
+
+.modal-body form button{
+    padding: 5px 15px;
+    background-color: #9B0188;
+    color:#fff;
+    border: 1px solid #9B0188;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.err{
+    color: red;
+    text-align: left;
+    display: block;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.modal-sm{
+    background-color: red;
+}   

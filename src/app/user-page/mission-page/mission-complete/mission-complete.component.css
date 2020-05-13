@@ -1,9 +1,4 @@
 
-
-/*----------------------------------------------------------*/
-/*---------------------------LIST TYPE MISSION ------------------------*/
-/*----------------------------------------------------------*/
-
 .mission-doing-list{
     background-size: cover;
     background-attachment: fixed;
@@ -19,6 +14,7 @@
     padding: 5px;
     height: 40px;
     display: inline-block;
+    position: relative;
     margin-top: 3%;
 }
 
@@ -26,9 +22,9 @@
     content: '';
     border-top: 40px solid #4D0D97;
     border-right: 40px solid transparent;
-    position: relative;
-    top: 37px;
-    left: 7.5px;
+    position: absolute;
+    top: 0px;
+    right: -40px;
 }
 
 .table-responsive{

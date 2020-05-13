@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../app/api.service';
 import { SessionModule } from 'src/app/models/session/session.module';
 import { CookieService } from 'ngx-cookie-service';
+import {DataService} from 'src/app/data.service';
 import * as CryptoJS from 'crypto-js';  
+
 
 
 @Component({
@@ -17,8 +19,9 @@ export class LoginComponent implements OnInit {
   password: string ='';
   message: string;  
   encPassword: string ="CTS-Security";  
-  conversionEncryptOutput: string;    
-  constructor(private apiService : ApiService, private cookieService : CookieService) { }
+  conversionEncryptOutput: string; 
+  id_employee: number;  
+  constructor(private apiService : ApiService, private cookieService : CookieService, private dataService:DataService) { }
   ngOnInit(): void {
     this.apiService.checkLogin
     
@@ -35,9 +38,15 @@ export class LoginComponent implements OnInit {
           console.log(data['results'][0]);
           this.convertText("encrypt");
           this.cookieService.set('cookieLogin', this.conversionEncryptOutput);
-          window.location.href = '/home';
-        }
+          this.dataService.idEmployee = this.session.id_employee;
+          if(this.session.level_employee){
+            window.location.href = '/admin';
+          }
+          else{
+            window.location.href = '/home';
+          }
         console.log(data['message']);
+        }
       },
       err => {
         console.log(err);
@@ -46,8 +55,7 @@ export class LoginComponent implements OnInit {
   }
   private convertText(conversion:string) {  
     if (conversion=="encrypt") {  
-      
       this.conversionEncryptOutput = CryptoJS.AES.encrypt(this.session.apiKey, this.encPassword.trim()).toString();  
     }
-  } 
+  }
 }

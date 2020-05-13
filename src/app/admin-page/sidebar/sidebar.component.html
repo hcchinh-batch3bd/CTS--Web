@@ -1,4 +1,4 @@
-<a class="brand-link">
+<a class="brand-link a">
     <span class="brand-text font-weight-light">Contribute Tracking System</span>
 </a>
 <!-- Sidebar -->
@@ -9,7 +9,7 @@
             <img src="../../../assets/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-            <a href="#" class="d-block">Huỳnh Công Chính</a>
+            <a class="d-block" *ngIf="info != null">{{info.name_employee}}</a>
         </div>
     </div>
     <nav class="mt-2">

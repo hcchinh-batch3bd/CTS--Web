@@ -20,6 +20,7 @@ section .container h1{
     padding: 5px;
     height: 40px;
     display: inline-block;
+    position: relative;
     margin-top: 3%;
     margin-left: 10xp;
 }
@@ -28,9 +29,9 @@ section .container h1::after{
     content: '';
     border-top: 40px solid #4D0D97;
     border-right: 40px solid transparent;
-    position: relative;
-    top: 35px;
-    left: 54px;
+    position: absolute;
+    top: 0px;
+    right: -40px;
 }
 
 .text-mission{
@@ -38,12 +39,20 @@ section .container h1::after{
     padding: 20px;
     border-radius: 10px;
     width: 100%;
-    min-height: 480px;
+    min-height: 450px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 1);
     margin-bottom: 20%;
     outline: none;
 }
-
+.name{
+    height: 40px;
+}
+.content{
+    height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+}
 
 .text-mission h5{
     color: #fff;
@@ -108,4 +117,6 @@ p{
         margin-bottom: 10px;
     }
 }
-
+.dialog-detail{
+    color: #4D0D97;
+}

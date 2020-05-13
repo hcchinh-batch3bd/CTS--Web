@@ -1,1 +1,90 @@
-<p>account-page works!</p>
+<section class="change-pass">
+    <div class="container">
+        <h1><i class="fas fa-user-alt"></i> Tài khoản</h1>
+        <div class="row">
+            <img src="../../../assets/img/user2-160x160.jpg" alt="info.name_employee">
+        </div>
+        <div class="row">
+            <div class="col-sm-4 profile" *ngIf="info!=null">
+                <h5>ID: <span>{{info.id_employee}}</span></h5>
+                <h5>Họ và tên: <span>{{info.name_employee}}</span></h5>
+                <h5>Số nhiệm vụ hoàn thành: <span>{{info.totalComplete}}</span></h5>
+                <h5>Số nhiệm vụ đang làm: <span>{{info.totalProcess}}</span></h5>
+                <h5>Điểm: <span>{{info.point}}</span></h5>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="change-pass img">
+    <div class="container">
+        <h1><i class="fas fa-user-alt"></i> Đổi mật khẩu</h1>
+        <form>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-4 col-form-label">Mật khẩu cũ:</label>
+                <div class="col-sm-7">
+                    <input type="password" class="form-control" placeholder="Mật khẩu cũ" required ngModel
+                        #pass="ngModel" minlength="8" maxlength="30" [(ngModel)]="oldPass"
+                        [ngModelOptions]="{standalone: true}">
+                    <span class="err" *ngIf="pass.valid && !CheckPassword(oldPass)">Mật khẩu phải chứa ít nhất 1 ký tự
+                        đặc
+                        biệt, 1 ký tự số, 1 chữ cái hoa và thường</span>
+                    <div *ngIf="pass.touched && pass.invalid">
+                        <span class="err" *ngIf="pass.errors.required">Vui lòng nhập mật khẩu</span>
+                        <span class="err" *ngIf="pass.errors.minlength">Mật khẩu phải ít nhất 8 ký tự</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-4 col-form-label">Mật khẩu mới:</label>
+                <div class="col-sm-7">
+                    <input type="password" class="form-control" placeholder="Mật khẩu mới" required ngModel
+                        #npass="ngModel" minlength="8" maxlength="30" [(ngModel)]="newPass"
+                        [ngModelOptions]="{standalone: true}">
+                    <span class="err" *ngIf="npass.valid && !CheckPassword(newPass)">Mật khẩu phải chứa ít nhất 1 ký tự
+                        đặc
+                        biệt, 1 ký tự số, 1 chữ cái hoa và thường</span>
+                    <div *ngIf="npass.touched && npass.invalid">
+                        <span class="err" *ngIf="npass.errors.required">Vui lòng nhập mật khẩu</span>
+                        <span class="err" *ngIf="npass.errors.minlength">Mật khẩu phải ít nhất 8 ký tự</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-4 col-form-label">Nhập lại mật khẩu:</label>
+                <div class="col-sm-7">
+                    <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" required ngModel
+                        #rpass="ngModel" minlength="8" maxlength="30" [(ngModel)]="rePass"
+                        [ngModelOptions]="{standalone: true}">
+                    <span class="err" *ngIf="rpass.valid && rePass != newPass">Mật khẩu không khớp</span>
+                    <div *ngIf="rpass.touched && rpass.invalid">
+                        <span class="err" *ngIf="rpass.errors.required">Vui lòng nhập lại mật khẩu</span>
+                        <span class="err" *ngIf="rpass.errors.minlength">Mật khẩu phải ít nhất 8 ký tự</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-4 col-form-label"></label>
+                <div class="col-sm-7">
+                    <button type="button" class="btn btn-primary" [disabled]="rpass.invalid || npass.invalid || pass.invalid || oldPass == newPass ||
+                        rePass != newPass || !CheckPassword(oldPass) || !CheckPassword(newPass)" (click)="changePass(confirm)">
+                        Xác nhận
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <ng-template #confirm>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">THÔNG BÁO</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="notify.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            {{message}}
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="notify.hide()">OK</button>
+        </div>
+    </ng-template>
+</section>

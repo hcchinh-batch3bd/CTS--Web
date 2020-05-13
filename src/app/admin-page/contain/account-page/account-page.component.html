@@ -1,3 +1,4 @@
+ 
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -31,8 +32,8 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" style="border-radius: 5px">
-                            <thead>
+                        <table class="table table-bordered" style="border-radius: 5px" >
+                            <thead >
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Họ và tên</th>
@@ -45,27 +46,65 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let p of listaccount">
+                                <tr *ngFor="let p of listaccount| 
+                                paginate: {id:'list-pagination', itemsPerPage: 10, currentPage: page, totalItems: totalRecords}">
                                     <td scope="row">{{p.id_employee}}</td>
                                     <td>{{p.name_employee}}</td>
-                                    <td>10</td>
-                                    <td>Lorem@gmail.com</td>
-                                    <td>10</td>
-                                    <td>Quản lý</td>
-                                    <td>Nghỉ việc</td>
+                                    <td>{{getAge(p.date)}}</td>
+                                    <td>{{p.email}}</td>
+                                    <td>{{p.point}}</td>
+                                    <td>{{p.level}}</td>
+                                    <td>{{p.status}} </td>
                                     <td>
-                                        <a href="#" style="color: red;">
+                                        <button class="btn-tt"
+                                            (click)="deleteAC(del)" style="color: red; background-color: transparent;">
                                             <i class="far fa-trash-alt"></i>
-                                        </a>
+                                        </button>
                                     </td>
+                                    <ng-template #del>
+                                        <div class="modal-header">
+                                            <h4 class="modal-title pull-left">
+                                                <i class="fas fa-file-alt"></i>
+                                                THÔNG BÁO
+                                            </h4>
+                                            <button type="button" class="close pull-right" aria-label="Close" (click)="delete.hide()">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Bạn có chắc chắn muốn xóa tài khoản này không?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-success" (click)="OK(p.id_employee, p.status, notify)">Chấp nhận</button>
+                                            <button type="button" class="btn btn-danger" (click)="delete.hide()">Từ chối</button>
+                                        </div>
+                                    </ng-template>
                                 </tr>
                             </tbody>
+                            
                         </table>
+                        <div>
+                            <pagination-controls id="list-pagination" (pageChange)="page = $event" previousLabel="Trước"
+                            nextLabel="Sau"></pagination-controls>
+                        </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </div>
 </section>
+
+<ng-template #notify>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">THÔNG BÁO</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="confirm.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        {{message}}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="confirm.hide()">OK</button>
+    </div>
+</ng-template>

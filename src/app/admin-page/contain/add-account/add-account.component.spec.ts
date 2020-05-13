@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AddAccountComponent } from './add-account.component';
 
 describe('AddAccountComponent', () => {

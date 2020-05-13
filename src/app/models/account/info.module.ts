@@ -9,15 +9,10 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ]
 })
-export class AccountModule {
+export class InfoModule {
   id_employee: number;
   name_employee: string;
-  password : string;
-  email: string;
-  date: Date;
   point: number;
-  level_employee: boolean;
-  status: boolean;
-  constructor()
-  {}
+  totalComplete:number;
+  totalProcess:number;
  }

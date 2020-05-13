@@ -12,3 +12,28 @@
 .btn:hover, .btn:active{
     transform: scale(0.9);
 }
+
+.btn-tt{
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+.card-header p{
+    float: left;
+}
+.form{
+    float: right;
+    max-width: 100%;
+    text-align: right;
+}
+.form .col input{
+    max-width: 100%;
+    width: 300px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.error{
+    display: inline;
+    text-align: right;
+    color: red;
+}

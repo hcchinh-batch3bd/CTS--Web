@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Router, RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 import { from } from 'rxjs';
 import { HomePageComponent } from './home-page/home-page.component';
 import { SectionComponent } from './section/section.component';
@@ -13,6 +13,7 @@ const routes: Routes = [
     {path: 'mission', component: MissionPageComponent},
     {path: 'account', component: AccountPageComponent},
     {path: 'detail/:id_mission', component: MissionDetailPageComponent},
+    {path: 'confirm', component: SectionComponent},
   ]}
 ]
 

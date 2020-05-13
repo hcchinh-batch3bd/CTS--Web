@@ -32,6 +32,7 @@
     padding: 5px;
     height: 40px;
     display: inline-block;
+    position: relative;
     margin-top: 3%;
 }
 
@@ -39,9 +40,9 @@
     content: '';
     border-top: 40px solid rgb(122, 98, 150);
     border-right: 40px solid transparent;
-    position: relative;
-    top: 37px;
-    left: 63px;
+    position: absolute;
+    top: 0px;
+    right: -40px;
 }
 
 .table-responsive{
@@ -64,3 +65,17 @@
 .table tbody tr:hover{
     background-color: rgba(255, 255, 255, 0.2);
 }
+#list-pagination{
+    text-align: center;
+}
+#list-pagination /deep/ .ngx-pagination .current {
+    border-radius: 50%;
+    background-color: #eeeeee;
+    color: #4D0D97;
+  }
+  #list-pagination /deep/ .ngx-pagination a{
+      color: #eeeeee;
+  }
+  #list-pagination /deep/ .ngx-pagination a:hover{
+      background-color: rgba(255, 255, 255, 0.2);
+  }

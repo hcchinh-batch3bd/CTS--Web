@@ -31,12 +31,14 @@
     "jquery": "^3.5.1",
     "moment": "^2.24.0",
     "ng2-opd-popup": "^1.1.21",
+    "ngx-bootstrap": "^5.6.1",
     "ngx-cookie-service": "^3.0.4",
     "ngx-pagination": "^5.0.0",
     "rxjs": "~6.5.4",
     "rxjs-observable": "0.0.7",
     "tslib": "^1.10.0",
     "web3": "^0.20.5",
+    "xlsx": "^0.16.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

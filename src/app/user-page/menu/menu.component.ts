@@ -12,11 +12,12 @@ export class MenuComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+      
   }
   toggleDisplay() {
     this.show = !this.show;
   }
-  menuShow(){
+  menuShow() {
     this.menu = !this.menu;
   }
   Logout(): void {
