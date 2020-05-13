@@ -4,3 +4,10 @@
 .btn:hover, .btn:active{
     transform: scale(0.9);
 }
+.btn-del{
+    border: none;
+    background-color: transparent;
+}.btn-tt{
+    outline: none;
+    border: none;
+}

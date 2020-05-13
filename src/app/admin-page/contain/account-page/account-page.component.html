@@ -24,10 +24,12 @@
                     <div class="row">
                         <div class="col-md-6">
                             <i class="fas fa-table"></i>
-                            Danh sách tài khoản</div>
+                            Danh sách tài khoản
+                        </div>
                         <div class="col-md-6">
                             <button routerLink="../add-account" class="btn btn-primary"><i class="far fa-plus-square"></i>
-                                Thêm tài khoản</button></div>
+                                Thêm tài khoản</button>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -46,8 +48,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let p of listaccount| 
-                                paginate: {id:'list-pagination', itemsPerPage: 10, currentPage: page, totalItems: totalRecords}">
+                                <tr *ngFor="let p of listaccount |
+                                paginate: {id:'list-pagination', itemsPerPage: 10, currentPage: page, totalItems: totalRecords}
+                                | reverse">
                                     <td scope="row">{{p.id_employee}}</td>
                                     <td>{{p.name_employee}}</td>
                                     <td>{{getAge(p.date)}}</td>
@@ -57,7 +60,7 @@
                                     <td>{{p.status}} </td>
                                     <td>
                                         <button class="btn-tt"
-                                            (click)="deleteAC(del)" style="color: red; background-color: transparent;">
+                                            (click)="deleteAC(del)" title="Xóa" style="color: red; background-color: transparent;">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                     </td>
