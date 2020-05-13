@@ -23,7 +23,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AdminModule,
     UserModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
     FormsModule,
     ModalModule.forRoot(),
   ],

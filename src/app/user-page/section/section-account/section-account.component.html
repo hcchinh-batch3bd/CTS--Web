@@ -1,26 +1,46 @@
 <section class="change-pass">
-    <div class="container">
-        <h1><i class="fas fa-user-alt"></i>  Tài khoản</h1>
-        <a class="show-all" routerLink="account">Xem tất cả <i class="fas fa-arrow-right"></i></a>
-        <div class="row">
-            <div class="col">
-                <h5>ID: <span>189201</span></h5>
-                <h5>Họ và tên: <span></span></h5>
-                <h5>Tuổi: <span>22</span></h5>
-                <h5>Số nhiệm vụ hoàn thành: <span>2</span></h5>
-                <h5>Số nhiệm vụ đang làm: <span>2</span></h5>
-                <h5>Điểm: <span>1000</span></h5>
-              </div>
-              <div class="col">
-                <form>
-                  <h5>Đổi mật khẩu</h5>
-                  <input type="text" id="pwold" placeholder="Mật khẩu cũ 1" required [(ngModel)]="pwold" [ngModelOptions]="{standalone: true}">
-
-                  <input type="text" id="pwnew" placeholder="Mật khẩu mới" required [(ngModel)]="pwnew" [ngModelOptions]="{standalone: true}">
-                  <input type="text" placeholder="Nhập lại mật khẩu">
-                  <button (click)="ChangePass()">Thay đổi</button>
-                </form>
-              </div>
+  <div class="container">
+    <h1><i class="fas fa-user-alt"></i> Tài khoản</h1>
+    <a class="show-all" routerLink="account">Xem tất cả <i class="fas fa-arrow-right"></i></a>
+    <div class="row">
+      <div class="col" *ngIf="info!=null">
+        <h5>ID: <span>{{info.id_employee}}</span></h5>
+        <h5>Họ và tên: <span>{{info.name_employee}}</span></h5>
+        <h5>Số nhiệm vụ hoàn thành: <span>{{info.totalComplete}}</span></h5>
+        <h5>Số nhiệm vụ đang làm: <span>{{info.totalProcess}}</span></h5>
+        <h5>Điểm: <span>{{info.point}}</span></h5>
+        <button (click)="openModal(changepass)">Đổi mật khẩu</button>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #changepass>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">ĐỔI MẬT KHẨU</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="Close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <input type="password" placeholder="Mật khẩu cũ" required ngModel #pass="ngModel" minlength="8" maxlength="30" [(ngModel)]="oldPass" [ngModelOptions]="{standalone: true}">
+        <span class="err" *ngIf="pass.valid && !CheckPassword(oldPass)">Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt, 1 ký tự số, 1 chữ cái hoa và thường</span>
+        <div *ngIf="pass.touched && pass.invalid">
+          <span class="err" *ngIf="pass.errors.required">Vui lòng nhập mật khẩu</span>
+          <span class="err" *ngIf="pass.errors.minlength">Mật khẩu phải ít nhất 8 ký tự</span>
+        </div>
+        <input type="password" placeholder="Mật khẩu mới" required ngModel #npass="ngModel" minlength="8" maxlength="30" [(ngModel)]="newPass" [ngModelOptions]="{standalone: true}">
+        <span class="err" *ngIf="npass.valid && !CheckPassword(newPass)">Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt, 1 ký tự số, 1 chữ cái hoa và thường</span>
+        <span class="err" *ngIf="npass.valid && CheckPassword(newPass) && oldPass == newPass">Mật khẩu cần đổi phải khác mật khẩu hiện tại!</span>
+        <div *ngIf="npass.touched && npass.invalid">
+          <span class="err" *ngIf="npass.errors.required">Vui lòng nhập mật khẩu mới</span>
+          <span class="err" *ngIf="npass.errors.minlength">Mật khẩu phải ít nhất 8 ký tự</span>
+        </div>
+        <input type="password" placeholder="Nhập lại mật khẩu" required ngModel #rpass="ngModel" minlength="8" maxlength="30" [(ngModel)]="rePass" [ngModelOptions]="{standalone: true}">
+        <span class="err" *ngIf="rpass.valid && rePass != newPass">Mật khẩu không khớp</span>
+        <div *ngIf="rpass.touched && rpass.invalid">
+          <span class="err" *ngIf="rpass.errors.required">Vui lòng nhập lại mật khẩu</span>
+          <span class="err" *ngIf="rpass.errors.minlength">Mật khẩu phải ít nhất 8 ký tự</span>
         </div>
         <button type="button" class="btn btn-primary" 
         [disabled]="rpass.invalid || npass.invalid || pass.invalid || oldPass == newPass ||
