@@ -35,7 +35,6 @@ export class AccountPageComponent implements OnInit {
        console.log(err);
      }
      )
-     
    } 
   deleteAC( template: TemplateRef<any>)
   {
@@ -64,6 +63,6 @@ export class AccountPageComponent implements OnInit {
   }
   private Decrypt (encryptText : string) {  
     this.apiKey = CryptoJS.AES.decrypt(encryptText, this.decPassword.trim()).toString(CryptoJS.enc.Utf8);  
-  }  
+  } 
 }
 

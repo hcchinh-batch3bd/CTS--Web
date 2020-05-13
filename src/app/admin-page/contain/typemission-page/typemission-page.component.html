@@ -59,12 +59,14 @@
                                     <td>{{p.name_type_mission}} </td>
                                     <td>{{p.status ? 'Đang hoạt động' : 'Dừng hoạt động'}}</td>
                                     <td><button class="btn-tt" [disabled]="!p.status"
+                                        title="Xóa"
                                             (click)="deleteTypeMission(p.id_type)" style="color: red;">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                         <button class="btn-tt" [disabled]="!p.status"
                                             (click)="editTypeMission(p.id_type, edit)"
-                                            style="margin-left: 10px; color: rgb(152, 152, 248);">
+                                            title="Sửa loại nhiệm vụ"
+                                            style="margin-left: 10px; color: royalblue;">
                                             <i class="fas fa-tools"></i>
                                         </button></td>
                                 </tr>
