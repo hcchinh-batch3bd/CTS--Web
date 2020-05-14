@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { MissionModule } from 'src/app/models/mission/mission.module';
 import { element } from 'protractor';
 import { NgControl } from '@angular/forms';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import * as CryptoJS from 'crypto-js';
+import { CookieService } from 'ngx-cookie-service';
+import { Template } from '@angular/compiler/src/render3/r3_ast';
 
 @Component({
   selector: 'app-navbar',
@@ -10,46 +14,46 @@ import { NgControl } from '@angular/forms';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  //data: any;
   Mission: MissionModule[];
-  //id =this.Mission[0].id_mission;
-  constructor(private apiService: ApiService,) { }
+  totalNotify: number = 0;
+  apiKey: string;
+  decPassword: string = "CTS-Security";
+  message: string;
+  showConfirm: BsModalRef
+  constructor(private apiService: ApiService, private cookie: CookieService, private modal: BsModalService) { }
 
   ngOnInit(): void {
+    this.Decrypt(this.cookie.get("cookieLogin"));
     this.apiService.loadNotify().subscribe(data=>
       {
         this.Mission = data['results'];
-         console.log(this.Mission);
-          
-        
-        //var r1  = alert("Chấp nhận ");
+        this.Mission.forEach(element=>{
+          if(element.status == 0)
+            this.totalNotify++;
+        });
       })
-    
   }
-  // navabar(id):void{
-  //   this.Mission.forEach(element => {
-  //     if(element.status == 0)
-  //     {
-  //       console.log(element.id_mission);
-  //     }
-      
-  //   });
-  // }
 
-  Confirm(id:any): void{
-        this.apiService.CofirmMission(id,"BSXLENESQH").subscribe(data=>
+  Confirm(id:any, template: TemplateRef<any>): void{
+      this.showConfirm = this.modal.show(template, {class:'confirm'});
+        this.apiService.CofirmMission(id, this.apiKey).subscribe(data=>
           {
             this.Mission = data['results'];
-            alert(data['message']);
-            this.ngOnInit();
+            this.message = data['message'];
+            window.location.reload();
           })
       }
-  close(id: any): void{
-    this.apiService.ClearMission(id,"BSXLENESQH").subscribe(data=>
+  close(id: any, template: TemplateRef<any>): void{
+    this.showConfirm = this.modal.show(template, {class:'confirm'});
+    this.apiService.ClearMission(id, this.apiKey).subscribe(data=>
       {
         this.Mission = data['results'];
-           alert(data['message']);
-           this.ngOnInit();
+           this.message = data['message'];
+           window.location.reload;
+           this.totalNotify--;
       })
+  }
+  private Decrypt (encryptText : string) {  
+    this.apiKey = CryptoJS.AES.decrypt(encryptText, this.decPassword.trim()).toString(CryptoJS.enc.Utf8);  
   }
 }

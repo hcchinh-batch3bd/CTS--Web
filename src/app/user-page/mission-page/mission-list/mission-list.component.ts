@@ -1,12 +1,10 @@
 
 import { MissionModule } from 'src/app/models/mission/mission.module';
 import { ApiService } from 'src/app/api.service';
-import { element } from 'protractor';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import * as CryptoJS from 'crypto-js';  
 import { CookieService } from 'ngx-cookie-service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal'
-import { MissionPageComponent } from 'src/app/admin-page/contain/mission-page/mission-page.component';
 @Component({
   selector: 'app-mission-list',
   templateUrl: './mission-list.component.html',
@@ -30,13 +28,7 @@ export class MissionListComponent implements OnInit {
       this.apiService.GetListMissionavailable().subscribe(
         (data: MissionModule[])=>{
           this.listMission = data['results'];
-          this.listMission.forEach(element=>{
-            if(element.point == 100)
-            console.log(element);
-          })
           this.totalRecords = data['results'].length;
-          console.log(data['results'].length);
-         // console.log(this.listMission[0].status);
         }
       );
     

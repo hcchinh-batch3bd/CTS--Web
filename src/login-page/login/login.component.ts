@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ApiService } from '../../app/api.service';
 import { SessionModule } from 'src/app/models/session/session.module';
 import { CookieService } from 'ngx-cookie-service';
 import {DataService} from 'src/app/data.service';
 import * as CryptoJS from 'crypto-js';  
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 
 
@@ -21,35 +22,43 @@ export class LoginComponent implements OnInit {
   encPassword: string ="CTS-Security";  
   conversionEncryptOutput: string; 
   id_employee: number;  
-  constructor(private apiService : ApiService, private cookieService : CookieService, private dataService:DataService) { }
+  ShowEror: BsModalRef;
+  constructor(private apiService : ApiService, private cookieService : CookieService, private dataService:DataService
+    , private modal: BsModalService) { }
   ngOnInit(): void {
     this.apiService.checkLogin
     
   }
-  callAPILogin() : void
+  callAPILogin(template: TemplateRef<any>) : void
   {
-    this.click = true;
+    this.ShowEror = this.modal.show(template, {class:'notify'});
     const error = "Kết nối máy chủ không thành công !!!";
     this.apiService.checkLogin(this.username, this.password).subscribe(
       data => {
-        this.session = data['results'][0];
-        if(data['status']===true)
-        {
-          console.log(data['results'][0]);
-          this.convertText("encrypt");
-          this.cookieService.set('cookieLogin', this.conversionEncryptOutput);
-          this.dataService.idEmployee = this.session.id_employee;
-          if(this.session.level_employee){
-            window.location.href = '/admin';
+        if(data['results'].length > 0){
+          this.session = data['results'][0];
+          if(data['status']===true)
+          {
+            this.click = true;
+            this.convertText("encrypt");
+            this.cookieService.set('cookieLogin', this.conversionEncryptOutput);
+            this.dataService.idEmployee = this.session.id_employee;
+            if(this.session.level_employee){
+              window.location.href = '/admin';
+            }
+            else{
+              window.location.href = '/home';  
+            }
+            this.message = data['message'];
+            
           }
-          else{
-            window.location.href = '/home';
-          }
-        console.log(data['message']);
+        }
+        else{
+          this.message = data['message'];
         }
       },
       err => {
-        console.log(err);
+        this.message = err;
       }
     )
   }
