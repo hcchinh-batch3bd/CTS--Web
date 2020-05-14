@@ -58,7 +58,7 @@
                   *ngFor="let mission of listMission | reverse | paginate: {id:'list-pagination', itemsPerPage: 10, currentPage: page, totalItems: totalRecords}  ">
                   <th scope="row">{{mission.id_mission}}</th>
                   <td>{{mission.name_mission}}</td>
-                  <td>{{mission.id_type}}</td>
+                  <td>{{mission.name_type_mission}}</td>
                   <td width="500px">{{mission.describe}}</td>
                   <td *ngIf="mission.Count===0; else count"> Không giới hạn</td>
                   <td *ngIf="mission.status===1; else status"> Đang chạy</td>

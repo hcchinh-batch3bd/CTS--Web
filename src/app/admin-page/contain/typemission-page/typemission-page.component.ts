@@ -90,7 +90,7 @@ export class TypemissionPageComponent implements OnInit {
     this.delete.hide();
       this.apiService.deleteTypeMission(id, this.apiKey, this.typemission).subscribe(data => {
         console.log(data['message']);
-        this.message = 'Xoá loại nhiệm vụ thành công';
+        alert ("Xoá loại nhiệm vụ thành công");
         this.ngOnInit();
       });
   }
