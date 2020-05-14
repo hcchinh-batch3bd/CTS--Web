@@ -1,0 +1,11 @@
+.notify{
+    text-align: right;
+    display: inline-block;
+    width: 100%;
+}
+.notify .btn{
+    margin-left: 5px;
+}
+ul li{
+    list-style: none;
+}

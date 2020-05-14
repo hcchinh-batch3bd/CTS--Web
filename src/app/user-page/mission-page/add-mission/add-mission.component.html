@@ -1,1 +1,58 @@
-<p>add-mission works!</p>
+<section class="mission-doing-list">
+    <div class="container">
+        <h1><i class="far fa-plus-square"></i> Thêm nhiệm vụ</h1>
+        <form>
+            <div class="form-group">
+                <label>Tên nhiệm vụ: </label>
+                <input class="form-control" #missionName maxlength="100" type="text" placeholder="Tên nhiệm vụ">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Loại nhiệm vụ: </label>
+                    <select #idTypeMission class="form-control" required="required">
+                        <option *ngFor="let item of listTypeMission" [value]="item.id_type">{{item.name_type_mission}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Ngày hết hạn: </label>
+                    <input class="form-control" #exprie maxlength="2" type="text" placeholder="Ngày hết hạn">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Số lượng: </label>
+                    <input class="form-control" #count maxlength="3" type="text" placeholder="Số lượng">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Điểm số: </label>
+                    <input class="form-control" #point maxlength="4" type="text" placeholder="Điểm số">
+                </div>
+            </div>
+            <div class="form-group" style="margin: 0;">
+                <label>Nội dung:</label>
+                <textarea class="form-control" maxlength="2147483647" #describe></textarea>
+            </div>
+            <div class="form-group form-footer">
+                <button
+                    (click)="addMission(missionName.value, point.value, exprie.value,describe.value, count.value,idTypeMission.value,notify)"
+                    type="button" class="btn btn-primary">Thêm mới
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+<ng-template #notify>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">THÔNG BÁO</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="ShowEror.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        {{message}}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="reload()">OK</button>
+    </div>
+</ng-template>
