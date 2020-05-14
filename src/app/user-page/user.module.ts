@@ -17,6 +17,8 @@ import { MissionDongingComponent } from './mission-page/mission-donging/mission-
 import { MissionCompleteComponent } from './mission-page/mission-complete/mission-complete.component';
 import{NgxPaginationModule} from 'ngx-pagination';
 import { from } from 'rxjs';
+import { ReversePipe } from '../Pipes/reserve.pipes';
+import { AddMissionComponent } from './mission-page/add-mission/add-mission.component';
 
 
 
@@ -35,6 +37,7 @@ import { from } from 'rxjs';
   MissionListComponent,
   MissionDongingComponent,
   MissionCompleteComponent,
+  AddMissionComponent,
 ],
   imports: [
     CommonModule,

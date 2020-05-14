@@ -12,12 +12,15 @@ export class MissionCompleteComponent implements OnInit {
   apiKey: string;
   decPassword: string = "CTS-Security";
   listComplete: Object[];
+  totalComplete: number;
+  pageComplete: number = 1;
   constructor(private apiService: ApiService, private cookie: CookieService) { }
 
   ngOnInit(): void {
     this.Decrypt(this.cookie.get('cookieLogin'));
     this.apiService.GetLisComplete(this.apiKey).subscribe((data:Object[])=>{
       this.listComplete = data['results'];
+      this.totalComplete = this.listComplete.length;
     });
   }
   

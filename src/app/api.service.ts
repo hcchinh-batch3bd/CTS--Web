@@ -40,12 +40,20 @@ export class ApiService {
   {
     return this.httpClient.post(`${this.apiURL}/Employee/Create?apiKey=`+apiKey, CreateAccount);
   }
+  public ComleteMission(id_mission: number,apiKey: string)
+  {
+    return this.httpClient.put(`${this.apiURL}/Mission/`+id_mission+`/CompleteMission?apiKey=`+apiKey,'')
+  }
   public GetListMission(apiKey: string)
   {
     return this.httpClient.get(`${this.apiURL}/Mission/ListMission?apiKey=`+apiKey);
   }
   public DeleteMission(id: number, apiKey: string, mission: MissionModule){
     return this.httpClient.put(`${this.apiURL}/Mission/`+id+`/ClearMission?apiKey=`+apiKey,mission);
+  }
+  public GetMissionDoing(apiKey: string)
+  {
+    return this.httpClient.get(`${this.apiURL}/Mission/Missionavailableemp?apiKey=`+apiKey);
   }
   public CreateMission(apiKey: string, mission: MissionModule){
     return this.httpClient.post(`${this.apiURL}/Mission/Create?apiKey=`+apiKey,mission);

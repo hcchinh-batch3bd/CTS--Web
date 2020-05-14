@@ -14,7 +14,8 @@
                             <th scope="col">Trạng thái</th>
                         </tr>
                     </thead>
-                    <tbody *ngFor="let mission of listComplete">
+                    <tbody *ngFor="let mission of listComplete| 
+                    paginate: {id:'list-complete', itemsPerPage: 5, currentPage: pageComplete, totalItems: totalComplete}">
                         <tr>
                             <td>{{mission.name_mission}}</td>
                             <td>{{mission.date}}</td>
@@ -24,6 +25,14 @@
                         </tr>
                     </tbody>
                 </table>
+                <div>
+                    <pagination-controls class="list-pagination" 
+                                        id="list-complete" 
+                                        (pageChange)="pageComplete = $event" 
+                                        previousLabel="Trước"
+                                        nextLabel="Sau">
+                    </pagination-controls>
+                </div>
             </div>
         </div>
     </div>

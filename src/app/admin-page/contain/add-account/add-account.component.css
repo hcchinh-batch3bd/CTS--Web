@@ -27,16 +27,3 @@ textarea{
 .form-control{
     padding: 5px 15px;
 }
-
-.btn{
-    border-radius: 5px;
-    max-width: 100%;
-    width: 130px;
-    margin-top: 5px;
-    margin: 0 5px;
-}
-
-.btn:hover, .btn:active{
-    transform: scale(0.9);
-    outline: none;
-}
