@@ -16,5 +16,4 @@ export class FooterComponent implements OnInit {
     this.cookie.delete("cookieLogin");
     window.location.href = "";
   }
-
 }

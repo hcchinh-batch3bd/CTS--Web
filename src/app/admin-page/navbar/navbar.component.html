@@ -1,17 +1,18 @@
-<a class="nav-link" data-toggle="dropdown" href="#">
+<a class="nav-link"  data-toggle="dropdown">
     <i class="far fa-bell"></i>
     <span class="badge badge-warning navbar-badge">15</span>
   </a>
   <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
     <span class="dropdown-item dropdown-header">Thông báo</span>
     <div class="dropdown-divider"></div>
-    <div class="dropdown-item">
-      <p>Nguyễn Văn B đã yêu cầu tạo nhiệm vụ: "Tìm nhẫn".</p>
-      <div>
-        <button type="button" class="btn btn-success" style="margin-right: 5px;">Chấp nhận</button>
-        <button type="button" class="btn btn-danger">Từ chối</button>
-      </div>
-    </div>
+    <span >
+      <ul *ngFor="let mission of Mission" >
+        <li *ngIf="mission.status == 0" >
+          {{mission.name_employee}} đã yêu cầu nhiệm vụ:
+          {{mission.name_mission}} <br><button (click)=Confirm(mission.id_mission) >Chấp nhận </button>
+          &nbsp;&emsp;&nbsp;&nbsp;<span><button (Click)=close(mission.id_mission)>Từ chối </button></span></li>
+      </ul>
+    </span>
     <div class="dropdown-divider"></div>
     <div class="dropdown-item">
       <p>Nguyễn Văn A đã yêu cầu tạo nhiệm vụ: "Tìm xôi".</p>

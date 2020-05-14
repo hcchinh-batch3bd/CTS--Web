@@ -4,10 +4,6 @@
         <li><a routerLink="../home">Trang chủ</a></li>
         <li><a routerLink="mission">Nhiệm vụ</a></li>
         <li><a routerLink="account">Tài khoản</a></li>
-        <li class="logout"><a *ngIf="info != null">{{info.name_employee}}</a>
-            <ul>
-                <li><a (click)="logout()">Dăng xuất</a></li>
-            </ul>
-        </li>
+        <li><a (click)="Logout" routerLink="/login">Đăng xuất</a></li>
     </ul>
 </nav>

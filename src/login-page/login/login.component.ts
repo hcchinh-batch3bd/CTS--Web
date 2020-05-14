@@ -45,8 +45,8 @@ export class LoginComponent implements OnInit {
           else{
             window.location.href = '/home';
           }
-        }
         console.log(data['message']);
+        }
       },
       err => {
         console.log(err);

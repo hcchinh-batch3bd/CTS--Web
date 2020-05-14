@@ -1,6 +1,8 @@
 
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { MissionModule } from 'src/app/models/mission/mission.module';
 import { ApiService } from 'src/app/api.service';
+import { element } from 'protractor';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import * as CryptoJS from 'crypto-js';  
 import { CookieService } from 'ngx-cookie-service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal'
@@ -25,13 +27,19 @@ export class MissionListComponent implements OnInit {
     , private modalService: BsModalService) { }
 
   ngOnInit(): void {
-    this.Decrypt(this.cookieService.get('cookieLogin'));
-    this.apiService.GetListAreThere().subscribe(
-      data=>{
-        this.listMission = data['results'];
-        this.totalRecords = data['results'].length;
-      }
-    );
+      this.apiService.GetListMissionavailable().subscribe(
+        (data: MissionModule[])=>{
+          this.listMission = data['results'];
+          this.listMission.forEach(element=>{
+            if(element.point == 100)
+            console.log(element);
+          })
+          this.totalRecords = data['results'].length;
+          console.log(data['results'].length);
+         // console.log(this.listMission[0].status);
+        }
+      );
+    
   }
   showDetail(template: TemplateRef<any> ,id: number){
     this.detail = this.modalService.show(template, {class: "dialog-detail"});

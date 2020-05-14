@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import * as CryptoJS from 'crypto-js';
 import { ApiService } from 'src/app/api.service';
-import { CookieService } from 'ngx-cookie-service';
+import { MissionModule } from 'src/app/models/mission/mission.module';
+import { TypemissionModule } from 'src/app/models/typemission/typemission.module';
+import { MissionCompleteModule } from 'src/app/models/missioncomple/missioncomplete';
+//import { type } from 'os';
 
 @Component({
   selector: 'app-mission-complete',
