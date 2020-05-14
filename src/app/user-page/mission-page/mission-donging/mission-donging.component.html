@@ -10,21 +10,63 @@
                             <th scope="col">Hạn cuối hoàn thành</th>
                             <th scope="col">Loại nhiệm vụ</th>
                             <th scope="col">Điểm</th>
-                            <th scope="col">Tác vụ</th>
+                            <th scope="col" width="140px">Tác vụ</th>
                         </tr>
                     </thead>
                     <tbody ng-app="windowExample">
-                        <tr *ngFor="let mission of listMission
-                        " >
+                        <tr *ngFor="let mission of listMission| 
+                        paginate: {id:'list-doing', itemsPerPage: 5, currentPage: page, totalItems: totalRecords}">
                             <td>{{mission.name_mission}}</td>
                             <td>{{endTime| date:'dd-MM-yyyy'}}</td>
                             <td>{{mission.name_type_mission}}</td>
                             <td>{{mission.point}}</td>
-                            <td> <button (click)="CompelteMission()">Hoàn thành</button></td>
+                            <td> <button class="btn btn-success" (click)="CompelteMission(mission.id_mission, notify)">Hoàn thành</button></td>
+                            <ng-template #notify>
+                                <div class="modal-header">
+                                    <h4 class="modal-title pull-left">
+                                        <i class="fas fa-file-alt"></i>
+                                        THÔNG BÁO
+                                    </h4>
+                                    <button type="button" class="close pull-right" aria-label="Close" (click)="confirm.hide()">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Bạn có chắc chắn muốn nhận nhiệm vụ này không?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" (click)="showConfirm(CMission, mission.id_mission)">Chấp nhận</button>
+                                    <button type="button" class="btn btn-danger" (click)="confirm.hide()">Từ chối</button>
+                                </div>
+                            </ng-template>
                         </tr>
                     </tbody>
                 </table>
+                <div>
+                    <pagination-controls class="list-pagination"  
+                                        id="list-doing" 
+                                        (pageChange)="page = $event" 
+                                        previousLabel="Trước"
+                                        nextLabel="Sau">
+                    </pagination-controls>
+                </div>
             </div>
         </div>
     </div>
 </section>
+<ng-template #CMission>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">
+            <i class="fas fa-file-alt"></i>
+            THÔNG BÁO
+        </h4>
+        <button type="button" class="close pull-right" (click)="accept.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        {{message}}
+    </div>
+    <div class="modal-footer">
+    </div>
+</ng-template>

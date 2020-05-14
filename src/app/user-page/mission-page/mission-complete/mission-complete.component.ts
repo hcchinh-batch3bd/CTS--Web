@@ -11,22 +11,22 @@ import { MissionCompleteModule } from 'src/app/models/missioncomple/missioncompl
   styleUrls: ['./mission-complete.component.css']
 })
 export class MissionCompleteComponent implements OnInit {
-  totalRecords: string;
-  listMission: MissionCompleteModule[];
-  endTime: any;
- // data: any;
-  constructor(
-    private apiService: ApiService
-  ) { }
+  apiKey: string;
+  decPassword: string = "CTS-Security";
+  listComplete: Object[];
+  totalComplete: number;
+  pageComplete: number = 1;
+  constructor(private apiService: ApiService, private cookie: CookieService) { }
 
   ngOnInit(): void {
-    this.apiService.GetMissionComplete("rhtnscmxtu").subscribe(data=>
-      {
-        this.listMission = data['results'];
-        console.log(this.listMission);
-        this.totalRecords = data['results'].length;
-        console.log(data['results'].length);
-      }
-    );
+    this.Decrypt(this.cookie.get('cookieLogin'));
+    this.apiService.GetLisComplete(this.apiKey).subscribe((data:Object[])=>{
+      this.listComplete = data['results'];
+      this.totalComplete = this.listComplete.length;
+    });
+  }
+  
+  private Decrypt(encryptText: string){
+    this.apiKey = CryptoJS.AES.decrypt(encryptText, this.decPassword.trim()).toString(CryptoJS.enc.Utf8);
   }
 }

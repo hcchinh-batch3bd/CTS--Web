@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-footer',
@@ -8,11 +8,12 @@ import { Router } from '@angular/router';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cookie: CookieService) { }
 
   ngOnInit(): void {
   }
-  Logout(): void{
-    localStorage.removeItem('token');
+  logout() {
+    this.cookie.delete("cookieLogin");
+    window.location.href = "";
   }
 }
