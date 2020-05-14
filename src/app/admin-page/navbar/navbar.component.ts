@@ -1,12 +1,9 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { MissionModule } from 'src/app/models/mission/mission.module';
-import { element } from 'protractor';
-import { NgControl } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import * as CryptoJS from 'crypto-js';
 import { CookieService } from 'ngx-cookie-service';
-import { Template } from '@angular/compiler/src/render3/r3_ast';
 
 @Component({
   selector: 'app-navbar',

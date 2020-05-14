@@ -25,6 +25,7 @@ export class MissionListComponent implements OnInit {
     , private modalService: BsModalService) { }
 
   ngOnInit(): void {
+    this.Decrypt(this.cookieService.get('cookieLogin'));
       this.apiService.GetListMissionavailable().subscribe(
         (data: MissionModule[])=>{
           this.listMission = data['results'];
