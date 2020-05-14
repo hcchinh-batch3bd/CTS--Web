@@ -72,10 +72,6 @@ export class ApiService {
   {
     return this.httpClient.post(`${this.apiURL}/Mission/`+id_mission+`/Order?apikey=`+apiKey,Mission);
   }
-  public ComleteMission(id_mission: number,apiKey: string,Mission: MissionModule)
-  {
-    return this.httpClient.put(`${this.apiURL}/Mission/`+id_mission+`/CompleteMission?apiKey=`+apiKey,Mission)
-  }
   public ChangePassworld(pwold: string,pwnew: string, apiKey: string)
   {
     return this.httpClient.put(`${this.apiURL}/Account/Changepassword?passnew=` + pwnew + `&passold=` + pwold + `&apiKey=`+apiKey, "")
@@ -98,10 +94,6 @@ export class ApiService {
   }
   public DeleteMission(id: number, apiKey: string, mission: MissionModule){
     return this.httpClient.put(`${this.apiURL}/Mission/`+id+`/ClearMission?apiKey=`+apiKey,mission);
-  }
-  public GetMissionDoing(apiKey: string)
-  {
-    return this.httpClient.get(`${this.apiURL}/Mission/Missionavailableemp?apiKey=`+apiKey);
   }
   public CreateMission(apiKey: string, mission: MissionModule){
     return this.httpClient.post(`${this.apiURL}/Mission/Create?apiKey=`+apiKey,mission);

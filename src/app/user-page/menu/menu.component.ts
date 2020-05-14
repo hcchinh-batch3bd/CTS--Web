@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ApiService } from 'src/app/api.service';
+import { CookieService } from 'ngx-cookie-service';
+import * as CryptoJS from 'crypto-js';
+import { InfoModule } from 'src/app/models/account/info.module';
 
 @Component({
   selector: 'app-menu',
@@ -9,10 +12,20 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit {
   show = false;
   menu = false;
-  constructor(private router: Router) { }
+  apiKey: string;
+  decPass = "CTS-Security";
+  info: InfoModule;
+  constructor(private apiService: ApiService, private cookie: CookieService) { }
 
   ngOnInit(): void {
-      
+      this.Decrypt(this.cookie.get("cookieLogin"));
+      this.apiService.GetInfo(this.apiKey).subscribe((data: InfoModule) => {
+        this.info = data;
+      });
+  }
+
+  private Decrypt(encryptText: string) {
+    this.apiKey = CryptoJS.AES.decrypt(encryptText, this.decPass.trim()).toString(CryptoJS.enc.Utf8);
   }
   toggleDisplay() {
     this.show = !this.show;
@@ -20,8 +33,9 @@ export class MenuComponent implements OnInit {
   menuShow() {
     this.menu = !this.menu;
   }
-  Logout(): void {
-    localStorage.removeItem('userToken');
-    this.router.navigate(['login']);
+
+  logout() {
+    this.cookie.delete("cookieLogin");
+    window.location.href = "";
   }
 }
