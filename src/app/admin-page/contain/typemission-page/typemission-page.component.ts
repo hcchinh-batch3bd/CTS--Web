@@ -4,7 +4,6 @@ import { CookieService } from 'ngx-cookie-service';
 import * as CryptoJS from 'crypto-js';
 import { from } from 'rxjs';
 import { TypemissionModule } from 'src/app/models/typemission/typemission.module';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -26,6 +25,7 @@ export class TypemissionPageComponent implements OnInit {
   message: string;
   decPassword:string = "CTS-Security";
   typemission: TypemissionModule;
+  delete: BsModalRef;
   constructor(private apiService: ApiService, private cookieService: CookieService
     , private modal: BsModalService) {
 
@@ -82,16 +82,17 @@ export class TypemissionPageComponent implements OnInit {
       this.name=null;
     }
   }
-  deleteTypeMission(id: number): void {
-    var result = confirm('Bạn có chắc chắn muốn xoá không ?');
-    if (result == true) {
+  showConfirm(template: TemplateRef<any>){
+    this.delete = this.modal.show(template, {class: 'delete'});
+  }
+  deleteTypeMission(id: number, template: TemplateRef<any>): void {
+    this.editmission2 = this.modal.show(template, {class:'notify'});
+    this.delete.hide();
       this.apiService.deleteTypeMission(id, this.apiKey, this.typemission).subscribe(data => {
         console.log(data['message']);
         this.message = 'Xoá loại nhiệm vụ thành công';
         this.ngOnInit();
-      })
-    }
-    else this.ngOnInit();
+      });
   }
   editTypeMission(type: number, template: TemplateRef<any>): void {
     this.editmission = this.modal.show(template, { class: 'edit' });

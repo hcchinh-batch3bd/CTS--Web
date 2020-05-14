@@ -40,7 +40,6 @@ export class NavbarComponent implements OnInit {
           {
             this.Mission = data['results'];
             this.message = data['message'];
-            window.location.reload();
           })
       }
   close(id: any, template: TemplateRef<any>): void{
@@ -52,6 +51,9 @@ export class NavbarComponent implements OnInit {
            window.location.reload;
            this.totalNotify--;
       })
+  }
+  Off(){
+    window.location.reload();
   }
   private Decrypt (encryptText : string) {  
     this.apiKey = CryptoJS.AES.decrypt(encryptText, this.decPassword.trim()).toString(CryptoJS.enc.Utf8);  
