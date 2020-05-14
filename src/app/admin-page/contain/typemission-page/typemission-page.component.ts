@@ -89,8 +89,7 @@ export class TypemissionPageComponent implements OnInit {
     this.editmission2 = this.modal.show(template, {class:'notify'});
     this.delete.hide();
       this.apiService.deleteTypeMission(id, this.apiKey, this.typemission).subscribe(data => {
-        console.log(data['message']);
-        alert ("Xoá loại nhiệm vụ thành công");
+        this.message = "Xoá loại nhiệm vụ thành công";
         this.ngOnInit();
       });
   }

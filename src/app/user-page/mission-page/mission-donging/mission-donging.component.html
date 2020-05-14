@@ -14,7 +14,7 @@
                         </tr>
                     </thead>
                     <tbody ng-app="windowExample">
-                        <tr *ngFor="let mission of listMission| 
+                        <tr *ngFor="let mission of listMission| reverseuser | 
                         paginate: {id:'list-doing', itemsPerPage: 5, currentPage: page, totalItems: totalRecords}">
                             <td>{{mission.name_mission}}</td>
                             <td>{{endTime| date:'dd-MM-yyyy'}}</td>

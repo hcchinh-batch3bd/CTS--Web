@@ -14,7 +14,7 @@
                             <th scope="col">Trạng thái</th>
                         </tr>
                     </thead>
-                    <tbody *ngFor="let mission of listComplete| 
+                    <tbody *ngFor="let mission of listComplete| reverseuser | 
                     paginate: {id:'list-complete', itemsPerPage: 5, currentPage: pageComplete, totalItems: totalComplete}">
                         <tr>
                             <td>{{mission.name_mission}}</td>

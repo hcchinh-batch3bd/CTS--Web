@@ -14,7 +14,7 @@
                         <th scope="col">Điểm</th>
                       </tr>
                     </thead>
-                    <tbody *ngFor="let mission of listProcess| 
+                    <tbody *ngFor="let mission of listProcess| reverseuser | 
                     paginate: {id:'list-statistical', itemsPerPage: 3, currentPage: page, totalItems: totalRecords}">
                       <tr>
                         <th scope="row">{{mission.id_mission}}</th>
